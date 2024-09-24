@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import { Link } from "gatsby";
 import { Button } from "@/components/ui/button";
@@ -7,8 +6,8 @@ import Footer from "./footer";
 // import { Toaster } from "@/components/ui/toaster";
 
 const Layout = ({ pageTitle, children }: any) => {
-  const path = location.pathname;
-  console.log(path);
+  // const path = location.pathname;
+  // console.log(path);
   return (
     <div className="">
       <nav className="flex justify-between w-full items-center container">
@@ -16,15 +15,25 @@ const Layout = ({ pageTitle, children }: any) => {
           <StaticImage className="w-32" src="../images/logo.svg" alt="logo" />
         </Link>
         <ul className="flex max-md:hidden">
-          <li className={`${path === "/" && "font-bold"} text-pallet4 mr-8`}>
+          <li
+            className={`${
+              pageTitle === "Home Page" && "font-bold"
+            } text-pallet4 mr-8`}
+          >
             <Link to="/">Home</Link>
           </li>
           <li
-            className={`${path === "/about/" && "font-bold"} text-pallet4 mr-8`}
+            className={`${
+              pageTitle === "About Page" && "font-bold"
+            } text-pallet4 mr-8`}
           >
             <Link to="/about">About</Link>
           </li>
-          <li className={`${path === "/contact/" && "font-bold"} text-pallet4`}>
+          <li
+            className={`${
+              pageTitle === "Contact Page" && "font-bold"
+            } text-pallet4`}
+          >
             <Link to="/contact">Contact</Link>
           </li>
         </ul>
@@ -38,7 +47,7 @@ const Layout = ({ pageTitle, children }: any) => {
         {/* <Toaster /> */}
       </main>
       <footer>
-        <Footer />
+        <Footer pageTitle={pageTitle} />
       </footer>
     </div>
   );

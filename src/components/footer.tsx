@@ -2,8 +2,8 @@ import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 
-function Footer() {
-  const pathname = location.pathname;
+function Footer({ pageTitle }: any) {
+  // const pathname = location.pathname;
 
   return (
     <div className=" max-md:grid max-md:grid-cols-1 bg-white">
@@ -21,7 +21,7 @@ function Footer() {
             <div className="flex sm:m-7 md:m-10 max-sm:mt-5">
               <Link
                 className={`${
-                  pathname === "/about/" && "font-bold"
+                  pageTitle === "About Page" && "font-bold"
                 } text-pallet4 mr-8`}
                 to="/about"
               >
@@ -29,7 +29,7 @@ function Footer() {
               </Link>
               <Link
                 className={`${
-                  pathname === "/contact/" && "font-bold"
+                  pageTitle === "Contact Page" && "font-bold"
                 } text-pallet4`}
                 to="/contact"
               >
