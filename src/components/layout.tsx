@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import { Link } from "gatsby";
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import Footer from "./footer";
 // import { Toaster } from "@/components/ui/toaster";
 
-const Layout = ({ pageTitle, children }: any, { location }: any) => {
+const Layout = ({ pageTitle, children }: any) => {
   const path = location.pathname;
   console.log(path);
   return (

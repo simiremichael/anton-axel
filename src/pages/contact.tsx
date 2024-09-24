@@ -12,18 +12,18 @@ function ContactPage() {
           <div className="contact-left-details-container flex-1 items-center">
             <p className="contact-left-para text-md text-pallet4 font-semibold">
               Phone:{" "}
-              <Link to="tel:+2347078482944" className="ml-5 font-normal">
+              <a href="tel:+2347078482944" className="ml-5 font-normal">
                 07078482944
-              </Link>
+              </a>
             </p>
             <p className="contact-left-para max-sm:mt-4 text-md text-pallet4 font-semibold">
               Email:{" "}
-              <Link
-                to="mailto:info@antonaxel.com.ng"
+              <a
+                href="mailto:info@antonaxel.com.ng"
                 className="ml-5 font-normal"
               >
                 info@housekeeping.com.ng
-              </Link>
+              </a>
             </p>
           </div>
         </div>
