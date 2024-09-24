@@ -52,7 +52,12 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			pallet1: '#EDDFE0',
+			pallet2: '#F5F5F7',
+            pallet3: '#B7B7B7',
+			pallet4: '#705C53',
+
   		}
   	}
   },

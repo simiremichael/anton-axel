@@ -64,3 +64,72 @@
     @apply bg-background text-foreground;
   }
 }
+.container {
+  max-width: 100%;
+  height: 60px;
+  @media  (min-width: 768px) {
+    padding: 0 5%;
+  }
+    @media (max-width: 767px) {
+      padding: 0 2%;
+    }
+}
+.container-top {
+  width: 100%;
+  height: 400px;
+
+  @media (min-width: 768px) {
+    padding: 0 5%;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 2%;
+  }
+}
+
+.service-container {
+  width: 100%;
+
+  @media (min-width: 768px) {
+    padding: 0 5%;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 2%;
+  }
+}
+
+.card-container{
+  height: 280px;
+  width: 100%;
+  border: 2px solid #EDDFE0;
+   border-radius: 10px;
+   @media  (max-width: 640px) {
+    height: 230px;
+   }
+}
+.about-container {
+  background-image: url("../images/about.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 320px;
+  border-radius: 10px;
+}
+.contact-container {
+  background-image: url("../images/contact.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 320px;
+  border-radius: 10px;
+}
+.footer-container {
+    width: 100%;
+    
+      @media (min-width: 768px) {
+        padding: 0 5%;
+      }
+    
+      @media (max-width: 767px) {
+        padding: 0 2%;
+      }
+}
