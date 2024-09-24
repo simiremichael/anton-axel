@@ -3,6 +3,7 @@ import React from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import emailjs from "@emailjs/browser";
 
 function ContactContainer() {
   const [formData, setFormData] = React.useState({
@@ -20,12 +21,12 @@ function ContactContainer() {
 
   const sendEmail = (e: any) => {
     e.preventDefault();
-
     // @ts-ignore
     emailjs
       .sendForm(
-        "service_rj85u9b",
+        "service_gi13uul",
         "template_08yurua",
+        // @ts-ignore
         sendMail?.current,
         "user_OjPcBuLBsMA0wASXXMw7Z"
       )

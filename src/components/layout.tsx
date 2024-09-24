@@ -5,7 +5,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import Footer from "./footer";
 // import { Toaster } from "@/components/ui/toaster";
 
-const Layout = ({ pageTitle, children }: any) => {
+const Layout = ({ pageTitle, children }: any, { location }: any) => {
   const path = location.pathname;
 
   return (

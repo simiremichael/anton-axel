@@ -5,7 +5,6 @@ import TopContainer from "@/components/topContainer";
 import ServiceContainer from "@/components/serviceContainer";
 import AboutContainer from "@/components/aboutContainer";
 import ContactContainer from "@/components/contactContainer";
-import Footer from "@/components/footer";
 
 const pageStyles = {
   color: "#232129",
@@ -40,7 +39,13 @@ export default IndexPage;
 
 export const Head: HeadFC = () => (
   <>
-    <title>Home Me</title>
-    <meta name="description" content="Your description" />
+    <title>
+      Comprehensive Solutions in Facility, Real Estate & IT Services
+    </title>
+    <meta
+      name="description"
+      content="AntonAxel Nigeria offers services in facility management, real estate, construction, IT, renewable energy, and project management across Nigeria."
+    />
+    {/* <link rel="stylesheet" href="" /> */}
   </>
 );
