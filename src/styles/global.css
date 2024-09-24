@@ -71,7 +71,7 @@
     padding: 0 5%;
   }
     @media (max-width: 767px) {
-      padding: 0 2%;
+      padding: 0 3%;
     }
 }
 .container-top {
@@ -83,7 +83,7 @@
   }
 
   @media (max-width: 767px) {
-    padding: 0 2%;
+    padding: 0 3%;
   }
 }
 
@@ -95,7 +95,7 @@
   }
 
   @media (max-width: 767px) {
-    padding: 0 2%;
+    padding: 0 3%;
   }
 }
 
@@ -130,6 +130,6 @@
       }
     
       @media (max-width: 767px) {
-        padding: 0 2%;
+        padding: 0 3%;
       }
 }
