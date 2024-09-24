@@ -7,7 +7,7 @@ import Footer from "./footer";
 
 const Layout = ({ pageTitle, children }: any, { location }: any) => {
   const path = location.pathname;
-
+  console.log(path);
   return (
     <div className="">
       <nav className="flex justify-between w-full items-center container">

@@ -46,6 +46,7 @@ export const Head: HeadFC = () => (
       name="description"
       content="AntonAxel Nigeria offers services in facility management, real estate, construction, IT, renewable energy, and project management across Nigeria."
     />
+
     {/* <link rel="stylesheet" href="" /> */}
   </>
 );
