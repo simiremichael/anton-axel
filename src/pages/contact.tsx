@@ -12,8 +12,8 @@ function ContactPage() {
           <div className="contact-left-details-container flex-1 items-center">
             <p className="contact-left-para text-md text-pallet4 font-semibold">
               Phone:{" "}
-              <a href="tel:+2347078482944" className="ml-5 font-normal">
-                07078482944
+              <a href="tel:+2348024990457" className="ml-5 font-normal">
+                08024990457
               </a>
             </p>
             <p className="contact-left-para max-sm:mt-4 text-md text-pallet4 font-semibold">
