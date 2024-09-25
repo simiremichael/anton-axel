@@ -47,7 +47,9 @@ const Layout = ({ pageTitle, children }: any) => {
           </li>
         </ul>
         <Link to="/contact" className="max-md:hidden">
-          <Button className="bg-pallet3">Contat Us</Button>
+          <Button title="button" className="bg-pallet3">
+            Contat Us
+          </Button>
         </Link>
         <div className="md:hidden">
           <DropdownMenu>

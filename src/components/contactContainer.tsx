@@ -51,7 +51,7 @@ function ContactContainer() {
 
   return (
     <div className="service-container mt-10 mb-5 bg-pallet2">
-      <h1 className="font-bold text-2xl mb-3">CONTACT US</h1>
+      <h1 className="font-bold text-2xl mb-3 mt-3">CONTACT US</h1>
       <div className="grid grid-cols-12 gap-4">
         <div className="md:col-span-6 col-span-12 contact-container"></div>
         <div className="md:col-span-6 col-span-12">

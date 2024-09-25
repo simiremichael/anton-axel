@@ -22,7 +22,7 @@ function ContactPage() {
                 href="mailto:info@antonaxel.com.ng"
                 className="ml-5 font-normal"
               >
-                info@housekeeping.com.ng
+                info@antonaxel.com.ng
               </a>
             </p>
           </div>
