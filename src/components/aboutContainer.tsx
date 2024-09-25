@@ -11,17 +11,17 @@ function AboutContainer() {
             AntonAxel Nigeria Company Limited is a dynamic and multifaceted
             company that offers a diverse range of services across multiple
             sectors of the Nigerian economy. With a commitment to excellence,
-            innovation, and client satisfaction, AntonAxel delivers
-            comprehensive solutions tailored to meet the evolving needs of its
-            clients. <br /> AntonAxel Nigeria Company Limited stands out for its
-            dedication to delivering high-quality services, leveraging the
-            latest technology, and adopting industry best practices. With a team
-            of skilled professionals, the company aims to provide clients with
-            innovative, reliable, and cost-effective solutions across all
-            sectors. <br /> Through its diverse offerings, AntonAxel continues
-            to make significant contributions to the growth and development of
-            the Nigerian economy while building lasting partnerships with
-            clients and stakeholders.
+            innovation, and client satisfaction. We delivers comprehensive
+            solutions tailored to meet the evolving needs of our clients. <br />{" "}
+            AntonAxel Nigeria Company Limited stands out for its dedication to
+            delivering high-quality services, leveraging the latest technology,
+            and adopting industry best practices. With a team of skilled
+            professionals, the company aims to provide clients with innovative,
+            reliable, and cost-effective solutions across all sectors. <br />{" "}
+            Through its diverse offerings, AntonAxel continues to make
+            significant contributions to the growth and development of the
+            Nigerian economy while building lasting partnerships with clients
+            and stakeholders.
           </p>
         </div>
       </div>
