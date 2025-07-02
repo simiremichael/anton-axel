@@ -522,21 +522,24 @@ const SolarProductsPage = () => {
   };
 
   const checkout = async () => {
-    const response = await fetch("https://www.antonaxel.com.ng/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: cart,
-        email,
-        total_Price: cart.reduce((sum, item) => sum + item.price, 0),
-        name,
-        phone,
-        address,
-        location,
-      }),
-    });
+    const response = await fetch(
+      "https://www.antonaxel.com.ng/netlify/functions/checkout",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: cart,
+          email,
+          total_Price: cart.reduce((sum, item) => sum + item.price, 0),
+          name,
+          phone,
+          address,
+          location,
+        }),
+      }
+    );
 
     let data;
     try {
