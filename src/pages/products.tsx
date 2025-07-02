@@ -522,7 +522,7 @@ const SolarProductsPage = () => {
   };
 
   const checkout = async () => {
-    const response = await fetch("/.netlify/functions/checkout", {
+    const response = await fetch("https://www.antonaxel.com.ng/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
