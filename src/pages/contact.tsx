@@ -1,6 +1,5 @@
 import ContactContainer from "@/components/contactContainer";
 import Layout from "@/components/layout";
-import { Link, navigate } from "gatsby";
 import React from "react";
 
 function ContactPage() {

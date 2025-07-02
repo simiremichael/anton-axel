@@ -21,7 +21,7 @@ const config: GatsbyConfig = {
       "path": "./src/images/"
     },
     __key: "images"
-  }, "gatsby-plugin-react-helmet"]
+  }, "gatsby-plugin-react-helmet", 'gatsby-plugin-postcss',]
 };
 
 export default config;

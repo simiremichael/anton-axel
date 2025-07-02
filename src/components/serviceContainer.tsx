@@ -2,7 +2,7 @@ import React from "react";
 
 function ServiceContainer() {
   return (
-    <div className="service-container mt-10">
+    <div className="service-container bg-[#ffffff] mt-10">
       <h1 className="mt-5 font-bold text-2xl">WHAT WE DO</h1>
       <div className="grid grid-cols-12 gap-2 mt-5">
         <div className="card-container lg:col-span-4 p-5 sm:col-span-6 col-span-12 bg-pallet1">

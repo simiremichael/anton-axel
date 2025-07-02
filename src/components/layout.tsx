@@ -22,7 +22,7 @@ const Layout = ({ pageTitle, children }: any) => {
     <>
       <Helmet htmlAttributes={{ lang: "en" }} />
       <div className="">
-        <nav className="flex justify-between w-full items-center container">
+        <nav className="flex justify-between bg-[#ffffff] w-full items-center container">
           <Link to="/">
             <StaticImage className="w-32" src="../images/logo.svg" alt="logo" />
           </Link>
@@ -30,28 +30,35 @@ const Layout = ({ pageTitle, children }: any) => {
             <li
               className={`${
                 pageTitle === "Home Page" && "font-bold"
-              } text-pallet4 mr-8`}
+              } text-[#705C53] mr-8`}
             >
               <Link to="/">Home</Link>
             </li>
             <li
               className={`${
+                pageTitle === "Products Page" && "font-bold"
+              } text-[#705C53] mr-8`}
+            >
+              <Link to="/products">Products</Link>
+            </li>
+            <li
+              className={`${
                 pageTitle === "About Page" && "font-bold"
-              } text-pallet4 mr-8`}
+              } text-[#705C53] mr-8`}
             >
               <Link to="/about">About</Link>
             </li>
             <li
               className={`${
                 pageTitle === "Contact Page" && "font-bold"
-              } text-pallet4`}
+              } text-[#705C53]`}
             >
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
           <Link to="/contact" className="max-md:hidden">
-            <Button title="button" className="bg-pallet3">
-              Contat Us
+            <Button title="button" className="bg-[#B7B7B7]">
+              Contact Us
             </Button>
           </Link>
           <div className="md:hidden">
@@ -73,15 +80,23 @@ const Layout = ({ pageTitle, children }: any) => {
                   to="/"
                   className={`${
                     pageTitle === "Home Page" && "font-bold"
-                  } text-pallet4 mr-8`}
+                  } text-[#705C53] mr-8`}
                 >
                   <DropdownMenuItem>Home</DropdownMenuItem>
+                </Link>
+                <Link
+                  to="/products"
+                  className={`${
+                    pageTitle === "Products Page" && "font-bold"
+                  } text-[#705C53] mr-8`}
+                >
+                  <DropdownMenuItem>Products</DropdownMenuItem>
                 </Link>
                 <Link
                   to="/about"
                   className={`${
                     pageTitle === "About Page" && "font-bold"
-                  } text-pallet4 mr-8`}
+                  } text-[#705C53] mr-8`}
                 >
                   <DropdownMenuItem>About</DropdownMenuItem>
                 </Link>
@@ -89,7 +104,7 @@ const Layout = ({ pageTitle, children }: any) => {
                   to="/contact"
                   className={`${
                     pageTitle === "Contact Page" && "font-bold"
-                  } text-pallet4 mr-8`}
+                  } text-[#705C53] mr-8`}
                 >
                   <DropdownMenuItem>Contact</DropdownMenuItem>
                 </Link>

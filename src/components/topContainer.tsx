@@ -3,7 +3,7 @@ import React from "react";
 
 function TopContainer() {
   return (
-    <div className="grid grid-cols-12 bg-pallet2 container-top gap-2">
+    <div className="grid grid-cols-12 bg-[#F5F5F7] container-top gap-2">
       <div className="col-span-6 flex flex-col justify-center max-md:col-span-12">
         <p className="mb-10 max-md:mt-5 max-md:mb-10 text-sm md:-mt-16">
           Welcome to AntonAxel Nigeria Company Limited

@@ -2,8 +2,8 @@ import React from "react";
 
 function AboutContainer() {
   return (
-    <div className="service-container mt-10 mb-5">
-      <h1 className="font-bold text-2xl mb-3">ABOUT US</h1>
+    <div className="service-container pt-5 bg-[#ffffff]  mb-5">
+      <h1 className="font-bold mt-10 text-2xl mb-3">ABOUT US</h1>
       <div className="grid grid-cols-12 gap-4">
         <div className="md:col-span-6 col-span-12 about-container"></div>
         <div className="md:col-span-6 col-span-12">
