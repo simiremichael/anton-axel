@@ -46,9 +46,14 @@ const supabase = createClient(
   );
 
 export const handler = async function (
-    event: { httpMethod: string; body: string },
+    event: { httpMethod: string; body: string; headers: { [key: string]: string } },
     context: any
 ): Promise<HandlerResponse> {
+// Add at the top of your handler
+if (!event.headers.referer.includes("https://www.antonaxel.com.ng")) {
+    return { statusCode: 403, body: "Forbidden" };
+  }
+
     if (event.httpMethod !== "POST") {
         return {
             statusCode: 405,

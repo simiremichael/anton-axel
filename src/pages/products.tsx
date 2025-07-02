@@ -521,25 +521,24 @@ const SolarProductsPage = () => {
     setCart((prev) => prev?.filter((_, i) => i !== index));
   };
 
-  const checkout = async () => {
-    const response = await fetch(
-      "https://www.antonaxel.com.ng/netlify/functions/checkout",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          items: cart,
-          email,
-          total_Price: cart.reduce((sum, item) => sum + item.price, 0),
-          name,
-          phone,
-          address,
-          location,
-        }),
-      }
-    );
+  const checkout = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const response = await fetch("/.netlify/functions/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: cart,
+        email,
+        total_Price: cart.reduce((sum, item) => sum + item.price, 0),
+        name,
+        phone,
+        address,
+        location,
+      }),
+    });
 
     let data;
     try {
@@ -850,7 +849,7 @@ const SolarProductsPage = () => {
                     .reduce((sum, item) => sum + item.price, 0)
                     .toLocaleString()}
                 </p>
-                <form className="mt-5">
+                <form className="mt-5" onSubmit={checkout}>
                   <label className="floating-label">
                     <span>Full Name</span>
                     <input
@@ -914,11 +913,7 @@ const SolarProductsPage = () => {
                     placeholder="location/state"
                     className="input input-md"
                   />
-                  <button
-                    type="button"
-                    className="btn btn-sm mt-4 btn-primary"
-                    onClick={checkout}
-                  >
+                  <button type="submit" className="btn btn-sm mt-4 btn-primary">
                     Checkout
                   </button>
                 </form>
