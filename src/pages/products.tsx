@@ -486,7 +486,6 @@ const SolarProductsPage = () => {
   const [cart, setCart] = useState<Product[]>([]);
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
-  const [price, setPrice] = useState("");
   const [selected, setSelected] = useState<Product | any>([]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -549,19 +548,20 @@ const SolarProductsPage = () => {
 
       if (!response.ok) {
         const error = await response.json();
-        setAlert(error?.error || "Order failed");
+        setAlert("Order failed");
         setLoading(false);
         throw new Error(error.error || "Order failed");
       }
       const data = await response.json();
       setAlert(data?.message);
       setLoading(false);
-      return await response.json();
+      setCart([]);
+      return data;
     } catch (error) {
       console.error("Order Error:", error);
-      setAlert(error || "something happened");
+      // setAlert("something happened");
       setLoading(false);
-      throw new Error(String(error) || "something happened");
+      throw error;
     }
   };
 
@@ -582,10 +582,7 @@ const SolarProductsPage = () => {
 
   useEffect(() => {
     setTimeout(function () {
-      if (alert) {
-        setAlert("");
-        (document.getElementById("my_modal_4") as HTMLDialogElement)?.close();
-      }
+      setAlert("");
     }, 4000);
   }, [alert]);
 
