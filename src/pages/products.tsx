@@ -523,36 +523,35 @@ const SolarProductsPage = () => {
 
   const checkout = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const response = await fetch("/.netlify/functions/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: cart,
-        email,
-        total_Price: cart.reduce((sum, item) => sum + item.price, 0),
-        name,
-        phone,
-        address,
-        location,
-      }),
-    });
-
-    let data;
+    //   "http://localhost:5000/api/orders
     try {
-      data = await response.json(); // ✅ avoid crash
-    } catch (err) {
-      console.error("Failed to parse response JSON:", err);
-      // alert("Something went wrong. Please try again.");
-      return;
-    }
-    console.log(response);
-    if (!response.ok) {
-      const data = await response.json();
-      console.log(data.message);
-      setCart([]);
+      const response = await fetch(
+        "https://antonaxel-server.onrender.com/api/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            items: cart,
+            email,
+            total_price: cart.reduce((sum, item) => sum + item.price, 0),
+            name,
+            phone,
+            address,
+            location,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Order failed");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Order Error:", error);
+      throw error;
     }
   };
 
