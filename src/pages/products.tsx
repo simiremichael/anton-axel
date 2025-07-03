@@ -2,7 +2,7 @@
 import Layout from "@/components/layout";
 import { StaticImage } from "gatsby-plugin-image";
 import { Battery } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const products = [
   {
@@ -492,6 +492,8 @@ const SolarProductsPage = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [location, setLocation] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState<any>("");
 
   interface Product {
     id: number;
@@ -523,7 +525,8 @@ const SolarProductsPage = () => {
 
   const checkout = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //   "http://localhost:5000/api/orders
+    setLoading(true);
+    //   http://localhost:5000/api/orders  https://antonaxel-server.onrender.com/api/orders
     try {
       const response = await fetch(
         "https://antonaxel-server.onrender.com/api/orders",
@@ -546,12 +549,19 @@ const SolarProductsPage = () => {
 
       if (!response.ok) {
         const error = await response.json();
+        setAlert(error?.error || "Order failed");
+        setLoading(false);
         throw new Error(error.error || "Order failed");
       }
+      const data = await response.json();
+      setAlert(data?.message);
+      setLoading(false);
       return await response.json();
     } catch (error) {
       console.error("Order Error:", error);
-      throw error;
+      setAlert(error || "something happened");
+      setLoading(false);
+      throw new Error(String(error) || "something happened");
     }
   };
 
@@ -570,7 +580,16 @@ const SolarProductsPage = () => {
     (document.getElementById("my_modal_3") as HTMLDialogElement)?.showModal();
   };
 
-  console.log(cart);
+  useEffect(() => {
+    setTimeout(function () {
+      if (alert) {
+        setAlert("");
+        (document.getElementById("my_modal_4") as HTMLDialogElement)?.close();
+      }
+    }, 4000);
+  }, [alert]);
+
+  // console.log(cart);
 
   return (
     <Layout pageTitle="Products Page">
@@ -817,12 +836,31 @@ const SolarProductsPage = () => {
 
         <dialog id="my_modal_4" className="modal">
           <div className="modal-box">
+            {alert !== "" && (
+              <div role="alert" className="alert alert-success">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 shrink-0 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>{alert}</span>
+              </div>
+            )}
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                 ✕
               </button>
             </form>
+
             <h3 className="font-bold text-lg mb-5">Complete your purchase</h3>
             {cart.length === 0 ? (
               <p>No items in cart.</p>
@@ -913,7 +951,11 @@ const SolarProductsPage = () => {
                     className="input input-md"
                   />
                   <button type="submit" className="btn btn-sm mt-4 btn-primary">
-                    Checkout
+                    {loading ? (
+                      <span className="loading loading-spinner loading-xs"></span>
+                    ) : (
+                      "Checkout"
+                    )}
                   </button>
                 </form>
               </>
