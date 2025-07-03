@@ -30,10 +30,18 @@ function Footer({ pageTitle }: any) {
               <Link
                 className={`${
                   pageTitle === "Contact Page" && "font-bold"
-                } text-pallet4`}
+                } text-pallet4 mr-8`}
                 to="/contact"
               >
                 <p>Contact Us</p>
+              </Link>
+              <Link
+                className={`${
+                  pageTitle === "Contact Page" && "font-bold"
+                } text-pallet4`}
+                to="/privacy"
+              >
+                <p>Privacy Policy</p>
               </Link>
               {/* <Link style={{fontWeight: pathname === '/privacy' ? 'bold' : '' }} className={`link ${pathname === '/privacy' ? 'active' : ''} footer-menu-items mr-5 cursor-pointer md:text-base`} href='/privacy' id='footer-link'><p>Privacy Policy</p></Link> */}
             </div>

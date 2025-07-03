@@ -41,7 +41,7 @@ const Layout = ({ pageTitle, children }: any) => {
             >
               <Link to="/products">Products</Link>
             </li>
-            <li
+            {/* <li
               className={`${
                 pageTitle === "About Page" && "font-bold"
               } text-[#705C53] mr-8`}
@@ -54,7 +54,7 @@ const Layout = ({ pageTitle, children }: any) => {
               } text-[#705C53]`}
             >
               <Link to="/contact">Contact</Link>
-            </li>
+            </li> */}
           </ul>
           <Link to="/contact" className="max-md:hidden">
             <Button title="button" className="bg-[#B7B7B7]">
@@ -92,14 +92,14 @@ const Layout = ({ pageTitle, children }: any) => {
                 >
                   <DropdownMenuItem>Products</DropdownMenuItem>
                 </Link>
-                <Link
+                {/* <Link
                   to="/about"
                   className={`${
                     pageTitle === "About Page" && "font-bold"
                   } text-[#705C53] mr-8`}
                 >
                   <DropdownMenuItem>About</DropdownMenuItem>
-                </Link>
+                </Link> */}
                 <Link
                   to="/contact"
                   className={`${
