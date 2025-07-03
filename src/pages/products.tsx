@@ -967,10 +967,12 @@ const SolarProductsPage = () => {
 export default SolarProductsPage;
 export const Head = () => (
   <>
-    <title>Solar Products</title>
+    <title>
+      AntonAxel Solar Panels | High-Efficiency Renewable Energy Solutions
+    </title>
     <meta
       name="description"
-      content="Explore our range of solar energy products."
+      content="Upgrade to AntonAxel premium solar panels for unmatched energy efficiency and durability. Our advanced photovoltaic technology delivers 22-24% efficiency ratings, weather-resistant designs, and 25-year performance warranties. Ideal for residential, commercial, or industrial use. Get a free quote for customized solar solutions today!"
     />
   </>
 );

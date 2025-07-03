@@ -40,11 +40,12 @@ export default IndexPage;
 export const Head: HeadFC = () => (
   <>
     <title>
-      Comprehensive Solutions in Facility, Real Estate & IT Services
+      AntonAxel Nigeria | Real Estate, Facility Management, Construction &
+      Renewable Energy
     </title>
     <meta
       name="description"
-      content="AntonAxel Nigeria offers services in facility management, real estate, construction, IT, renewable energy, and project management across Nigeria."
+      content="AntonAxel Nigeria Company Limited delivers expert solutions in real estate, facility management, construction, renewable energy, IT services, and general contracting across Nigeria. Trusted, innovative, and results-driven."
     />
 
     {/* <link rel="stylesheet" href="" /> */}
