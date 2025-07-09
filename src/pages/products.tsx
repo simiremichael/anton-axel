@@ -401,7 +401,7 @@ const products = [
     controller: 0,
     controller_rating: "",
     number_of_battery: 1,
-    installation_kit: 15000,
+    installation_kit: 150000,
     installation_cost: 100000,
   },
   {
