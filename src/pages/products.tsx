@@ -429,7 +429,7 @@ const products = [
     name: "6.2kVA Backup System",
     wattage: "6.2kVA",
     inverter_rating: "6.2KVA",
-    inverter: 920000,
+    inverter: 1082000,
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
