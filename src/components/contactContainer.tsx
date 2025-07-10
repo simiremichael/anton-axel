@@ -30,10 +30,13 @@ function ContactContainer() {
     setLoading(true);
     emailjs
       .sendForm(
+        // "service_gi13uul",
+        // "template_08yurua",
         "service_x7e1yub",
         "template_8et6gla",
         // @ts-ignore
-        sendMail?.current
+        sendMail?.current,
+        "-da9MVSm3FpvvuNXp"
       )
       .then(
         (result: { text: React.SetStateAction<string> }) => {
