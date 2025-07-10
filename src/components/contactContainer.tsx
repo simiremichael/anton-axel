@@ -14,6 +14,8 @@ function ContactContainer() {
   });
 
   const [alert, setAlert] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<any>("");
 
   //    const router = useRouter();
 
@@ -22,6 +24,7 @@ function ContactContainer() {
   const sendEmail = (e: any) => {
     e.preventDefault();
     // @ts-ignore
+    setLoading(true);
     emailjs
       .sendForm(
         "service_gi13uul",
@@ -33,25 +36,76 @@ function ContactContainer() {
       .then(
         (result: { text: React.SetStateAction<string> }) => {
           console.log(result.text);
-          setAlert(result.text);
+          setLoading(false);
+          setAlert("message sent successfully");
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
         },
         (error: { text: any }) => {
           console.log(error.text);
+          setLoading(false);
+          setError("Failed to send message");
         }
       );
 
     // router.push('/')
   };
 
-  React.useEffect(() => {
-    if (alert !== "") {
-      navigate("/");
-    }
-  }, [alert]);
+  // React.useEffect(() => {
+  //   if (alert !== "") {
+  //     navigate("/");
+  //   }
+  // }, [alert]);
 
   return (
     <div className="service-container bg-[#F5F5F7] mt-10 mb-5 bg-pallet2">
-      <h1 className="font-bold text-2xl mb-3 mt-3">CONTACT US</h1>
+      <h1 className="font-bold text-2xl mb-3 mt-3">Contact Us</h1>
+      {error && (
+        <div
+          role="alert"
+          className="alert alert-error"
+          style={{ marginBottom: "1rem" }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>{error}</span>
+        </div>
+      )}
+      {alert && (
+        <div
+          role="alert"
+          className="alert alert-success"
+          style={{ marginBottom: "1rem" }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>{alert}</span>
+        </div>
+      )}
+
       <div className="grid grid-cols-12 gap-4">
         <div className="md:col-span-6 col-span-12 contact-container"></div>
         <div className="md:col-span-6 col-span-12">
@@ -71,9 +125,16 @@ function ContactContainer() {
                 type="text"
                 placeholder="Name"
                 className="input input-bordered w-full"
-                onChange={(e: any) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={(e) => {
+                  setError(
+                    !e.target.value
+                      ? "Please enter your name"
+                      : !/^[A-Za-z\s]+$/.test(e.target.value)
+                      ? "Please enter a valid name"
+                      : ""
+                  );
+                  setFormData({ ...formData, name: e.target.value });
+                }}
                 required
               />
             </div>
@@ -91,9 +152,16 @@ function ContactContainer() {
                 type="text"
                 placeholder="email"
                 className="input input-bordered w-full"
-                onChange={(e: any) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => {
+                  setError(
+                    !e.target.value
+                      ? "Please enter your email"
+                      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value)
+                      ? "Please enter a valid email address"
+                      : ""
+                  );
+                  setFormData({ ...formData, email: e.target.value });
+                }}
                 required
               />
             </div>
@@ -111,9 +179,16 @@ function ContactContainer() {
                 type="text"
                 placeholder="Phone"
                 className="input input-bordered w-full"
-                onChange={(e: any) =>
-                  setFormData({ ...formData, phone: e.target.value })
-                }
+                onChange={(e) => {
+                  setError(
+                    !e.target.value
+                      ? "Please enter your phone number"
+                      : !/^\d{11}$/.test(e.target.value)
+                      ? "Please enter a valid 11-digit phone number"
+                      : ""
+                  );
+                  setFormData({ ...formData, phone: e.target.value });
+                }}
                 required
               />
             </div>
@@ -130,14 +205,31 @@ function ContactContainer() {
                 name="message"
                 id="message"
                 placeholder="Message"
-                onChange={(e: any) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
+                onChange={(e) => {
+                  setError(
+                    !e.target.value
+                      ? "Please enter your message"
+                      : e.target.value.length < 10
+                      ? "Message must be at least 10 characters long"
+                      : ""
+                  );
+                  setFormData({ ...formData, message: e.target.value });
+                }}
                 required
               ></Textarea>
             </div>
             <div className="flex  mt-5 mb-5">
-              <Button className="btn bg-[#705C53] text-white">Submit</Button>
+              <Button
+                // disabled={loading}
+                type="submit"
+                className="btn bg-[#705C53] text-white"
+              >
+                {loading ? (
+                  <span className="loading loading-spinner loading-md"></span>
+                ) : (
+                  "Submit"
+                )}
+              </Button>
             </div>
           </form>
         </div>

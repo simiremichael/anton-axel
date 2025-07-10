@@ -594,6 +594,9 @@ const SolarProductsPage = () => {
         <h1 className="text-2xl font-bold text-center mb-4">
           Solar Energy Products
         </h1>
+        <h4 className="text-xs font-semibold text-blue-800">
+          Contact us for custom quotation
+        </h4>
         <div className="z-20 absolute top-8 md:top-5 right-3 md:right-5">
           <button
             className="btn btn-circle relative"
