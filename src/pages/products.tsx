@@ -163,7 +163,7 @@ const products = [
     name: "8kVA Solar System",
     wattage: "8kVA",
     inverter_rating: "8KVA",
-    inverter: 1680000,
+    inverter: 1480000,
     solar_panel: 185000,
     panel_rating: 500,
     number_of_panel: 15,
@@ -471,14 +471,306 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 3255000,
-    battery_rating: "10kWTH",
+    battery: 2700000,
+    battery_rating: "15kWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
     controller: 0,
     controller_rating: "",
     installation_kit: 300000,
     installation_cost: 250000,
+  },
+];
+
+const solar = [
+  {
+    id: 26,
+    brandName: "Solar panel",
+    image: "../images/solar_panel.png",
+    capacity: "550w",
+    price: 180000,
+    waranty: "5 yrs",
+    type: "Mono-crystalline",
+  },
+  {
+    id: 27,
+    brandName: "Solar panel",
+    image: "../images/solar_panel.png",
+    capacity: "400w",
+    price: 160000,
+    waranty: "5 yrs",
+    type: "Mono-crystalline",
+  },
+  {
+    id: 28,
+    brandName: "Solar panel",
+    image: "../images/solar_panel.png",
+    capacity: "300w",
+    price: 145000,
+    waranty: "5 yrs",
+    type: "Mono-crystalline",
+  },
+  {
+    id: 29,
+    brandName: "Solar panel",
+    image: "../images/solar_panel.png",
+    capacity: "250w",
+    price: 130000,
+    waranty: "5 yrs",
+    type: "Mono-crystalline",
+  },
+  {
+    id: 30,
+    brandName: "Solar panel",
+    image: "../images/solar_panel.png",
+    capacity: "200w",
+    price: 120000,
+    waranty: "5 yrs",
+    type: "Mono-crystalline",
+  },
+];
+const battery = [
+  {
+    id: 31,
+    brandName: "Battery",
+    image: "../images/lithium_battery.jpg",
+    capacity: "15kWh",
+    price: 2700000,
+    warranty: "5yrs",
+    type: "Lithium-ion",
+    voltage: "48v",
+  },
+  {
+    id: 32,
+    brandName: "Battery",
+    image: "../images/lithium_battery.jpg",
+    capacity: "10kWh",
+    price: 2395000,
+    warranty: "5yrs",
+    type: "Lithium-ion",
+    voltage: "48v",
+  },
+  {
+    id: 33,
+    brandName: "Bum battery",
+    image: "../images/lithium_battery.jpg",
+    capacity: "5kWh",
+    price: 1304500,
+    warranty: "5yrs",
+    type: "Lithium-ion",
+    voltage: "24v",
+  },
+  {
+    id: 34,
+    brandName: "Battery",
+    image: "../images/lithium_battery_small.jpg",
+    capacity: "300AMPS",
+    price: 550000,
+    warranty: "5yrs",
+    type: "Lithium-ion",
+    voltage: "12v",
+  },
+  {
+    id: 35,
+    brandName: "Battery",
+    image: "../images/wetcell_battery.jpg",
+    capacity: "220AMPS",
+    price: 185000,
+    warranty: "1yrs",
+    type: "Wet cell",
+    voltage: "12v",
+  },
+];
+
+const inverter = [
+  {
+    id: 36,
+    brandName: "Inverter",
+    image: "../images/inverter.jpeg",
+    capacity: "2.5KVA",
+    price: 300000,
+    warranty: "1 yr",
+    type: "Pure Sine Wave",
+    voltage: "12v",
+  },
+  {
+    id: 37,
+    brandName: "Inverter",
+    image: "../images/inverter.jpeg",
+    capacity: "3.5KVA",
+    price: 480000,
+    warranty: "1 yr",
+    type: "Pure Sine Wave",
+    voltage: "24v",
+  },
+  {
+    id: 38,
+    brandName: "Inverter",
+    image: "../images/inverter.jpeg",
+    capacity: "5KVA",
+    price: 580000,
+    warranty: "1 yr",
+    type: "Pure Sine Wave",
+    voltage: "48v",
+  },
+  {
+    id: 39,
+    brandName: "Inverter",
+    image: "../images/inverter.jpeg",
+    capacity: "10KVA",
+    price: 800000,
+    warranty: "1yr",
+    type: "Pure Sine Wave",
+    voltage: "48v",
+  },
+  {
+    id: 40,
+    brandName: "Inverter",
+    image: "../images/hybrid_inverter.webp",
+    capacity: "2KVA",
+    price: 260000,
+    warranty: "1yr",
+    type: "Hybrid",
+    voltage: "24v",
+  },
+  {
+    id: 41,
+    brandName: "Inverter",
+    image: "../images/hybrid_inverter.webp",
+    capacity: "3.5KVA",
+    price: 380000,
+    warranty: "1yr",
+    type: "Hybrid",
+    voltage: "24v",
+  },
+  {
+    id: 42,
+    brandName: "Inverter",
+    image: "../images/hybrid_inverter.webp",
+    capacity: "4.2KVA",
+    price: 680000,
+    warranty: "1yr",
+    type: "Hybrid",
+    voltage: "24v",
+  },
+  {
+    id: 43,
+    brandName: "Inverter",
+    image: "../images/hybrid_inverter.webp",
+    capacity: "5KVA",
+    price: 780000,
+    warranty: "1yr",
+    type: "Hybrid",
+    voltage: "24v",
+  },
+  {
+    id: 44,
+    brandName: "Inverter",
+    image: "../images/hybrid_inverter.webp",
+    capacity: "6.2KVA",
+    price: 820000,
+    warranty: "1yr",
+    type: "Hybrid",
+    voltage: "24v",
+  },
+  {
+    id: 45,
+    brandName: "Inverter",
+    image: "../images/hybrid_inverter.webp",
+    capacity: "7KVA",
+    price: 965000,
+    warranty: "1yr",
+    type: "Hybrid",
+    voltage: "48v",
+  },
+  {
+    id: 46,
+    brandName: "Inverter",
+    image: "../images/hybrid_inverter.webp",
+    capacity: "8KVA",
+    price: 1480000,
+    warranty: "1yr",
+    type: "Hybrid",
+    voltage: "48v",
+  },
+  {
+    id: 47,
+    brandName: "Inverter",
+    image: "../images/hybrid_inverter.webp",
+    capacity: "10KVA",
+    price: 1680000,
+    warranty: "1yr",
+    type: "Hybrid",
+    voltage: "48v",
+  },
+];
+
+const controller = [
+  {
+    id: 48,
+    brandName: "Charge controller",
+    image: "../images/contoller.jpg",
+    capacity: "60A",
+    price: 180000,
+    warranty: "1yr",
+    type: "MPPT with heat sink",
+  },
+  {
+    id: 49,
+    brandName: "Charge controller",
+    image: "../images/contoller.jpg",
+    capacity: "60A",
+    price: 140000,
+    warranty: "1yr",
+    type: "MPPT with fan",
+  },
+  {
+    id: 50,
+    brandName: "Charge controller",
+    image: "../images/contoller.jpg",
+    capacity: "80A",
+    price: 180000,
+    warranty: "1yr",
+    type: "MPPT with fan",
+  },
+  {
+    id: 51,
+    brandName: "Charge controller",
+    image: "../images/contoller.jpg",
+    capacity: "120A",
+    price: 220000,
+    warranty: "1yr",
+    type: "MPPT with fan",
+  },
+];
+
+const lights = [
+  {
+    id: 52,
+    brandName: "all in street light",
+    image: "../images/street_light.jpeg",
+    capacity: "60W",
+    price: 165000,
+    warranty: "1yr",
+    type: "LED",
+  },
+  {
+    id: 53,
+    brandName: "All in one street light",
+    image: "../images/street_light.jpeg",
+    capacity: "100W",
+    price: 235000,
+    warranty: "1yr",
+    type: "LED",
+  },
+  {
+    id: 54,
+    brandName: "All in one street light",
+    image: "../images/street_light.jpeg",
+    capacity: "160W",
+    price: 325000,
+    warranty: "1yr",
+    type: "LED",
   },
 ];
 
@@ -493,11 +785,12 @@ const SolarProductsPage = () => {
   const [location, setLocation] = useState("");
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState<any>("");
+  const [option, setOption] = useState("solar");
 
   interface Product {
     id: number;
-    name: string;
-    wattage: string;
+    name?: string;
+    wattage?: string;
     inverter_rating?: string;
     inverter?: number;
     solar_panel?: number;
@@ -509,6 +802,12 @@ const SolarProductsPage = () => {
     controller?: number;
     installation_kit?: number;
     installation_cost?: number;
+    brandName?: string;
+    image?: string;
+    capacity?: string;
+    warranty?: string;
+    type?: string;
+    voltage?: string;
     [key: string]: any;
   }
 
@@ -537,7 +836,7 @@ const SolarProductsPage = () => {
           body: JSON.stringify({
             items: cart,
             email,
-            total_price: cart.reduce((sum, item) => sum + item.price, 0),
+            total_price: cart.reduce((sum, item) => sum + item?.price, 0),
             name,
             phone,
             address,
@@ -586,7 +885,7 @@ const SolarProductsPage = () => {
     }, 4000);
   }, [alert]);
 
-  // console.log(cart);
+  console.log(option);
 
   return (
     <Layout pageTitle="Products Page">
@@ -621,7 +920,7 @@ const SolarProductsPage = () => {
             )}
           </button>
         </div>
-        <label className="input my-10">
+        <label className="input my-5">
           <svg
             className="h-[1em] opacity-50"
             xmlns="http://www.w3.org/2000/svg"
@@ -646,81 +945,257 @@ const SolarProductsPage = () => {
             placeholder="Search"
           />
         </label>
+        <div className="join mb-10 max-md:grid max-md:grid-cols-3 max-md:gap-2">
+          <input
+            className="join-item btn"
+            type="radio"
+            name="options"
+            aria-label="Solar"
+            value="solar"
+            onChange={(e) => setOption(e.target.value)}
+            defaultChecked
+          />
+          <input
+            className="join-item btn"
+            type="radio"
+            name="options"
+            aria-label="Backup"
+            value="backup"
+            onChange={(e) => setOption(e.target.value)}
+          />
+          <input
+            className="join-item btn"
+            type="radio"
+            name="options"
+            aria-label="Panels"
+            value="panels"
+            onChange={(e) => setOption(e.target.value)}
+          />
+          <input
+            className="join-item btn"
+            type="radio"
+            name="options"
+            aria-label="Inverters"
+            value="inverters"
+            onChange={(e) => setOption(e.target.value)}
+          />
+          <input
+            className="join-item btn"
+            type="radio"
+            name="options"
+            aria-label="Batteries"
+            value="batteries"
+            onChange={(e) => setOption(e.target.value)}
+          />
+          <input
+            className="join-item btn"
+            type="radio"
+            name="options"
+            aria-label="Controllers"
+            value="controllers"
+            onChange={(e) => setOption(e.target.value)}
+          />
+        </div>
         <div className="w-full h-full">
           <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
             {filteredProducts.map((product) => (
-              <div className="card bg-base-20 image-full w-full shadow-sm rounded-md">
-                <figure>
-                  {product.type === "solar system" ? (
-                    <StaticImage
-                      className="w-full h-full"
-                      src="../images/solar-system.jpg"
-                      alt="product image"
-                    />
-                  ) : (
-                    <StaticImage
-                      className="w-full h-full"
-                      src="../images/backup.jpg"
-                      alt="product image"
-                    />
-                  )}
-                </figure>
-                <div className="card-body max-md:-ml-4">
-                  <h2 className="card-title">
-                    {product.type.replace(/\b\w/g, (char: string) =>
-                      char.toUpperCase()
-                    )}
-                  </h2>
-                  <h4 className="font-semibold text-sm md:text-md">
-                    Package: {product.name}
-                  </h4>
-                  <p className="text-xs">
-                    Battery type: {product.battery_type}
-                  </p>
-                  <p>
-                    Price: ₦
-                    {(
-                      product.battery * product.number_of_battery +
-                      product.solar_panel * product.number_of_panel +
-                      product.inverter +
-                      product.controller +
-                      product.installation_kit +
-                      product.installation_cost
-                    ).toLocaleString()}
-                  </p>
-                  <div className="card-actions flex flex-row justify-end">
-                    <button
-                      className="btn btn-accent btn-sm"
-                      onClick={() => openModal(product)}
-                    >
-                      Details
-                    </button>
-                    <button
-                      className={`btn ${
-                        cart.some((cat) => cat.id === product.id)
-                          ? "btn-primary"
-                          : "btn-secondary"
-                      } btn-sm ml-2`}
-                      onClick={() =>
-                        addToCart({
-                          ...product,
-                          price:
+              <>
+                <>
+                  {product.type === "solar system" && option === "solar" && (
+                    <div className="card bg-base-20 image-full w-full shadow-sm rounded-md">
+                      <figure>
+                        <StaticImage
+                          className="w-full h-full"
+                          src="../images/solar-system.jpg"
+                          alt="product image"
+                        />
+                      </figure>
+                      <div className="card-body max-md:-ml-4">
+                        <h2 className="card-title">
+                          {product.type.replace(/\b\w/g, (char: string) =>
+                            char.toUpperCase()
+                          )}
+                        </h2>
+                        <h4 className="font-semibold text-sm md:text-md">
+                          Package: {product.name}
+                        </h4>
+                        <p className="text-xs">
+                          Battery type: {product.battery_type}
+                        </p>
+                        <p>
+                          Price: ₦
+                          {(
                             product.battery * product.number_of_battery +
                             product.solar_panel * product.number_of_panel +
                             product.inverter +
                             product.controller +
                             product.installation_kit +
-                            product.installation_cost,
-                        })
-                      }
-                    >
-                      {cart.some((cat) => cat.id === product.id)
-                        ? "Added"
-                        : "Add to Cart"}
-                    </button>
-                  </div>
-                </div>
-              </div>
+                            product.installation_cost
+                          ).toLocaleString()}
+                        </p>
+                        <div className="card-actions flex flex-row justify-end">
+                          <button
+                            className="btn btn-accent btn-sm"
+                            onClick={() => openModal(product)}
+                          >
+                            Details
+                          </button>
+                          <button
+                            className={`btn ${
+                              cart.some((cat) => cat.id === product.id)
+                                ? "btn-primary"
+                                : "btn-secondary"
+                            } btn-sm ml-2`}
+                            onClick={() =>
+                              addToCart({
+                                ...product,
+                                price:
+                                  product.battery * product.number_of_battery +
+                                  product.solar_panel *
+                                    product.number_of_panel +
+                                  product.inverter +
+                                  product.controller +
+                                  product.installation_kit +
+                                  product.installation_cost,
+                              })
+                            }
+                          >
+                            {cart.some((cat) => cat.id === product.id)
+                              ? "Added"
+                              : "Add to Cart"}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
+                <>
+                  {product.type === "backup system" && option === "backup" && (
+                    <div className="card bg-base-20 image-full w-full shadow-sm rounded-md">
+                      <figure>
+                        <StaticImage
+                          className="w-full h-full"
+                          src="../images/backup.jpg"
+                          alt="product image"
+                        />
+                      </figure>
+                      <div className="card-body max-md:-ml-4">
+                        <h2 className="card-title">
+                          {product.type.replace(/\b\w/g, (char: string) =>
+                            char.toUpperCase()
+                          )}
+                        </h2>
+                        <h4 className="font-semibold text-sm md:text-md">
+                          Package: {product.name}
+                        </h4>
+                        <p className="text-xs">
+                          Battery type: {product.battery_type}
+                        </p>
+                        <p>
+                          Price: ₦
+                          {(
+                            product.battery * product.number_of_battery +
+                            product.solar_panel * product.number_of_panel +
+                            product.inverter +
+                            product.controller +
+                            product.installation_kit +
+                            product.installation_cost
+                          ).toLocaleString()}
+                        </p>
+                        <div className="card-actions flex flex-row justify-end">
+                          <button
+                            className="btn btn-accent btn-sm"
+                            onClick={() => openModal(product)}
+                          >
+                            Details
+                          </button>
+                          <button
+                            className={`btn ${
+                              cart.some((cat) => cat.id === product.id)
+                                ? "btn-primary"
+                                : "btn-secondary"
+                            } btn-sm ml-2`}
+                            onClick={() =>
+                              addToCart({
+                                ...product,
+                                price:
+                                  product.battery * product.number_of_battery +
+                                  product.solar_panel *
+                                    product.number_of_panel +
+                                  product.inverter +
+                                  product.controller +
+                                  product.installation_kit +
+                                  product.installation_cost,
+                              })
+                            }
+                          >
+                            {cart.some((cat) => cat.id === product.id)
+                              ? "Added"
+                              : "Add to Cart"}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
+                {option === "panels" && (
+                  <>
+                    {solar.map((item) => (
+                      <div
+                        key={item.id}
+                        className="card bg-base-100 w-96 shadow-sm"
+                      >
+                        <figure>
+                          <img
+                            className="w-full h-full"
+                            src="../images/solar_panel.png"
+                            alt="product image"
+                          />
+                        </figure>
+                        <div className="card-body max-md:-ml-4">
+                          <h2 className="card-title">
+                            {item.type.replace(/\b\w/g, (char: string) =>
+                              char.toUpperCase()
+                            )}
+                          </h2>
+                          <h4 className="font-semibold text-sm md:text-md">
+                            Package: {item.brandName}
+                          </h4>
+                          <p className="text-xs">
+                            Panel Rating: {item.capacity} watts
+                          </p>
+                          <p>Price: ₦{item.price.toLocaleString()} per unit</p>
+                          <div className="card-actions flex flex-row justify-end">
+                            <button
+                              className="btn btn-accent btn-sm"
+                              onClick={() => openModal(item)}
+                            >
+                              Details
+                            </button>
+                            <button
+                              className={`btn ${
+                                cart.some((cat) => cat.id === item.id)
+                                  ? "btn-primary"
+                                  : "btn-secondary"
+                              } btn-sm ml-2`}
+                              onClick={() =>
+                                addToCart({
+                                  ...item,
+                                  price: item.price,
+                                })
+                              }
+                            >
+                              {cart.some((cat) => cat.id === item.id)
+                                ? "Added"
+                                : "Add to Cart"}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </>
             ))}
           </div>
 
