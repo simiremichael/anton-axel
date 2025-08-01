@@ -1,7 +1,8 @@
 // src/pages/solar-products.js
+import CartQtySelector from "@/components/CartQtySelector";
 import Layout from "@/components/layout";
 import { StaticImage } from "gatsby-plugin-image";
-import { Battery } from "lucide-react";
+import { Battery, FolderInput } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const products = [
@@ -485,107 +486,117 @@ const products = [
 const solar = [
   {
     id: 26,
-    brandName: "Solar panel",
+    name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "550w",
     price: 180000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
+    quantity: 1,
   },
   {
     id: 27,
-    brandName: "Solar panel",
+    name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "400w",
     price: 160000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
+    quantity: 1,
   },
   {
     id: 28,
-    brandName: "Solar panel",
+    name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "300w",
     price: 145000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
+    quantity: 1,
   },
   {
     id: 29,
-    brandName: "Solar panel",
+    name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "250w",
     price: 130000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
+    quantity: 1,
   },
   {
     id: 30,
-    brandName: "Solar panel",
+    name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "200w",
     price: 120000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
+    quantity: 1,
   },
 ];
 const battery = [
   {
     id: 31,
-    brandName: "Battery",
+    name: "Battery",
     image: "../images/lithium_battery.jpg",
     capacity: "15kWh",
     price: 2700000,
     warranty: "5yrs",
     type: "Lithium-ion",
     voltage: "48v",
+    quantity: 1,
   },
   {
     id: 32,
-    brandName: "Battery",
+    name: "Battery",
     image: "../images/lithium_battery.jpg",
     capacity: "10kWh",
     price: 2395000,
     warranty: "5yrs",
     type: "Lithium-ion",
     voltage: "48v",
+    quantity: 1,
   },
   {
     id: 33,
-    brandName: "Bum battery",
+    name: "Bum battery",
     image: "../images/lithium_battery.jpg",
     capacity: "5kWh",
     price: 1304500,
     warranty: "5yrs",
     type: "Lithium-ion",
     voltage: "24v",
+    quantity: 1,
   },
   {
     id: 34,
-    brandName: "Battery",
+    name: "Battery",
     image: "../images/lithium_battery_small.jpg",
     capacity: "300AMPS",
     price: 550000,
     warranty: "5yrs",
     type: "Lithium-ion",
     voltage: "12v",
+    quantity: 1,
   },
   {
     id: 35,
-    brandName: "Battery",
+    name: "Battery",
     image: "../images/wetcell_battery.jpg",
     capacity: "220AMPS",
     price: 185000,
     warranty: "1yrs",
     type: "Wet cell",
     voltage: "12v",
+    quantity: 1,
   },
 ];
 
 const inverter = [
   {
     id: 36,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/inverter.jpeg",
     capacity: "2.5KVA",
     price: 300000,
@@ -595,173 +606,190 @@ const inverter = [
   },
   {
     id: 37,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/inverter.jpeg",
     capacity: "3.5KVA",
     price: 480000,
     warranty: "1 yr",
     type: "Pure Sine Wave",
     voltage: "24v",
+    quantity: 1,
   },
   {
     id: 38,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/inverter.jpeg",
     capacity: "5KVA",
     price: 580000,
     warranty: "1 yr",
     type: "Pure Sine Wave",
     voltage: "48v",
+    quantity: 1,
   },
   {
     id: 39,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/inverter.jpeg",
     capacity: "10KVA",
     price: 800000,
     warranty: "1yr",
     type: "Pure Sine Wave",
     voltage: "48v",
+    quantity: 1,
   },
   {
     id: 40,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "2KVA",
     price: 260000,
     warranty: "1yr",
     type: "Hybrid",
     voltage: "24v",
+    quantity: 1,
   },
   {
     id: 41,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "3.5KVA",
     price: 380000,
     warranty: "1yr",
     type: "Hybrid",
     voltage: "24v",
+    quantity: 1,
   },
   {
     id: 42,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "4.2KVA",
     price: 680000,
     warranty: "1yr",
     type: "Hybrid",
     voltage: "24v",
+    quantity: 1,
   },
   {
     id: 43,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "5KVA",
     price: 780000,
     warranty: "1yr",
     type: "Hybrid",
     voltage: "24v",
+    quantity: 1,
   },
   {
     id: 44,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "6.2KVA",
     price: 820000,
     warranty: "1yr",
     type: "Hybrid",
     voltage: "24v",
+    quantity: 1,
   },
   {
     id: 45,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "7KVA",
     price: 965000,
     warranty: "1yr",
     type: "Hybrid",
     voltage: "48v",
+    quantity: 1,
   },
   {
     id: 46,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "8KVA",
     price: 1480000,
     warranty: "1yr",
     type: "Hybrid",
     voltage: "48v",
+    quantity: 1,
   },
   {
     id: 47,
-    brandName: "Inverter",
+    name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "10KVA",
     price: 1680000,
     warranty: "1yr",
     type: "Hybrid",
     voltage: "48v",
+    quantity: 1,
   },
 ];
 
 const controller = [
   {
     id: 48,
-    brandName: "Charge controller",
+    name: "Charge controller",
     image: "../images/contoller.jpg",
     capacity: "60A",
     price: 180000,
     warranty: "1yr",
     type: "MPPT with heat sink",
+    quantity: 1,
   },
   {
     id: 49,
-    brandName: "Charge controller",
+    name: "Charge controller",
     image: "../images/contoller.jpg",
     capacity: "60A",
     price: 140000,
     warranty: "1yr",
     type: "MPPT with fan",
+    quantity: 1,
   },
   {
     id: 50,
-    brandName: "Charge controller",
+    name: "Charge controller",
     image: "../images/contoller.jpg",
     capacity: "80A",
     price: 180000,
     warranty: "1yr",
     type: "MPPT with fan",
+    quantity: 1,
   },
   {
     id: 51,
-    brandName: "Charge controller",
+    name: "Charge controller",
     image: "../images/contoller.jpg",
     capacity: "120A",
     price: 220000,
     warranty: "1yr",
     type: "MPPT with fan",
+    quantity: 1,
   },
 ];
 
 const lights = [
   {
     id: 52,
-    brandName: "all in street light",
+    name: "all in street light",
     image: "../images/street_light.jpeg",
     capacity: "60W",
     price: 165000,
     warranty: "1yr",
     type: "LED",
+    quantity: 1,
   },
   {
     id: 53,
-    brandName: "All in one street light",
+    name: "All in one street light",
     image: "../images/street_light.jpeg",
     capacity: "100W",
     price: 235000,
     warranty: "1yr",
     type: "LED",
+    quantity: 1,
   },
   {
     id: 54,
@@ -771,11 +799,25 @@ const lights = [
     price: 325000,
     warranty: "1yr",
     type: "LED",
+    quantity: 1,
   },
 ];
 
 const SolarProductsPage = () => {
-  const [cart, setCart] = useState<Product[]>([]);
+  const [itemQty, setItemQty] = useState(1);
+  const [cart, setCart] = useState<Product[]>(() => {
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart");
+      if (savedCart) {
+        try {
+          return JSON.parse(savedCart);
+        } catch (e) {
+          console.error("Could not parse cart from localStorage", e);
+        }
+      }
+    }
+    return [];
+  });
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<Product | any>([]);
@@ -786,6 +828,12 @@ const SolarProductsPage = () => {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState<any>("");
   const [option, setOption] = useState("solar");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
 
   interface Product {
     id: number;
@@ -806,26 +854,122 @@ const SolarProductsPage = () => {
     image?: string;
     capacity?: string;
     warranty?: string;
-    type?: string;
     voltage?: string;
+    quantity?: number;
     [key: string]: any;
   }
 
   interface CartItem extends Product {}
-
-  const addToCart = (product: Product) => {
-    setCart([...cart, product]);
-  };
+  // const addToCart = (product: Product) => {
+  //   setCart([...cart, product]);
+  // };
 
   const removeFromCart = (index: number) => {
     setCart((prev) => prev?.filter((_, i) => i !== index));
   };
 
+  // const checkout = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   //   http://localhost:5000/api/orders  https://antonaxel-server.onrender.com/api/orders
+  //   try {
+  //     const response = await fetch(
+  //       "https://antonaxel-server.onrender.com/api/orders",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           items: cart,
+  //           total_price: calculateCartTotal(),
+  //           name,
+  //           email,
+  //           phone,
+  //           address,
+  //           location,
+  //         }),
+  //       }
+  //     );
+
+  //     if (!response.ok) {
+  //       const error = await response.json();
+  //       setAlert("Order failed");
+  //       setLoading(false);
+  //       throw new Error(error.error || "Order failed");
+  //     }
+  //     const data = await response.json();
+  //     setAlert(data?.message);
+  //     setLoading(false);
+  //     setCart([]);
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Order Error:", error);
+  //     // setAlert("something happened");
+  //     setLoading(false);
+  //     throw error;
+  //   }
+  // };
+
+  // ... existing code ...
+
   const checkout = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    //   http://localhost:5000/api/orders  https://antonaxel-server.onrender.com/api/orders
+
+    // Validate cart items before sending
+    if (cart.length === 0) {
+      setAlert("Cart is empty. Please add items before checkout.");
+      setLoading(false);
+      return;
+    }
+
+    // Validate form fields
+    if (!name || !email || !phone || !address || !location) {
+      setAlert("Please fill in all required fields.");
+      setLoading(false);
+      return;
+    }
+
+    // Prepare cart items with consistent structure for database
+    const formattedCartItems = cart.map((item, index) => ({
+      id: item.id,
+      name: item.name || `Item ${item.id}`,
+      price: Number(item.price) || 0,
+      quantity: Number(item.quantity) || 1,
+      total_item_price:
+        (Number(item.price) || 0) * (Number(item.quantity) || 1),
+      // Include additional product details if available
+      ...(item.wattage && { wattage: item.wattage }),
+      ...(item.type && { type: item.type }),
+      ...(item.battery_type && { battery_type: item.battery_type }),
+      ...(item.capacity && { capacity: item.capacity }),
+      ...(item.voltage && { voltage: item.voltage }),
+      ...(item.warranty && { warranty: item.warranty }),
+      // Add any other relevant product specifications
+      cart_index: index, // For tracking purposes
+    }));
+
+    const orderData = {
+      items: formattedCartItems,
+      total_price: calculateCartTotal(),
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      phone: phone.trim(),
+      address: address.trim(),
+      location: location.trim(),
+      order_summary: {
+        item_count: cart.length,
+        total_quantity: cart.reduce(
+          (sum, item) => sum + (Number(item.quantity) || 1),
+          0
+        ),
+      },
+    };
+
     try {
+      console.log("Sending order data:", orderData); // For debugging
+
       const response = await fetch(
         "https://antonaxel-server.onrender.com/api/orders",
         {
@@ -833,36 +977,148 @@ const SolarProductsPage = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            items: cart,
-            email,
-            total_price: cart.reduce((sum, item) => sum + item?.price, 0),
-            name,
-            phone,
-            address,
-            location,
-          }),
+          body: JSON.stringify(orderData),
         }
       );
 
       if (!response.ok) {
-        const error = await response.json();
-        setAlert("Order failed");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Server response error:", errorData);
+
+        setAlert(
+          errorData.message ||
+            errorData.error ||
+            `Order failed with status: ${response.status}`
+        );
         setLoading(false);
-        throw new Error(error.error || "Order failed");
+        throw new Error(
+          errorData.error || `HTTP ${response.status}: Order failed`
+        );
       }
+
       const data = await response.json();
-      setAlert(data?.message);
+      console.log("Order success:", data); // For debugging
+
+      setAlert(data?.message || "Order placed successfully!");
       setLoading(false);
+
+      // Clear cart and form after successful order
       setCart([]);
+      setName("");
+      setEmail("");
+      setPhone("");
+      setAddress("");
+      setLocation("");
+
+      // Close the modal after successful order
+      setTimeout(() => {
+        const modal = document.getElementById(
+          "my_modal_4"
+        ) as HTMLDialogElement;
+        if (modal) {
+          modal.close();
+        }
+      }, 2000);
+
       return data;
     } catch (error) {
       console.error("Order Error:", error);
-      // setAlert("something happened");
+
+      // More specific error handling
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        setAlert("Network error. Please check your connection and try again.");
+      } else if (error instanceof Error) {
+        setAlert(error.message || "Order failed. Please try again.");
+      } else {
+        setAlert("An unexpected error occurred. Please try again.");
+      }
+
       setLoading(false);
       throw error;
     }
   };
+
+  // ... existing code ...
+
+  // Enhanced cart validation function
+  const validateCartItem = (item: any): boolean => {
+    return (
+      item &&
+      typeof item.id !== "undefined" &&
+      typeof item.price !== "undefined" &&
+      typeof item.quantity !== "undefined" &&
+      Number(item.quantity) > 0 &&
+      Number(item.price) >= 0
+    );
+  };
+
+  // Enhanced addToCart function with better validation
+  const addToCart = (product: any) => {
+    if (!product || !product.id) {
+      console.error("Invalid product data:", product);
+      setAlert("Error adding item to cart. Please try again.");
+      return;
+    }
+
+    const existingItemIndex = cart.findIndex((item) => item.id === product.id);
+
+    if (existingItemIndex !== -1) {
+      // Item already exists, increase quantity
+      const currentQuantity = Number(cart[existingItemIndex]?.quantity) || 1;
+      updateCartItemQuantity(existingItemIndex, currentQuantity + 1);
+    } else {
+      // Add new item with quantity 1
+      const newItem = {
+        ...product,
+        quantity: 1,
+        price: Number(product.price) || 0,
+      };
+
+      if (validateCartItem(newItem)) {
+        setCart([...cart, newItem]);
+      } else {
+        console.error("Invalid cart item:", newItem);
+        setAlert("Error adding item to cart. Invalid item data.");
+      }
+    }
+  };
+
+  // Enhanced updateCartItemQuantity with validation
+  const updateCartItemQuantity = (index: number, newQuantity: number) => {
+    if (index < 0 || index >= cart.length) {
+      console.error("Invalid cart index:", index);
+      return;
+    }
+
+    if (newQuantity < 1) {
+      console.error("Invalid quantity:", newQuantity);
+      return;
+    }
+
+    const updatedCart = [...cart];
+    updatedCart[index] = {
+      ...updatedCart[index],
+      quantity: Number(newQuantity),
+    };
+
+    setCart(updatedCart);
+  };
+
+  // Enhanced calculateCartTotal with error handling
+  const calculateCartTotal = () => {
+    try {
+      return cart.reduce((total, item) => {
+        const price = Number(item.price) || 0;
+        const quantity = Number(item.quantity) || 1;
+        return total + price * quantity;
+      }, 0);
+    } catch (error) {
+      console.error("Error calculating cart total:", error);
+      return 0;
+    }
+  };
+
+  // ... existing code ...
 
   const searchTerm = query.toLowerCase();
 
@@ -879,13 +1135,49 @@ const SolarProductsPage = () => {
     (document.getElementById("my_modal_3") as HTMLDialogElement)?.showModal();
   };
 
+  const openModal2 = (product: Product) => {
+    setSelected(product);
+    (document.getElementById("my_modal_5") as HTMLDialogElement)?.showModal();
+  };
+
   useEffect(() => {
     setTimeout(function () {
       setAlert("");
     }, 4000);
   }, [alert]);
 
-  console.log(option);
+  // Add these functions to your component
+
+  // const updateCartItemQuantity = (index: number, newQuantity: number) => {
+  //   const updatedCart = [...cart];
+  //   updatedCart[index] = {
+  //     ...updatedCart[index],
+  //     quantity: newQuantity,
+  //   };
+  //   setCart(updatedCart);
+  // };
+
+  // const calculateCartTotal = () => {
+  //   return cart.reduce((total, item) => {
+  //     return total + Number(item.price) * item.quantity;
+  //   }, 0);
+  // };
+
+  // Update the addToCart function to include quantity
+  // const addToCart = (product: any) => {
+  //   const existingItemIndex = cart.findIndex((item) => item.id === product.id);
+
+  //   if (existingItemIndex !== -1) {
+  //     // Item already exists, increase quantity
+  //     updateCartItemQuantity(
+  //       existingItemIndex,
+  //       cart[existingItemIndex]?.quantity + 1
+  //     );
+  //   } else {
+  //     // Add new item with quantity 1
+  //     setCart([...cart, { ...product, quantity: 1 }]);
+  //   }
+  // };
 
   return (
     <Layout pageTitle="Products Page">
@@ -1138,66 +1430,237 @@ const SolarProductsPage = () => {
                     </div>
                   )}
                 </>
-                {option === "panels" && (
-                  <>
-                    {solar.map((item) => (
-                      <div
-                        key={item.id}
-                        className="card bg-base-100 w-96 shadow-sm"
-                      >
-                        <figure>
-                          <img
-                            className="w-full h-full"
-                            src="../images/solar_panel.png"
-                            alt="product image"
-                          />
-                        </figure>
-                        <div className="card-body max-md:-ml-4">
-                          <h2 className="card-title">
-                            {item.type.replace(/\b\w/g, (char: string) =>
-                              char.toUpperCase()
-                            )}
-                          </h2>
-                          <h4 className="font-semibold text-sm md:text-md">
-                            Package: {item.brandName}
-                          </h4>
-                          <p className="text-xs">
-                            Panel Rating: {item.capacity} watts
-                          </p>
-                          <p>Price: ₦{item.price.toLocaleString()} per unit</p>
-                          <div className="card-actions flex flex-row justify-end">
-                            <button
-                              className="btn btn-accent btn-sm"
-                              onClick={() => openModal(item)}
-                            >
-                              Details
-                            </button>
-                            <button
-                              className={`btn ${
-                                cart.some((cat) => cat.id === item.id)
-                                  ? "btn-primary"
-                                  : "btn-secondary"
-                              } btn-sm ml-2`}
-                              onClick={() =>
-                                addToCart({
-                                  ...item,
-                                  price: item.price,
-                                })
-                              }
-                            >
-                              {cart.some((cat) => cat.id === item.id)
-                                ? "Added"
-                                : "Add to Cart"}
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </>
-                )}
               </>
             ))}
           </div>
+
+          {option === "panels" && (
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
+              {solar.map((item) => (
+                <div
+                  key={item.id}
+                  className="card bg-base-100 w-full shadow-sm"
+                >
+                  <figure>
+                    <StaticImage
+                      className="w-full h-[60%] p-0"
+                      src="../images/solar_panel.png"
+                      alt="product image"
+                    />
+                  </figure>
+                  <div className="card-body max-md:-ml-4">
+                    <h2 className="card-title">
+                      {item.type.replace(/\b\w/g, (char: string) =>
+                        char.toUpperCase()
+                      )}
+                    </h2>
+                    <h4 className="font-semibold text-sm md:text-md">
+                      Package: {item.name}
+                    </h4>
+                    <p className="text-xs">Panel Rating: {item.capacity}</p>
+                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
+                    <div className="card-actions flex flex-row justify-end">
+                      <button
+                        className="btn btn-accent btn-sm"
+                        onClick={() => openModal2(item)}
+                      >
+                        Details
+                      </button>
+                      <button
+                        className={`btn ${
+                          cart.some((cat) => cat.id === item.id)
+                            ? "btn-primary"
+                            : "btn-secondary"
+                        } btn-sm ml-2`}
+                        onClick={() =>
+                          addToCart({
+                            ...item,
+                            price: item.price,
+                          })
+                        }
+                      >
+                        {cart.some((cat) => cat.id === item.id)
+                          ? "Added"
+                          : "Add to Cart"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {option === "inverters" && (
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
+              {inverter.map((item) => (
+                <div
+                  key={item.id}
+                  className="card bg-base-100 w-full shadow-sm"
+                >
+                  <figure>
+                    <StaticImage
+                      className="w-full h-[60%] p-0"
+                      src={
+                        item.type === "Hybrid"
+                          ? "../images/hybrid_inverter.webp"
+                          : "../images/inverter.jpg"
+                      }
+                      alt="product image"
+                    />
+                  </figure>
+                  <div className="card-body max-md:-ml-4">
+                    <h2 className="card-title">
+                      {item.type.replace(/\b\w/g, (char: string) =>
+                        char.toUpperCase()
+                      )}
+                    </h2>
+                    <h4 className="font-semibold text-sm md:text-md">
+                      Package: {item.name}
+                    </h4>
+                    <p className="text-xs">Panel Rating: {item.capacity}</p>
+                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
+                    <div className="card-actions flex flex-row justify-end">
+                      <button
+                        className="btn btn-accent btn-sm"
+                        onClick={() => openModal2(item)}
+                      >
+                        Details
+                      </button>
+                      <button
+                        className={`btn ${
+                          cart.some((cat) => cat.id === item.id)
+                            ? "btn-primary"
+                            : "btn-secondary"
+                        } btn-sm ml-2`}
+                        onClick={() =>
+                          addToCart({
+                            ...item,
+                            price: item.price,
+                          })
+                        }
+                      >
+                        {cart.some((cat) => cat.id === item.id)
+                          ? "Added"
+                          : "Add to Cart"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {option === "batteries" && (
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
+              {battery.map((item) => (
+                <div
+                  key={item.id}
+                  className="card bg-base-100 w-full shadow-sm"
+                >
+                  <figure>
+                    <StaticImage
+                      className="w-full h-[60%] p-0"
+                      src="../images/solar_panel.png"
+                      alt="product image"
+                    />
+                  </figure>
+                  <div className="card-body max-md:-ml-4">
+                    <h2 className="card-title">
+                      {item.type.replace(/\b\w/g, (char: string) =>
+                        char.toUpperCase()
+                      )}
+                    </h2>
+                    <h4 className="font-semibold text-sm md:text-md">
+                      Package: {item.name}
+                    </h4>
+                    <p className="text-xs">Panel Rating: {item.capacity}</p>
+                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
+                    <div className="card-actions flex flex-row justify-end">
+                      <button
+                        className="btn btn-accent btn-sm"
+                        onClick={() => openModal2(item)}
+                      >
+                        Details
+                      </button>
+                      <button
+                        className={`btn ${
+                          cart.some((cat) => cat.id === item.id)
+                            ? "btn-primary"
+                            : "btn-secondary"
+                        } btn-sm ml-2`}
+                        onClick={() =>
+                          addToCart({
+                            ...item,
+                            price: item.price,
+                          })
+                        }
+                      >
+                        {cart.some((cat) => cat.id === item.id)
+                          ? "Added"
+                          : "Add to Cart"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {option === "controllers" && (
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
+              {controller.map((item) => (
+                <div
+                  key={item.id}
+                  className="card bg-base-100 w-full shadow-sm"
+                >
+                  <figure>
+                    <StaticImage
+                      className="w-full h-[60%] p-0"
+                      src="../images/contoller.jpg"
+                      alt="product image"
+                    />
+                  </figure>
+                  <div className="card-body max-md:-ml-4">
+                    <h2 className="card-title">
+                      {item.type.replace(/\b\w/g, (char: string) =>
+                        char.toUpperCase()
+                      )}
+                    </h2>
+                    <h4 className="font-semibold text-sm md:text-md">
+                      Package: {item.name}
+                    </h4>
+                    <p className="text-xs">Panel Rating: {item.capacity}</p>
+                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
+                    <div className="card-actions flex flex-row justify-end">
+                      <button
+                        className="btn btn-accent btn-sm"
+                        onClick={() => openModal2(item)}
+                      >
+                        Details
+                      </button>
+                      <button
+                        className={`btn ${
+                          cart.some((cat) => cat.id === item.id)
+                            ? "btn-primary"
+                            : "btn-secondary"
+                        } btn-sm ml-2`}
+                        onClick={() =>
+                          addToCart({
+                            ...item,
+                            price: item.price,
+                          })
+                        }
+                      >
+                        {cart.some((cat) => cat.id === item.id)
+                          ? "Added"
+                          : "Add to Cart"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
 
@@ -1307,9 +1770,65 @@ const SolarProductsPage = () => {
               </div>
             </div>
           </dialog>
-        </div>
 
-        <dialog id="my_modal_4" className="modal">
+          <dialog id="my_modal_5" className="modal">
+            <div className="modal-box">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              {/* <h3 className="font-bold text-lg">
+                {selected?.type?.replace(/\b\w/g, (char: string) =>
+                  char.toUpperCase()
+                )}
+              </h3> */}
+              <h5 className="mt-2">{selected?.name}</h5>
+              <div className=" gap-4 mt-5 grid grid-cols-1 md:grid-cols-2">
+                <p className="text-sm">
+                  Price: <b>₦{selected?.price?.toLocaleString()}</b>
+                </p>
+
+                <p>
+                  Rating: <b>{selected?.capacity}</b>
+                </p>
+                <p>
+                  Type: <b>{selected?.type}</b>
+                </p>
+                <p>
+                  Warranty: <b>{selected?.waranty}</b>
+                </p>
+
+                {selected?.voltage && (
+                  <p>
+                    Voltage: <b>{selected?.voltage}</b>
+                  </p>
+                )}
+              </div>
+              <div className="flex mt-6 flex-row justify-between items-center">
+                <button
+                  className={`btn btn-${
+                    cart.some((cat) => cat.id === selected?.id)
+                      ? "primary"
+                      : "secondary"
+                  } btn-sm ml-2`}
+                  onClick={() =>
+                    addToCart({
+                      ...selected,
+                      price: selected?.price,
+                    })
+                  }
+                >
+                  {cart.some((cat) => cat.id === selected?.id)
+                    ? "Added"
+                    : "Add to Cart"}
+                </button>
+              </div>
+            </div>
+          </dialog>
+        </div>
+        {/* <dialog id="my_modal_4" className="modal">
           <div className="modal-box">
             {alert !== "" && (
               <div role="alert" className="alert alert-success">
@@ -1330,7 +1849,6 @@ const SolarProductsPage = () => {
               </div>
             )}
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                 ✕
               </button>
@@ -1343,8 +1861,20 @@ const SolarProductsPage = () => {
               <>
                 <ul className="gap-4">
                   {cart.map((item, index) => (
-                    <li key={index} style={{ marginBottom: "0.5rem" }}>
-                      {item.name} – ₦{item.price.toLocaleString()}{" "}
+                    <li
+                      key={index}
+                      style={{ marginBottom: "0.5rem" }}
+                      className="flex items-center"
+                    >
+                      {item?.name}{" "}
+                      <CartQtySelector
+                        quantity={item.quantity}
+                        onQuantityChange={(newQuantity) =>
+                          updateCartItemQuantity(index, newQuantity)
+                        }
+                        minQuantity={1}
+                        maxQuantity={1000}
+                      />
                       <button
                         className="btn btn-sm btn-error"
                         onClick={() => removeFromCart(index)}
@@ -1356,10 +1886,7 @@ const SolarProductsPage = () => {
                   ))}
                 </ul>
                 <p style={{ fontWeight: "bold" }}>
-                  Total: ₦
-                  {cart
-                    .reduce((sum, item) => sum + item.price, 0)
-                    .toLocaleString()}
+                  Total: ₦{calculateCartTotal()?.toLocaleString()}
                 </p>
                 <form className="mt-5" onSubmit={checkout}>
                   <label className="floating-label">
@@ -1419,10 +1946,8 @@ const SolarProductsPage = () => {
                   <input
                     readOnly
                     type="hidden"
-                    value={cart
-                      .reduce((sum, item) => sum + item.price, 0)
-                      .toLocaleString()}
-                    placeholder="location/state"
+                    value={calculateCartTotal()?.toLocaleString()}
+                    name="total_price"
                     className="input input-md"
                   />
                   <button type="submit" className="btn btn-sm mt-4 btn-primary">
@@ -1430,6 +1955,196 @@ const SolarProductsPage = () => {
                       <span className="loading loading-spinner loading-xs"></span>
                     ) : (
                       "Checkout"
+                    )}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </dialog> */}
+
+        <dialog id="my_modal_4" className="modal">
+          <div className="modal-box">
+            {alert !== "" && (
+              <div role="alert" className="alert alert-success mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 shrink-0 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>{alert}</span>
+              </div>
+            )}
+            <form method="dialog">
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                ✕
+              </button>
+            </form>
+
+            <h3 className="font-bold text-lg mb-5">Complete your purchase</h3>
+            {cart.length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-gray-500">No items in cart.</p>
+                <p className="text-sm text-gray-400 mt-2">
+                  Add some products to get started!
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="mb-6">
+                  <h4 className="font-semibold mb-3">Order Summary</h4>
+                  <div className="space-y-3 overflow-auto">
+                    {cart.map((item, index) => (
+                      <div
+                        key={`${item.id}-${index}`}
+                        className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                      >
+                        <div className="flex">
+                          <h5 className="font-medium text-sm">{item?.name}</h5>
+                          <div className="text-xs text-gray-600 mt-1 ml-2">
+                            <span>
+                              ₦{Number(item.price).toLocaleString()} each
+                            </span>
+                            {item.type && (
+                              <span className="ml-2">• {item.type}</span>
+                            )}
+                            {item.capacity && (
+                              <span className="ml-2">• {item.capacity}</span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                          <CartQtySelector
+                            quantity={Number(item.quantity) || 1}
+                            onQuantityChange={(newQuantity) =>
+                              updateCartItemQuantity(index, newQuantity)
+                            }
+                            minQuantity={1}
+                            maxQuantity={1000}
+                          />
+
+                          <div className="text-right min-w-[100px]">
+                            <div className="font-semibold text-sm">
+                              ₦
+                              {(
+                                (Number(item.price) || 0) *
+                                (Number(item.quantity) || 1)
+                              ).toLocaleString()}
+                            </div>
+                          </div>
+
+                          <button
+                            className="btn btn-sm btn-error"
+                            onClick={() => removeFromCart(index)}
+                            title="Remove item"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-gray-200">
+                    <div className="flex justify-between items-center">
+                      <div className="text-sm text-gray-600">
+                        Total Items:{" "}
+                        {cart.reduce(
+                          (sum, item) => sum + (Number(item.quantity) || 1),
+                          0
+                        )}
+                      </div>
+                      <div className="text-lg font-bold">
+                        Total: ₦{calculateCartTotal().toLocaleString()}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <form className="mt-5" onSubmit={checkout}>
+                  <label className="floating-label w-full mb-2">
+                    <span>Full Name</span>
+                    <input
+                      type="text"
+                      placeholder="Enter your full name"
+                      className="input input-md w-full"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                    />
+                  </label>
+
+                  <label className="floating-label w-full mb-2">
+                    <span>Email Address</span>
+
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      className="input input-md w-full"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </label>
+                  <label className="floating-label w-full mb-2">
+                    <span>Phone Number</span>
+
+                    <input
+                      type="tel"
+                      placeholder="Enter phone number"
+                      className="input input-md w-full"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      required
+                    />
+                  </label>
+
+                  <label className="floating-label w-full mb-2">
+                    <span>Location/State </span>
+
+                    <input
+                      type="text"
+                      placeholder="Enter location or state"
+                      className="input input-md w-full"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      required
+                    />
+                  </label>
+
+                  <label className="floating-label w-full mb-2">
+                    <span>Delivery Address</span>
+
+                    <input
+                      placeholder="Enter your complete delivery address"
+                      className="input input-md w-full"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      required
+                    />
+                  </label>
+
+                  <button
+                    type="submit"
+                    className="btn btn-sm mt-4 btn-primary w-full"
+                    disabled={loading || cart.length === 0}
+                  >
+                    {loading ? (
+                      <>
+                        <span className="loading loading-spinner loading-sm"></span>
+                        Processing Order...
+                      </>
+                    ) : (
+                      `Place Order - ₦${calculateCartTotal().toLocaleString()}`
                     )}
                   </button>
                 </form>
@@ -1448,9 +2163,5 @@ export const Head = () => (
     <title>
       AntonAxel Solar Panels | High-Efficiency Renewable Energy Solutions
     </title>
-    <meta
-      name="description"
-      content="Upgrade to AntonAxel premium solar panels for unmatched energy efficiency and durability. Our advanced photovoltaic technology delivers 22-24% efficiency ratings, weather-resistant designs, and 25-year performance warranties. Ideal for residential, commercial, or industrial use. Get a free quote for customized solar solutions today!"
-    />
   </>
 );
