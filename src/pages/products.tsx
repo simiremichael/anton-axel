@@ -576,7 +576,7 @@ const battery = [
     capacity: "300AMPS",
     price: 550000,
     warranty: "5yrs",
-    type: "Lithium-ion",
+    type: "Lithium",
     voltage: "12v",
     quantity: 1,
   },
@@ -731,7 +731,7 @@ const controller = [
   {
     id: 48,
     name: "Charge controller",
-    image: "../images/contoller.jpg",
+    image: "../images/controller.jpg",
     capacity: "60A",
     price: 180000,
     warranty: "1yr",
@@ -741,7 +741,7 @@ const controller = [
   {
     id: 49,
     name: "Charge controller",
-    image: "../images/contoller.jpg",
+    image: "../images/controller.jpg",
     capacity: "60A",
     price: 140000,
     warranty: "1yr",
@@ -761,7 +761,7 @@ const controller = [
   {
     id: 51,
     name: "Charge controller",
-    image: "../images/contoller.jpg",
+    image: "../images/controller.jpg",
     capacity: "120A",
     price: 220000,
     warranty: "1yr",
@@ -804,7 +804,6 @@ const lights = [
 ];
 
 const SolarProductsPage = () => {
-  const [itemQty, setItemQty] = useState(1);
   const [cart, setCart] = useState<Product[]>(() => {
     if (typeof window !== "undefined") {
       const savedCart = localStorage.getItem("cart");
@@ -968,7 +967,7 @@ const SolarProductsPage = () => {
     };
 
     try {
-      console.log("Sending order data:", orderData); // For debugging
+      //console.log("Sending order data:", orderData); // For debugging
 
       const response = await fetch(
         "https://antonaxel-server.onrender.com/api/orders",
@@ -997,7 +996,7 @@ const SolarProductsPage = () => {
       }
 
       const data = await response.json();
-      console.log("Order success:", data); // For debugging
+      //console.log("Order success:", data); // For debugging
 
       setAlert(data?.message || "Order placed successfully!");
       setLoading(false);
@@ -1287,6 +1286,14 @@ const SolarProductsPage = () => {
             value="controllers"
             onChange={(e) => setOption(e.target.value)}
           />
+          <input
+            className="join-item btn"
+            type="radio"
+            name="options"
+            aria-label="Lights"
+            value="lights"
+            onChange={(e) => setOption(e.target.value)}
+          />
         </div>
         <div className="w-full h-full">
           <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
@@ -1433,22 +1440,21 @@ const SolarProductsPage = () => {
               </>
             ))}
           </div>
-
           {option === "panels" && (
             <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
               {solar.map((item) => (
                 <div
                   key={item.id}
-                  className="card bg-base-100 w-full shadow-sm"
+                  className="card bg-base-100 w-full shadow-sm h-90"
                 >
-                  <figure>
+                  <figure className="h-[60%] m-0">
                     <StaticImage
                       className="w-full h-[60%] p-0"
                       src="../images/solar_panel.png"
                       alt="product image"
                     />
                   </figure>
-                  <div className="card-body max-md:-ml-4">
+                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
                     <h2 className="card-title">
                       {item.type.replace(/\b\w/g, (char: string) =>
                         char.toUpperCase()
@@ -1489,26 +1495,29 @@ const SolarProductsPage = () => {
               ))}
             </div>
           )}
-
           {option === "inverters" && (
             <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
               {inverter.map((item) => (
                 <div
                   key={item.id}
-                  className="card bg-base-100 w-full shadow-sm"
+                  className="card bg-base-100 w-full shadow-sm h-90"
                 >
-                  <figure>
-                    <StaticImage
-                      className="w-full h-[60%] p-0"
-                      src={
-                        item.type === "Hybrid"
-                          ? "../images/hybrid_inverter.webp"
-                          : "../images/inverter.jpg"
-                      }
-                      alt="product image"
-                    />
+                  <figure className="h-[60%] m-0">
+                    {item.type === "Hybrid" ? (
+                      <StaticImage
+                        className="w-full h-[60%] p-0"
+                        src="../images/hybrid_inverter.webp"
+                        alt="product image"
+                      />
+                    ) : (
+                      <StaticImage
+                        className="w-full h-[60%] p-0"
+                        src="../images/inverter.jpeg"
+                        alt="product image"
+                      />
+                    )}
                   </figure>
-                  <div className="card-body max-md:-ml-4">
+                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
                     <h2 className="card-title">
                       {item.type.replace(/\b\w/g, (char: string) =>
                         char.toUpperCase()
@@ -1549,22 +1558,35 @@ const SolarProductsPage = () => {
               ))}
             </div>
           )}
-
           {option === "batteries" && (
             <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
               {battery.map((item) => (
                 <div
                   key={item.id}
-                  className="card bg-base-100 w-full shadow-sm"
+                  className="card bg-base-100 w-full shadow-sm h-90"
                 >
-                  <figure>
-                    <StaticImage
-                      className="w-full h-[60%] p-0"
-                      src="../images/solar_panel.png"
-                      alt="product image"
-                    />
+                  <figure className="h-[60%] m-0">
+                    {item.type === "Lithium-ion" ? (
+                      <StaticImage
+                        className="w-full h-[60%] p-0"
+                        src="../images/lithium_battery.jpg"
+                        alt="product image"
+                      />
+                    ) : item.type === "Lithium" ? (
+                      <StaticImage
+                        className="w-full h-[60%] p-0"
+                        src="../images/lithium_battery_small.jpg"
+                        alt="product image"
+                      />
+                    ) : (
+                      <StaticImage
+                        className="w-full h-[60%] p-0"
+                        src="../images/wetcell_battery.jpg"
+                        alt="product image"
+                      />
+                    )}
                   </figure>
-                  <div className="card-body max-md:-ml-4">
+                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
                     <h2 className="card-title">
                       {item.type.replace(/\b\w/g, (char: string) =>
                         char.toUpperCase()
@@ -1605,7 +1627,6 @@ const SolarProductsPage = () => {
               ))}
             </div>
           )}
-
           {option === "controllers" && (
             <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
               {controller.map((item) => (
@@ -1613,14 +1634,69 @@ const SolarProductsPage = () => {
                   key={item.id}
                   className="card bg-base-100 w-full shadow-sm"
                 >
-                  <figure>
+                  <figure className="h-[60%] m-0">
                     <StaticImage
                       className="w-full h-[60%] p-0"
-                      src="../images/contoller.jpg"
+                      src="../images/controller.jpg"
                       alt="product image"
                     />
                   </figure>
-                  <div className="card-body max-md:-ml-4">
+                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
+                    <h2 className="card-title">
+                      {item.type.replace(/\b\w/g, (char: string) =>
+                        char.toUpperCase()
+                      )}
+                    </h2>
+                    <h4 className="font-semibold text-sm md:text-md">
+                      Package: {item.name}
+                    </h4>
+                    <p className="text-xs">Panel Rating: {item.capacity}</p>
+                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
+                    <div className="card-actions flex flex-row justify-end">
+                      <button
+                        className="btn btn-accent btn-sm"
+                        onClick={() => openModal2(item)}
+                      >
+                        Details
+                      </button>
+                      <button
+                        className={`btn ${
+                          cart.some((cat) => cat.id === item.id)
+                            ? "btn-primary"
+                            : "btn-secondary"
+                        } btn-sm ml-2`}
+                        onClick={() =>
+                          addToCart({
+                            ...item,
+                            price: item.price,
+                          })
+                        }
+                      >
+                        {cart.some((cat) => cat.id === item.id)
+                          ? "Added"
+                          : "Add to Cart"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          {option === "lights" && (
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
+              {lights.map((item) => (
+                <div
+                  key={item.id}
+                  className="card bg-base-100 w-full shadow-sm"
+                >
+                  <figure className="h-[60%] m-0">
+                    <StaticImage
+                      className="w-full h-[60%] p-0"
+                      src="../images/street_light.jpeg"
+                      alt="product image"
+                    />
+                  </figure>
+                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
                     <h2 className="card-title">
                       {item.type.replace(/\b\w/g, (char: string) =>
                         char.toUpperCase()
@@ -1663,7 +1739,6 @@ const SolarProductsPage = () => {
           )}
 
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
-
           <dialog id="my_modal_3" className="modal">
             <div className="modal-box">
               <form method="dialog">
@@ -1770,7 +1845,6 @@ const SolarProductsPage = () => {
               </div>
             </div>
           </dialog>
-
           <dialog id="my_modal_5" className="modal">
             <div className="modal-box">
               <form method="dialog">
