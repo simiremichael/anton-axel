@@ -117,9 +117,11 @@ const Layout = ({ pageTitle, children }: any) => {
           {children}
           {/* <Toaster /> */}
         </main>
-        <footer>
-          <Footer pageTitle={pageTitle} />
-        </footer>
+        {pageTitle !== "Admin Dashboard" && (
+          <footer>
+            <Footer pageTitle={pageTitle} />
+          </footer>
+        )}
       </div>
     </>
   );
