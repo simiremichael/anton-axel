@@ -12,116 +12,110 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Helmet } from "react-helmet";
+import CartIcon from "./CartIcon";
 
-// import { Toaster } from "@/components/ui/toaster";
+type LayoutProps = {
+  children: React.ReactNode;
+  pageTitle: string;
+};
 
-const Layout = ({ pageTitle, children }: any) => {
-  // const path = location.pathname;
-  // console.log(path);
+const Layout = ({ children, pageTitle }: LayoutProps) => {
   return (
     <>
-      <Helmet htmlAttributes={{ lang: "en" }} />
-      <div className="">
-        <nav className="flex justify-between bg-[#ffffff] w-full items-center container">
-          <Link to="/">
-            <StaticImage className="w-32" src="../images/logo.svg" alt="logo" />
-          </Link>
-          <ul className="flex max-md:hidden">
-            <li
-              className={`${
-                pageTitle === "Home Page" && "font-bold"
-              } text-[#705C53] mr-8`}
-            >
-              <Link to="/">Home</Link>
-            </li>
-            <li
-              className={`${
-                pageTitle === "Products Page" && "font-bold"
-              } text-[#705C53] mr-8`}
-            >
-              <Link to="/products">Products</Link>
-            </li>
-            {/* <li
-              className={`${
-                pageTitle === "About Page" && "font-bold"
-              } text-[#705C53] mr-8`}
-            >
-              <Link to="/about">About</Link>
-            </li>
-            <li
-              className={`${
-                pageTitle === "Contact Page" && "font-bold"
-              } text-[#705C53]`}
-            >
-              <Link to="/contact">Contact</Link>
-            </li> */}
-          </ul>
-          <Link to="/contact" className="max-md:hidden">
-            <Button title="button" className="bg-[#B7B7B7]">
-              Contact Us
-            </Button>
-          </Link>
-          <div className="md:hidden">
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                {" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6"
-                  viewBox="0 0 448 512"
-                  fill="#705C53"
-                  name="menu-button"
-                >
-                  <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
-                </svg>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <Link
-                  to="/"
-                  className={`${
-                    pageTitle === "Home Page" && "font-bold"
-                  } text-[#705C53] mr-8`}
-                >
-                  <DropdownMenuItem>Home</DropdownMenuItem>
-                </Link>
-                <Link
-                  to="/products"
-                  className={`${
-                    pageTitle === "Products Page" && "font-bold"
-                  } text-[#705C53] mr-8`}
-                >
-                  <DropdownMenuItem>Products</DropdownMenuItem>
-                </Link>
-                {/* <Link
-                  to="/about"
-                  className={`${
-                    pageTitle === "About Page" && "font-bold"
-                  } text-[#705C53] mr-8`}
-                >
-                  <DropdownMenuItem>About</DropdownMenuItem>
-                </Link> */}
-                <Link
-                  to="/contact"
-                  className={`${
-                    pageTitle === "Contact Page" && "font-bold"
-                  } text-[#705C53] mr-8`}
-                >
-                  <DropdownMenuItem>Contact</DropdownMenuItem>
-                </Link>
-              </DropdownMenuContent>
-            </DropdownMenu>
+      <div className="min-h-screen bg-base-100">
+        {/* Navigation */}
+        <div className="navbar bg-base-100 shadow-lg">
+          <div className="navbar-start">
+            <Link to="/">
+              <StaticImage
+                className="w-32"
+                src="../images/logo.svg"
+                alt="logo"
+              />
+            </Link>
+
+            {/* <Link to="/contact" className="max-md:hidden">
+              <Button title="button" className="bg-[#B7B7B7]">
+                Contact Us
+              </Button>
+            </Link> */}
           </div>
-        </nav>
-        <main>
-          {/* <h1>{pageTitle}</h1> */}
-          {children}
-          {/* <Toaster /> */}
-        </main>
-        {pageTitle !== "Admin Dashboard" && (
-          <footer>
-            <Footer pageTitle={pageTitle} />
-          </footer>
-        )}
+          <div className="navbar-end">
+            <ul className="flex max-md:hidden">
+              <li
+                className={`${
+                  pageTitle === "Home Page" && "font-bold"
+                } text-[#705C53] mr-8`}
+              >
+                <Link to="/">Home</Link>
+              </li>
+              <li
+                className={`${
+                  pageTitle === "Products Page" && "font-bold"
+                } text-[#705C53] mr-8`}
+              >
+                <Link to="/products">Products</Link>
+              </li>
+              {/* <li>
+                <Link to="/contact">Contact</Link>
+              </li> */}
+            </ul>
+            <CartIcon />
+            <div className="md:hidden ml-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6"
+                    viewBox="0 0 448 512"
+                    fill="#705C53"
+                    name="menu-button"
+                  >
+                    <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
+                  </svg>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <Link
+                    to="/"
+                    className={`${
+                      pageTitle === "Home Page" && "font-bold"
+                    } text-[#705C53] mr-8`}
+                  >
+                    <DropdownMenuItem>Home</DropdownMenuItem>
+                  </Link>
+                  <Link
+                    to="/products"
+                    className={`${
+                      pageTitle === "Products Page" && "font-bold"
+                    } text-[#705C53] mr-8`}
+                  >
+                    <DropdownMenuItem>Products</DropdownMenuItem>
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className={`${
+                      pageTitle === "Contact Page" && "font-bold"
+                    } text-[#705C53] mr-8`}
+                  >
+                    <DropdownMenuItem>Contact</DropdownMenuItem>
+                  </Link>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+        </div>
+
+        <main>{children}</main>
+        {pageTitle !== "Admin Dashboard" &&
+          pageTitle !== "Shopping Cart" &&
+          pageTitle !== "Payment Verification" &&
+          pageTitle !== "Payment Successful" &&
+          pageTitle !== "Payment Plan Confirmation" && (
+            <footer>
+              <Footer pageTitle={pageTitle} />
+            </footer>
+          )}
       </div>
     </>
   );

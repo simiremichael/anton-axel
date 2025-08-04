@@ -4,6 +4,7 @@ import Layout from "@/components/layout";
 import { StaticImage } from "gatsby-plugin-image";
 import { Battery, FolderInput } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { navigate } from "gatsby";
 
 const products = [
   {
@@ -13,7 +14,7 @@ const products = [
     wattage: "1.1KVA",
     inverter_rating: "1.1KVA",
     inverter: 130000,
-    solar_panel: 1350000,
+    solar_panel: 135000,
     battery_type: "Wet Cell",
     panel_rating: 300,
     number_of_panel: 4,
@@ -828,9 +829,12 @@ const SolarProductsPage = () => {
   const [alert, setAlert] = useState<any>("");
   const [option, setOption] = useState("solar");
 
+  // Trigger cart update event when cart changes
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("cart", JSON.stringify(cart));
+      // Trigger custom event for same-tab updates
+      window.dispatchEvent(new Event("cartUpdated"));
     }
   }, [cart]);
 
@@ -909,133 +913,6 @@ const SolarProductsPage = () => {
   //     throw error;
   //   }
   // };
-
-  // ... existing code ...
-
-  const checkout = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    // Validate cart items before sending
-    if (cart.length === 0) {
-      setAlert("Cart is empty. Please add items before checkout.");
-      setLoading(false);
-      return;
-    }
-
-    // Validate form fields
-    if (!name || !email || !phone || !address || !location) {
-      setAlert("Please fill in all required fields.");
-      setLoading(false);
-      return;
-    }
-
-    // Prepare cart items with consistent structure for database
-    const formattedCartItems = cart.map((item, index) => ({
-      id: item.id,
-      name: item.name || `Item ${item.id}`,
-      price: Number(item.price) || 0,
-      quantity: Number(item.quantity) || 1,
-      total_item_price:
-        (Number(item.price) || 0) * (Number(item.quantity) || 1),
-      // Include additional product details if available
-      ...(item.wattage && { wattage: item.wattage }),
-      ...(item.type && { type: item.type }),
-      ...(item.battery_type && { battery_type: item.battery_type }),
-      ...(item.capacity && { capacity: item.capacity }),
-      ...(item.voltage && { voltage: item.voltage }),
-      ...(item.warranty && { warranty: item.warranty }),
-      // Add any other relevant product specifications
-      cart_index: index, // For tracking purposes
-    }));
-
-    const orderData = {
-      items: formattedCartItems,
-      total_price: calculateCartTotal(),
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      phone: phone.trim(),
-      address: address.trim(),
-      location: location.trim(),
-      order_summary: {
-        item_count: cart.length,
-        total_quantity: cart.reduce(
-          (sum, item) => sum + (Number(item.quantity) || 1),
-          0
-        ),
-      },
-    };
-
-    try {
-      //console.log("Sending order data:", orderData); // For debugging
-
-      const response = await fetch(
-        "https://antonaxel-server.onrender.com/api/orders",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(orderData),
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("Server response error:", errorData);
-
-        setAlert(
-          errorData.message ||
-            errorData.error ||
-            `Order failed with status: ${response.status}`
-        );
-        setLoading(false);
-        throw new Error(
-          errorData.error || `HTTP ${response.status}: Order failed`
-        );
-      }
-
-      const data = await response.json();
-      //console.log("Order success:", data); // For debugging
-
-      setAlert(data?.message || "Order placed successfully!");
-      setLoading(false);
-
-      // Clear cart and form after successful order
-      setCart([]);
-      setName("");
-      setEmail("");
-      setPhone("");
-      setAddress("");
-      setLocation("");
-
-      // Close the modal after successful order
-      setTimeout(() => {
-        const modal = document.getElementById(
-          "my_modal_4"
-        ) as HTMLDialogElement;
-        if (modal) {
-          modal.close();
-        }
-      }, 2000);
-
-      return data;
-    } catch (error) {
-      console.error("Order Error:", error);
-
-      // More specific error handling
-      if (error instanceof TypeError && error.message.includes("fetch")) {
-        setAlert("Network error. Please check your connection and try again.");
-      } else if (error instanceof Error) {
-        setAlert(error.message || "Order failed. Please try again.");
-      } else {
-        setAlert("An unexpected error occurred. Please try again.");
-      }
-
-      setLoading(false);
-      throw error;
-    }
-  };
 
   // ... existing code ...
 
@@ -1187,14 +1064,10 @@ const SolarProductsPage = () => {
         <h4 className="text-xs font-semibold text-blue-800">
           Contact us for custom quotation
         </h4>
-        <div className="z-20 absolute top-8 md:top-5 right-3 md:right-5">
+        {/* <div className="z-20 absolute top-8 md:top-5 right-3 md:right-5">
           <button
             className="btn btn-circle relative"
-            onClick={() =>
-              (
-                document.getElementById("my_modal_4") as HTMLDialogElement
-              )?.showModal()
-            }
+            onClick={() => navigate("/cart")}
           >
             <svg
               width={20}
@@ -1206,11 +1079,14 @@ const SolarProductsPage = () => {
             </svg>
             {cart.length > 0 && (
               <span className="z-30 absolute top-0 text-xs bg-amber-700 py-0 px-1 rounded-2xl -right-1 text-white">
-                {cart.length}
+                {cart.reduce(
+                  (sum, item) => sum + (Number(item.quantity) || 1),
+                  0
+                )}
               </span>
             )}
           </button>
-        </div>
+        </div> */}
         <label className="input my-5">
           <svg
             className="h-[1em] opacity-50"
@@ -1902,330 +1778,6 @@ const SolarProductsPage = () => {
             </div>
           </dialog>
         </div>
-        {/* <dialog id="my_modal_4" className="modal">
-          <div className="modal-box">
-            {alert !== "" && (
-              <div role="alert" className="alert alert-success">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 shrink-0 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>{alert}</span>
-              </div>
-            )}
-            <form method="dialog">
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                ✕
-              </button>
-            </form>
-
-            <h3 className="font-bold text-lg mb-5">Complete your purchase</h3>
-            {cart.length === 0 ? (
-              <p>No items in cart.</p>
-            ) : (
-              <>
-                <ul className="gap-4">
-                  {cart.map((item, index) => (
-                    <li
-                      key={index}
-                      style={{ marginBottom: "0.5rem" }}
-                      className="flex items-center"
-                    >
-                      {item?.name}{" "}
-                      <CartQtySelector
-                        quantity={item.quantity}
-                        onQuantityChange={(newQuantity) =>
-                          updateCartItemQuantity(index, newQuantity)
-                        }
-                        minQuantity={1}
-                        maxQuantity={1000}
-                      />
-                      <button
-                        className="btn btn-sm btn-error"
-                        onClick={() => removeFromCart(index)}
-                        style={{ marginLeft: "1rem" }}
-                      >
-                        Remove
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-                <p style={{ fontWeight: "bold" }}>
-                  Total: ₦{calculateCartTotal()?.toLocaleString()}
-                </p>
-                <form className="mt-5" onSubmit={checkout}>
-                  <label className="floating-label">
-                    <span>Full Name</span>
-                    <input
-                      type="text"
-                      placeholder="full name"
-                      className="input input-md"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </label>
-                  <br />
-                  <label className="floating-label">
-                    <span>Your Email</span>
-                    <input
-                      type="text"
-                      placeholder="mail@site.com"
-                      className="input input-md"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </label>
-                  <br />
-                  <label className="floating-label">
-                    <span>Phone Number</span>
-                    <input
-                      type="text"
-                      placeholder="phone number"
-                      className="input input-md"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                  </label>
-                  <br />
-                  <label className="floating-label">
-                    <span>Address</span>
-                    <input
-                      type="text"
-                      placeholder="address"
-                      className="input input-md"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                    />
-                  </label>
-                  <br />
-                  <label className="floating-label">
-                    <span>Location/state</span>
-                    <input
-                      type="text"
-                      placeholder="location/state"
-                      className="input input-md"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                    />
-                  </label>
-                  <input
-                    readOnly
-                    type="hidden"
-                    value={calculateCartTotal()?.toLocaleString()}
-                    name="total_price"
-                    className="input input-md"
-                  />
-                  <button type="submit" className="btn btn-sm mt-4 btn-primary">
-                    {loading ? (
-                      <span className="loading loading-spinner loading-xs"></span>
-                    ) : (
-                      "Checkout"
-                    )}
-                  </button>
-                </form>
-              </>
-            )}
-          </div>
-        </dialog> */}
-
-        <dialog id="my_modal_4" className="modal">
-          <div className="modal-box">
-            {alert !== "" && (
-              <div role="alert" className="alert alert-success mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 shrink-0 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>{alert}</span>
-              </div>
-            )}
-            <form method="dialog">
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                ✕
-              </button>
-            </form>
-
-            <h3 className="font-bold text-lg mb-5">Complete your purchase</h3>
-            {cart.length === 0 ? (
-              <div className="text-center py-8">
-                <p className="text-gray-500">No items in cart.</p>
-                <p className="text-sm text-gray-400 mt-2">
-                  Add some products to get started!
-                </p>
-              </div>
-            ) : (
-              <>
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3">Order Summary</h4>
-                  <div className="space-y-3 overflow-auto">
-                    {cart.map((item, index) => (
-                      <div
-                        key={`${item.id}-${index}`}
-                        className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
-                      >
-                        <div className="flex">
-                          <h5 className="font-medium text-sm">{item?.name}</h5>
-                          <div className="text-xs text-gray-600 mt-1 ml-2">
-                            <span>
-                              ₦{Number(item.price).toLocaleString()} each
-                            </span>
-                            {item.type && (
-                              <span className="ml-2">• {item.type}</span>
-                            )}
-                            {item.capacity && (
-                              <span className="ml-2">• {item.capacity}</span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="flex items-center gap-3">
-                          <CartQtySelector
-                            quantity={Number(item.quantity) || 1}
-                            onQuantityChange={(newQuantity) =>
-                              updateCartItemQuantity(index, newQuantity)
-                            }
-                            minQuantity={1}
-                            maxQuantity={1000}
-                          />
-
-                          <div className="text-right min-w-[100px]">
-                            <div className="font-semibold text-sm">
-                              ₦
-                              {(
-                                (Number(item.price) || 0) *
-                                (Number(item.quantity) || 1)
-                              ).toLocaleString()}
-                            </div>
-                          </div>
-
-                          <button
-                            className="btn btn-sm btn-error"
-                            onClick={() => removeFromCart(index)}
-                            title="Remove item"
-                          >
-                            ×
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <div className="flex justify-between items-center">
-                      <div className="text-sm text-gray-600">
-                        Total Items:{" "}
-                        {cart.reduce(
-                          (sum, item) => sum + (Number(item.quantity) || 1),
-                          0
-                        )}
-                      </div>
-                      <div className="text-lg font-bold">
-                        Total: ₦{calculateCartTotal().toLocaleString()}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <form className="mt-5" onSubmit={checkout}>
-                  <label className="floating-label w-full mb-2">
-                    <span>Full Name</span>
-                    <input
-                      type="text"
-                      placeholder="Enter your full name"
-                      className="input input-md w-full"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      required
-                    />
-                  </label>
-
-                  <label className="floating-label w-full mb-2">
-                    <span>Email Address</span>
-
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      className="input input-md w-full"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </label>
-                  <label className="floating-label w-full mb-2">
-                    <span>Phone Number</span>
-
-                    <input
-                      type="tel"
-                      placeholder="Enter phone number"
-                      className="input input-md w-full"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      required
-                    />
-                  </label>
-
-                  <label className="floating-label w-full mb-2">
-                    <span>Location/State </span>
-
-                    <input
-                      type="text"
-                      placeholder="Enter location or state"
-                      className="input input-md w-full"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                      required
-                    />
-                  </label>
-
-                  <label className="floating-label w-full mb-2">
-                    <span>Delivery Address</span>
-
-                    <input
-                      placeholder="Enter your complete delivery address"
-                      className="input input-md w-full"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      required
-                    />
-                  </label>
-
-                  <button
-                    type="submit"
-                    className="btn btn-sm mt-4 btn-primary w-full"
-                    disabled={loading || cart.length === 0}
-                  >
-                    {loading ? (
-                      <>
-                        <span className="loading loading-spinner loading-sm"></span>
-                        Processing Order...
-                      </>
-                    ) : (
-                      `Place Order - ₦${calculateCartTotal().toLocaleString()}`
-                    )}
-                  </button>
-                </form>
-              </>
-            )}
-          </div>
-        </dialog>
       </div>
     </Layout>
   );
