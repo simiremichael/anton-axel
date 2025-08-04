@@ -235,8 +235,8 @@ const CartPage = () => {
     try {
       // Initialize Paystack payment
       const paystackResponse = await fetch(
-        "http://localhost:5000/api/initialize-payment",
-        // "https://antonaxel-server.onrender.com/api/initialize-payment",
+        // "http://localhost:5000/api/initialize-payment",
+        "https://antonaxel-server.onrender.com/api/initialize-payment",
         {
           method: "POST",
           headers: {

@@ -23,8 +23,8 @@ const PaymentCallback = () => {
 
         // Verify payment with backend
         const response = await fetch(
-          "http://localhost:5000/api/verify-payment",
-          //   "https://antonaxel-server.onrender.com/api/verify-payment",
+          //   "http://localhost:5000/api/verify-payment",
+          "https://antonaxel-server.onrender.com/api/verify-payment",
           {
             method: "POST",
             headers: {
