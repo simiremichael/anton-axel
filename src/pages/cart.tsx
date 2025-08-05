@@ -163,7 +163,11 @@ const CartPage = () => {
       }));
 
       const orderData = {
-        ...formData,
+        email: formData.email.toLowerCase(),
+        phone: formData.phone.replace(/\D/g, ""),
+        name: formData.name,
+        address: formData.address,
+        location: formData.location,
         items: formattedCartItems,
         total_price: calculateCartTotal(),
         paymentStatus: "pending",
@@ -178,12 +182,15 @@ const CartPage = () => {
       };
 
       const response = await fetch(
-        "https://antonaxel-server.onrender.com/api/orders",
+        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/orders",
+        // "https://05ce85v1dg.execute-api.us-east-1.amazonaws.com/dev/api/orders",
+        // "https://antonaxel-server.onrender.com/api/orders",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify(orderData),
         }
       );
@@ -236,15 +243,17 @@ const CartPage = () => {
       // Initialize Paystack payment
       const paystackResponse = await fetch(
         // "http://localhost:5000/api/initialize-payment",
-        "https://antonaxel-server.onrender.com/api/initialize-payment",
+        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/initialize-payment",
+        // "https://antonaxel-server.onrender.com/api/initialize-payment",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({
             orderId,
-            email: formData.email,
+            email: formData.email.toLowerCase(),
             amount: amount * 100, // Paystack expects amount in kobo
             callback_url: `${window.location.origin}/payment/callback`,
             metadata: {

@@ -56,7 +56,9 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://antonaxel-server.onrender.com/api/getOrders"
+        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/getOrders"
+        // "http://localhost:3000/dev/api/getOrders"
+        // "https://antonaxel-server.onrender.com/api/getOrders"
       );
 
       if (!response.ok) {
@@ -79,13 +81,16 @@ const AdminDashboard = () => {
       setUpdatingStatus(orderId);
 
       const response = await fetch(
-        "https://antonaxel-server.onrender.com/api/updateOrder",
+        `https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/updateOrder/${orderId}`,
+        // `http://localhost:3000/dev/api/updateOrder/${orderId}`,
+        // `https://antonaxel-server.onrender.com/api/updateOrder/${orderId}`,
         {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ status: newStatus, orderId: orderId }),
+          credentials: "include",
+          body: JSON.stringify({ status: newStatus }),
         }
       );
 
@@ -124,7 +129,8 @@ const AdminDashboard = () => {
 
       const response = await fetch(
         // `http://localhost:5000/api/deleteOrder/${orderId}`,
-         `https://antonaxel-server.onrender.com/api/deleteOrder/${orderId}`,
+        ` https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/deleteOrder/${orderId}`,
+        //  `https://antonaxel-server.onrender.com/api/deleteOrder/${orderId}`,
         {
           method: "DELETE",
         }
