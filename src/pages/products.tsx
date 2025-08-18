@@ -1470,67 +1470,181 @@ const SolarProductsPage = () => {
 
           {/* Modals */}
           <dialog id="my_modal_3" className="modal">
-            <div className="modal-box max-w-2xl">
+            <div className="modal-box max-w-4xl max-h-[90vh] overflow-y-auto">
               <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                   ✕
                 </button>
               </form>
-              <h3 className="font-bold text-2xl text-[#705c53] mb-4">
-                {selected?.type?.replace(/\b\w/g, (char: string) =>
-                  char.toUpperCase()
-                )}
-              </h3>
-              <h5 className="text-lg mb-6">{selected?.name}</h5>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">
-                    Inverter
-                  </p>
-                  <p className="text-lg font-bold text-[#705c53]">
-                    ₦{selected?.inverter?.toLocaleString()}
-                  </p>
-                </div>
-                {selected.type === "solar system" && (
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm font-semibold text-gray-700">
-                      Solar Panel
-                    </p>
-                    <p className="text-lg font-bold text-[#705c53]">
-                      ₦{selected?.solar_panel?.toLocaleString()} per unit
-                    </p>
+              <div className="mb-6">
+                <h3 className="font-bold text-3xl text-[#705c53] mb-2">
+                  {selected?.name}
+                </h3>
+                <p className="text-lg text-gray-600 capitalize">
+                  {selected?.type} • {selected?.wattage}
+                </p>
+              </div>
+
+              {/* System Overview */}
+              <div className="bg-gradient-to-r from-[#705c53] to-[#8b6f47] text-white p-6 rounded-xl mb-6">
+                <h4 className="text-xl font-bold mb-4">System Overview</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">{selected?.wattage}</p>
+                    <p className="text-sm opacity-90">Power Rating</p>
                   </div>
-                )}
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">Battery</p>
-                  <p className="text-lg font-bold text-[#705c53]">
-                    ₦{selected?.battery?.toLocaleString()} per unit
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">
-                    Installation
-                  </p>
-                  <p className="text-lg font-bold text-[#705c53]">
-                    ₦{selected?.installation_cost?.toLocaleString()}
-                  </p>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">{selected?.battery_type}</p>
+                    <p className="text-sm opacity-90">Battery Type</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">{selected?.number_of_battery}</p>
+                    <p className="text-sm opacity-90">Batteries</p>
+                  </div>
+                  {selected?.type === "solar system" && (
+                    <div className="text-center">
+                      <p className="text-2xl font-bold">{selected?.number_of_panel}</p>
+                      <p className="text-sm opacity-90">Solar Panels</p>
+                    </div>
+                  )}
                 </div>
               </div>
-              <div className="flex justify-between items-center pt-4 border-t">
-                <div>
-                  <p className="text-sm text-gray-600">Total Price</p>
-                  <p className="text-3xl font-bold text-[#705c53]">
-                    ₦
-                    {(
-                      selected?.battery * selected?.number_of_battery +
-                      selected.solar_panel * selected?.number_of_panel +
-                      selected?.inverter +
-                      selected?.controller +
-                      selected?.installation_kit +
-                      selected?.installation_cost
-                    )?.toLocaleString()}
-                  </p>
+
+              {/* Component Details */}
+              <div className="mb-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">Component Specifications</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Inverter */}
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <div className="flex justify-between items-start mb-2">
+                      <h5 className="font-semibold text-gray-800">Inverter</h5>
+                      <span className="text-lg font-bold text-[#705c53]">
+                        ₦{selected?.inverter?.toLocaleString()}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">Rating: {selected?.inverter_rating}</p>
+                    <p className="text-sm text-gray-600">Quantity: 1 unit</p>
+                  </div>
+
+                  {/* Solar Panels */}
+                  {selected?.type === "solar system" && selected?.number_of_panel > 0 && (
+                    <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                      <div className="flex justify-between items-start mb-2">
+                        <h5 className="font-semibold text-gray-800">Solar Panels</h5>
+                        <span className="text-lg font-bold text-[#705c53]">
+                          ₦{(selected?.solar_panel * selected?.number_of_panel)?.toLocaleString()}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600">Rating: {selected?.panel_rating}W each</p>
+                      <p className="text-sm text-gray-600">Quantity: {selected?.number_of_panel} units</p>
+                      <p className="text-sm text-gray-600">Unit Price: ₦{selected?.solar_panel?.toLocaleString()}</p>
+                    </div>
+                  )}
+
+                  {/* Battery */}
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <div className="flex justify-between items-start mb-2">
+                      <h5 className="font-semibold text-gray-800">Battery</h5>
+                      <span className="text-lg font-bold text-[#705c53]">
+                        ₦{(selected?.battery * selected?.number_of_battery)?.toLocaleString()}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">Type: {selected?.battery_type}</p>
+                    <p className="text-sm text-gray-600">Rating: {selected?.battery_rating}</p>
+                    <p className="text-sm text-gray-600">Quantity: {selected?.number_of_battery} units</p>
+                    <p className="text-sm text-gray-600">Unit Price: ₦{selected?.battery?.toLocaleString()}</p>
+                  </div>
+
+                  {/* Controller */}
+                  {selected?.controller > 0 && (
+                    <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                      <div className="flex justify-between items-start mb-2">
+                        <h5 className="font-semibold text-gray-800">Charge Controller</h5>
+                        <span className="text-lg font-bold text-[#705c53]">
+                          ₦{selected?.controller?.toLocaleString()}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600">Rating: {selected?.controller_rating}</p>
+                      <p className="text-sm text-gray-600">Quantity: 1 unit</p>
+                    </div>
+                  )}
+
+                  {/* Installation Kit */}
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <div className="flex justify-between items-start mb-2">
+                      <h5 className="font-semibold text-gray-800">Installation Kit</h5>
+                      <span className="text-lg font-bold text-[#705c53]">
+                        ₦{selected?.installation_kit?.toLocaleString()}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">Includes: Cables, breakers, fuses, mounting hardware</p>
+                  </div>
+
+                  {/* Installation Service */}
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <div className="flex justify-between items-start mb-2">
+                      <h5 className="font-semibold text-gray-800">Installation Service</h5>
+                      <span className="text-lg font-bold text-[#705c53]">
+                        ₦{selected?.installation_cost?.toLocaleString()}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">Professional installation and setup</p>
+                  </div>
                 </div>
+              </div>
+
+              {/* Price Breakdown */}
+              <div className="bg-white border-2 border-[#705c53] rounded-xl p-6 mb-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">Price Breakdown</h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Inverter ({selected?.inverter_rating})</span>
+                    <span className="font-semibold">₦{selected?.inverter?.toLocaleString()}</span>
+                  </div>
+                  {selected?.type === "solar system" && selected?.number_of_panel > 0 && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600">Solar Panels ({selected?.number_of_panel} × {selected?.panel_rating}W)</span>
+                      <span className="font-semibold">₦{(selected?.solar_panel * selected?.number_of_panel)?.toLocaleString()}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Battery ({selected?.number_of_battery} × {selected?.battery_rating})</span>
+                    <span className="font-semibold">₦{(selected?.battery * selected?.number_of_battery)?.toLocaleString()}</span>
+                  </div>
+                  {selected?.controller > 0 && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600">Charge Controller ({selected?.controller_rating})</span>
+                      <span className="font-semibold">₦{selected?.controller?.toLocaleString()}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Installation Kit</span>
+                    <span className="font-semibold">₦{selected?.installation_kit?.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600">Installation Service</span>
+                    <span className="font-semibold">₦{selected?.installation_cost?.toLocaleString()}</span>
+                  </div>
+                  <div className="border-t-2 border-gray-200 pt-3 mt-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xl font-bold text-gray-900">Total Price</span>
+                      <span className="text-2xl font-bold text-[#705c53]">
+                        ₦{(
+                          selected?.battery * selected?.number_of_battery +
+                          selected?.solar_panel * selected?.number_of_panel +
+                          selected?.inverter +
+                          selected?.controller +
+                          selected?.installation_kit +
+                          selected?.installation_cost
+                        )?.toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="flex justify-center">
                 <button
                   onClick={() =>
                     addToCart({
@@ -1544,14 +1658,14 @@ const SolarProductsPage = () => {
                         selected.installation_cost,
                     })
                   }
-                  className={`px-6 py-3 rounded-lg font-semibold transition-colors duration-300 ${
+                  className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 ${
                     cart.some((cat) => cat.id === selected?.id)
-                      ? "bg-green-600 text-white"
-                      : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                      ? "bg-green-600 text-white shadow-lg"
+                      : "bg-[#705c53] text-white hover:bg-[#8b6f47] shadow-lg"
                   }`}
                 >
                   {cart.some((cat) => cat.id === selected?.id)
-                    ? "Added to Cart"
+                    ? "✓ Added to Cart"
                     : "Add to Cart"}
                 </button>
               </div>
@@ -1559,58 +1673,139 @@ const SolarProductsPage = () => {
           </dialog>
 
           <dialog id="my_modal_5" className="modal">
-            <div className="modal-box">
+            <div className="modal-box max-w-2xl">
               <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                   ✕
                 </button>
               </form>
-              <h3 className="font-bold text-2xl text-[#705c53] mb-4">
-                {selected?.name}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">Price</p>
-                  <p className="text-lg font-bold text-[#705c53]">
-                    ₦{selected?.price?.toLocaleString()}
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">
-                    Capacity
-                  </p>
-                  <p className="text-lg font-bold text-gray-900">
-                    {selected?.capacity}
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">Type</p>
-                  <p className="text-lg font-bold text-gray-900">
-                    {selected?.type}
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">
-                    Warranty
-                  </p>
-                  <p className="text-lg font-bold text-gray-900">
-                    {selected?.waranty || selected?.warranty}
-                  </p>
+              
+              {/* Product Header */}
+              <div className="mb-6">
+                <h3 className="font-bold text-3xl text-[#705c53] mb-2">
+                  {selected?.name || selected?.brandName}
+                </h3>
+                <p className="text-lg text-gray-600 capitalize">
+                  {selected?.type} {selected?.name?.includes('Panel') ? 'Panel' : selected?.name?.includes('Inverter') ? 'Inverter' : selected?.name?.includes('Battery') ? 'Battery' : selected?.name?.includes('controller') ? 'Controller' : selected?.name?.includes('light') ? 'Light' : ''}
+                </p>
+              </div>
+
+              {/* Product Overview */}
+              <div className="bg-gradient-to-r from-[#705c53] to-[#8b6f47] text-white p-6 rounded-xl mb-6">
+                <h4 className="text-xl font-bold mb-4">Product Overview</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">{selected?.capacity}</p>
+                    <p className="text-sm opacity-90">Capacity/Power</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-bold">₦{selected?.price?.toLocaleString()}</p>
+                    <p className="text-sm opacity-90">Price</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex justify-end">
+
+              {/* Detailed Specifications */}
+              <div className="mb-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">Detailed Specifications</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <h5 className="font-semibold text-gray-800 mb-2">Capacity/Power</h5>
+                    <p className="text-lg font-bold text-[#705c53]">{selected?.capacity}</p>
+                  </div>
+                  
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <h5 className="font-semibold text-gray-800 mb-2">Type</h5>
+                    <p className="text-lg font-bold text-gray-900">{selected?.type}</p>
+                  </div>
+                  
+                  {selected?.voltage && (
+                    <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                      <h5 className="font-semibold text-gray-800 mb-2">Voltage</h5>
+                      <p className="text-lg font-bold text-gray-900">{selected?.voltage}</p>
+                    </div>
+                  )}
+                  
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <h5 className="font-semibold text-gray-800 mb-2">Warranty</h5>
+                    <p className="text-lg font-bold text-gray-900">{selected?.waranty || selected?.warranty}</p>
+                  </div>
+                  
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <h5 className="font-semibold text-gray-800 mb-2">Quantity</h5>
+                    <p className="text-lg font-bold text-gray-900">{selected?.quantity || 1} unit(s)</p>
+                  </div>
+                  
+                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                    <h5 className="font-semibold text-gray-800 mb-2">Price</h5>
+                    <p className="text-lg font-bold text-[#705c53]">₦{selected?.price?.toLocaleString()}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product Features */}
+              <div className="mb-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">Key Features</h4>
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <ul className="space-y-2 text-gray-700">
+                    {selected?.name?.includes('Panel') && (
+                      <>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> High-efficiency mono-crystalline technology</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Weather-resistant aluminum frame</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> 25-year performance warranty</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Anti-reflective tempered glass</li>
+                      </>
+                    )}
+                    {selected?.name?.includes('Inverter') && (
+                      <>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> {selected?.type === 'Hybrid' ? 'Built-in MPPT charge controller' : 'Pure sine wave output'}</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Overload and short circuit protection</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> LCD display with system monitoring</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> High conversion efficiency (>90%)</li>
+                      </>
+                    )}
+                    {selected?.name?.includes('Battery') && (
+                      <>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> {selected?.type?.includes('Lithium') ? 'Long cycle life (>6000 cycles)' : 'Deep cycle design'}</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> {selected?.type?.includes('Lithium') ? 'Built-in BMS protection' : 'Maintenance-free operation'}</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Wide operating temperature range</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> High energy density</li>
+                      </>
+                    )}
+                    {selected?.name?.includes('controller') && (
+                      <>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Maximum Power Point Tracking (MPPT)</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Multiple load control modes</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> LCD display with real-time data</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Comprehensive electronic protections</li>
+                      </>
+                    )}
+                    {selected?.name?.includes('light') && (
+                      <>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> All-in-one integrated design</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Motion sensor and remote control</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> IP65 waterproof rating</li>
+                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Auto on/off with dusk-to-dawn operation</li>
+                      </>
+                    )}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="flex justify-center">
                 <button
                   onClick={() =>
                     addToCart({ ...selected, price: selected?.price })
                   }
-                  className={`px-6 py-3 rounded-lg font-semibold transition-colors duration-300 ${
+                  className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 ${
                     cart.some((cat) => cat.id === selected?.id)
-                      ? "bg-green-600 text-white"
-                      : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                      ? "bg-green-600 text-white shadow-lg"
+                      : "bg-[#705c53] text-white hover:bg-[#8b6f47] shadow-lg"
                   }`}
                 >
                   {cart.some((cat) => cat.id === selected?.id)
-                    ? "Added to Cart"
+                    ? "✓ Added to Cart"
                     : "Add to Cart"}
                 </button>
               </div>
