@@ -964,7 +964,8 @@ const SolarProductsPage = () => {
               Solar Energy Solutions
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-2">
-              Discover our comprehensive range of solar products and energy solutions
+              Discover our comprehensive range of solar products and energy
+              solutions
             </p>
             <p className="text-sm font-semibold text-[#705c53]">
               Contact us for custom quotation
@@ -1167,7 +1168,7 @@ const SolarProductsPage = () => {
                       <div className="flex gap-2">
                         <button
                           onClick={() => openModal(product)}
-                          className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
+                          className="flex-1 px-3 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
                         >
                           Details
                         </button>
@@ -1184,7 +1185,7 @@ const SolarProductsPage = () => {
                                 product.installation_cost,
                             })
                           }
-                          className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                          className={`flex-1 px-3 py-2 rounded-lg font-medium transition-colors duration-300 ${
                             cart.some((cat) => cat.id === product.id)
                               ? "bg-green-600 text-white"
                               : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
@@ -1225,13 +1226,15 @@ const SolarProductsPage = () => {
                     <div className="flex gap-2">
                       <button
                         onClick={() => openModal2(item)}
-                        className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
+                        className="flex-1 px-3 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
                       >
                         Details
                       </button>
                       <button
-                        onClick={() => addToCart({ ...item, price: item.price })}
-                        className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                        onClick={() =>
+                          addToCart({ ...item, price: item.price })
+                        }
+                        className={`flex-1 px-3 py-2 rounded-lg font-medium transition-colors duration-300 ${
                           cart.some((cat) => cat.id === item.id)
                             ? "bg-green-600 text-white"
                             : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
@@ -1285,7 +1288,9 @@ const SolarProductsPage = () => {
                         Details
                       </button>
                       <button
-                        onClick={() => addToCart({ ...item, price: item.price })}
+                        onClick={() =>
+                          addToCart({ ...item, price: item.price })
+                        }
                         className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                           cart.some((cat) => cat.id === item.id)
                             ? "bg-green-600 text-white"
@@ -1346,7 +1351,9 @@ const SolarProductsPage = () => {
                         Details
                       </button>
                       <button
-                        onClick={() => addToCart({ ...item, price: item.price })}
+                        onClick={() =>
+                          addToCart({ ...item, price: item.price })
+                        }
                         className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                           cart.some((cat) => cat.id === item.id)
                             ? "bg-green-600 text-white"
@@ -1393,7 +1400,9 @@ const SolarProductsPage = () => {
                         Details
                       </button>
                       <button
-                        onClick={() => addToCart({ ...item, price: item.price })}
+                        onClick={() =>
+                          addToCart({ ...item, price: item.price })
+                        }
                         className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                           cart.some((cat) => cat.id === item.id)
                             ? "bg-green-600 text-white"
@@ -1440,7 +1449,9 @@ const SolarProductsPage = () => {
                         Details
                       </button>
                       <button
-                        onClick={() => addToCart({ ...item, price: item.price })}
+                        onClick={() =>
+                          addToCart({ ...item, price: item.price })
+                        }
                         className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                           cart.some((cat) => cat.id === item.id)
                             ? "bg-green-600 text-white"
@@ -1473,7 +1484,9 @@ const SolarProductsPage = () => {
               <h5 className="text-lg mb-6">{selected?.name}</h5>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">Inverter</p>
+                  <p className="text-sm font-semibold text-gray-700">
+                    Inverter
+                  </p>
                   <p className="text-lg font-bold text-[#705c53]">
                     ₦{selected?.inverter?.toLocaleString()}
                   </p>
@@ -1563,7 +1576,9 @@ const SolarProductsPage = () => {
                   </p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">Capacity</p>
+                  <p className="text-sm font-semibold text-gray-700">
+                    Capacity
+                  </p>
                   <p className="text-lg font-bold text-gray-900">
                     {selected?.capacity}
                   </p>
@@ -1575,7 +1590,9 @@ const SolarProductsPage = () => {
                   </p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-700">Warranty</p>
+                  <p className="text-sm font-semibold text-gray-700">
+                    Warranty
+                  </p>
                   <p className="text-lg font-bold text-gray-900">
                     {selected?.waranty || selected?.warranty}
                   </p>
