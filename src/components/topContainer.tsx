@@ -3,25 +3,44 @@ import React from "react";
 
 function TopContainer() {
   return (
-    <div className="grid grid-cols-12 bg-[#F5F5F7] container-top gap-2">
-      <div className="col-span-6 flex flex-col justify-center max-md:col-span-12">
-        <p className="mb-10 max-md:mt-5 max-md:mb-10 text-sm md:-mt-16">
-          Welcome to AntonAxel Nigeria Company Limited
-        </p>
-        <h1 className="text-3xl font-bold max-md:text-xl">
-          A versatile company offering a wide range of services tailored to
-          various sectors of the Nigerian economy
-        </h1>
-        {/* <p>
-          AntonAxel Nigeria Company Limited is a versatile company offering a
-          wide range of services tailored to various sectors of the Nigerian
-          economy. Their operations span across facility management, real
-          estate, renewable energy solutions, construction, project management,
-          consultancy, and general contracting.
-        </p> */}
-      </div>
-      <div className="col-span-6 flex items-center max-md:col-span-12">
-        <StaticImage className="" src="../images/service.jpg" alt="logo" />
+    <div className="w-full bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
+      <div className="container-top grid grid-cols-12 gap-4 md:gap-8 items-center">
+        <div className="col-span-6 max-md:col-span-12 space-y-8">
+          <div className="animate-fade-in-up">
+            <span className="inline-block px-4 py-2 bg-orange-100 text-[#705c53] rounded-full text-sm font-medium mb-6">
+              Welcome to AntonAxel Nigeria Company Limited
+            </span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              Transforming Nigeria's Economy Through{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#705c53] to-[#8b6f47]">
+                Innovative Solutions
+              </span>
+            </h1>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 mt-4 md:mt-6 leading-relaxed">
+              A versatile company offering comprehensive services across
+              facility management, real estate, renewable energy, construction,
+              and technology sectors.
+            </p>
+          </div>
+          <div className="flex flex-row gap-4 animate-fade-in-up animation-delay-300">
+            <button className="px-6 sm:px-4 py-2 md:py-3 bg-gradient-to-r from-[#705c53] to-[#8b6f47] text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-center">
+              Our Services
+            </button>
+            <button className="px-6 sm:px-4 py-2 md:py-3  border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-[#705c53] hover:text-[#705c53] transition-all duration-300 text-center">
+              Contact Us
+            </button>
+          </div>
+        </div>
+        <div className="col-span-6 max-md:col-span-12 animate-fade-in-right mt-8 md:mt-0">
+          <div className="relative mx-auto max-w-full">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#705c53] to-[#8b6f47] rounded-2xl transform rotate-3 md:rotate-6 opacity-20"></div>
+            <StaticImage
+              className="relative rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-500 w-full"
+              src="../images/service.jpg"
+              alt="AntonAxel Services"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

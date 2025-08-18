@@ -6,7 +6,7 @@ function ContactPage() {
   return (
     <Layout pageTitle="Contact Page">
       <ContactContainer />
-      <div className="service-container">
+      {/* <div className="service-container">
         <div className="contact-left-inner-container md:ml-10 md:mt-12">
           <div className="contact-left-details-container flex-1 items-center">
             <p className="contact-left-para text-md text-pallet4 font-semibold">
@@ -26,7 +26,7 @@ function ContactPage() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </Layout>
   );
 }

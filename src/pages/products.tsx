@@ -1,4 +1,3 @@
-// src/pages/solar-products.js
 import CartQtySelector from "@/components/CartQtySelector";
 import Layout from "@/components/layout";
 import { StaticImage } from "gatsby-plugin-image";
@@ -536,6 +535,7 @@ const solar = [
     quantity: 1,
   },
 ];
+
 const battery = [
   {
     id: 31,
@@ -818,22 +818,14 @@ const SolarProductsPage = () => {
     }
     return [];
   });
-  const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<Product | any>([]);
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [location, setLocation] = useState("");
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState<any>("");
   const [option, setOption] = useState("solar");
 
-  // Trigger cart update event when cart changes
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("cart", JSON.stringify(cart));
-      // Trigger custom event for same-tab updates
       window.dispatchEvent(new Event("cartUpdated"));
     }
   }, [cart]);
@@ -862,61 +854,6 @@ const SolarProductsPage = () => {
     [key: string]: any;
   }
 
-  interface CartItem extends Product {}
-  // const addToCart = (product: Product) => {
-  //   setCart([...cart, product]);
-  // };
-
-  const removeFromCart = (index: number) => {
-    setCart((prev) => prev?.filter((_, i) => i !== index));
-  };
-
-  // const checkout = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   //   http://localhost:5000/api/orders  https://antonaxel-server.onrender.com/api/orders
-  //   try {
-  //     const response = await fetch(
-  //       "https://antonaxel-server.onrender.com/api/orders",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           items: cart,
-  //           total_price: calculateCartTotal(),
-  //           name,
-  //           email,
-  //           phone,
-  //           address,
-  //           location,
-  //         }),
-  //       }
-  //     );
-
-  //     if (!response.ok) {
-  //       const error = await response.json();
-  //       setAlert("Order failed");
-  //       setLoading(false);
-  //       throw new Error(error.error || "Order failed");
-  //     }
-  //     const data = await response.json();
-  //     setAlert(data?.message);
-  //     setLoading(false);
-  //     setCart([]);
-  //     return data;
-  //   } catch (error) {
-  //     console.error("Order Error:", error);
-  //     // setAlert("something happened");
-  //     setLoading(false);
-  //     throw error;
-  //   }
-  // };
-
-  // ... existing code ...
-
-  // Enhanced cart validation function
   const validateCartItem = (item: any): boolean => {
     return (
       item &&
@@ -928,7 +865,6 @@ const SolarProductsPage = () => {
     );
   };
 
-  // Enhanced addToCart function with better validation
   const addToCart = (product: any) => {
     if (!product || !product.id) {
       console.error("Invalid product data:", product);
@@ -939,11 +875,9 @@ const SolarProductsPage = () => {
     const existingItemIndex = cart.findIndex((item) => item.id === product.id);
 
     if (existingItemIndex !== -1) {
-      // Item already exists, increase quantity
       const currentQuantity = Number(cart[existingItemIndex]?.quantity) || 1;
       updateCartItemQuantity(existingItemIndex, currentQuantity + 1);
     } else {
-      // Add new item with quantity 1
       const newItem = {
         ...product,
         quantity: 1,
@@ -959,7 +893,6 @@ const SolarProductsPage = () => {
     }
   };
 
-  // Enhanced updateCartItemQuantity with validation
   const updateCartItemQuantity = (index: number, newQuantity: number) => {
     if (index < 0 || index >= cart.length) {
       console.error("Invalid cart index:", index);
@@ -980,7 +913,6 @@ const SolarProductsPage = () => {
     setCart(updatedCart);
   };
 
-  // Enhanced calculateCartTotal with error handling
   const calculateCartTotal = () => {
     try {
       return cart.reduce((total, item) => {
@@ -993,8 +925,6 @@ const SolarProductsPage = () => {
       return 0;
     }
   };
-
-  // ... existing code ...
 
   const searchTerm = query.toLowerCase();
 
@@ -1022,344 +952,290 @@ const SolarProductsPage = () => {
     }, 4000);
   }, [alert]);
 
-  // Add these functions to your component
-
-  // const updateCartItemQuantity = (index: number, newQuantity: number) => {
-  //   const updatedCart = [...cart];
-  //   updatedCart[index] = {
-  //     ...updatedCart[index],
-  //     quantity: newQuantity,
-  //   };
-  //   setCart(updatedCart);
-  // };
-
-  // const calculateCartTotal = () => {
-  //   return cart.reduce((total, item) => {
-  //     return total + Number(item.price) * item.quantity;
-  //   }, 0);
-  // };
-
-  // Update the addToCart function to include quantity
-  // const addToCart = (product: any) => {
-  //   const existingItemIndex = cart.findIndex((item) => item.id === product.id);
-
-  //   if (existingItemIndex !== -1) {
-  //     // Item already exists, increase quantity
-  //     updateCartItemQuantity(
-  //       existingItemIndex,
-  //       cart[existingItemIndex]?.quantity + 1
-  //     );
-  //   } else {
-  //     // Add new item with quantity 1
-  //     setCart([...cart, { ...product, quantity: 1 }]);
-  //   }
-  // };
-
   return (
     <Layout pageTitle="Products Page">
-      <div className="px-[2%] md:px-[5%] mt-10 flex flex-col items-center justify-center relative">
-        <h1 className="text-2xl font-bold text-center mb-4">
-          Solar Energy Products
-        </h1>
-        <h4 className="text-xs font-semibold text-blue-800">
-          Contact us for custom quotation
-        </h4>
-        {/* <div className="z-20 absolute top-8 md:top-5 right-3 md:right-5">
-          <button
-            className="btn btn-circle relative"
-            onClick={() => navigate("/cart")}
-          >
-            <svg
-              width={20}
-              height={20}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-            >
-              <path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
-            </svg>
-            {cart.length > 0 && (
-              <span className="z-30 absolute top-0 text-xs bg-amber-700 py-0 px-1 rounded-2xl -right-1 text-white">
-                {cart.reduce(
-                  (sum, item) => sum + (Number(item.quantity) || 1),
-                  0
-                )}
-              </span>
-            )}
-          </button>
-        </div> */}
-        <label className="input my-5">
-          <svg
-            className="h-[1em] opacity-50"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.3-4.3"></path>
-            </g>
-          </svg>
-          <input
-            type="search"
-            onChange={(e) => setQuery(e.target.value)}
-            value={query}
-            className="grow"
-            placeholder="Search"
-          />
-        </label>
-        <div className="join mb-10 max-md:grid max-md:grid-cols-3 max-md:gap-2">
-          <input
-            className="join-item btn"
-            type="radio"
-            name="options"
-            aria-label="Solar"
-            value="solar"
-            onChange={(e) => setOption(e.target.value)}
-            defaultChecked
-          />
-          <input
-            className="join-item btn"
-            type="radio"
-            name="options"
-            aria-label="Backup"
-            value="backup"
-            onChange={(e) => setOption(e.target.value)}
-          />
-          <input
-            className="join-item btn"
-            type="radio"
-            name="options"
-            aria-label="Panels"
-            value="panels"
-            onChange={(e) => setOption(e.target.value)}
-          />
-          <input
-            className="join-item btn"
-            type="radio"
-            name="options"
-            aria-label="Inverters"
-            value="inverters"
-            onChange={(e) => setOption(e.target.value)}
-          />
-          <input
-            className="join-item btn"
-            type="radio"
-            name="options"
-            aria-label="Batteries"
-            value="batteries"
-            onChange={(e) => setOption(e.target.value)}
-          />
-          <input
-            className="join-item btn"
-            type="radio"
-            name="options"
-            aria-label="Controllers"
-            value="controllers"
-            onChange={(e) => setOption(e.target.value)}
-          />
-          <input
-            className="join-item btn"
-            type="radio"
-            name="options"
-            aria-label="Lights"
-            value="lights"
-            onChange={(e) => setOption(e.target.value)}
-          />
-        </div>
-        <div className="w-full h-full">
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
-            {filteredProducts.map((product) => (
-              <>
-                <>
-                  {product.type === "solar system" && option === "solar" && (
-                    <div className="card bg-base-20 image-full w-full shadow-sm rounded-md">
-                      <figure>
-                        <StaticImage
-                          className="w-full h-full"
-                          src="../images/solar-system.jpg"
-                          alt="product image"
-                        />
-                      </figure>
-                      <div className="card-body max-md:-ml-4">
-                        <h2 className="card-title">
-                          {product.type.replace(/\b\w/g, (char: string) =>
-                            char.toUpperCase()
-                          )}
-                        </h2>
-                        <h4 className="font-semibold text-sm md:text-md">
-                          Package: {product.name}
-                        </h4>
-                        <p className="text-xs">
-                          Battery type: {product.battery_type}
-                        </p>
-                        <p>
-                          Price: ₦
-                          {(
-                            product.battery * product.number_of_battery +
-                            product.solar_panel * product.number_of_panel +
-                            product.inverter +
-                            product.controller +
-                            product.installation_kit +
-                            product.installation_cost
-                          ).toLocaleString()}
-                        </p>
-                        <div className="card-actions flex flex-row justify-end">
-                          <button
-                            className="btn btn-accent btn-sm"
-                            onClick={() => openModal(product)}
-                          >
-                            Details
-                          </button>
-                          <button
-                            className={`btn ${
-                              cart.some((cat) => cat.id === product.id)
-                                ? "btn-primary"
-                                : "btn-secondary"
-                            } btn-sm ml-2`}
-                            onClick={() =>
-                              addToCart({
-                                ...product,
-                                price:
-                                  product.battery * product.number_of_battery +
-                                  product.solar_panel *
-                                    product.number_of_panel +
-                                  product.inverter +
-                                  product.controller +
-                                  product.installation_kit +
-                                  product.installation_cost,
-                              })
-                            }
-                          >
-                            {cart.some((cat) => cat.id === product.id)
-                              ? "Added"
-                              : "Add to Cart"}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </>
-                <>
-                  {product.type === "backup system" && option === "backup" && (
-                    <div className="card bg-base-20 image-full w-full shadow-sm rounded-md">
-                      <figure>
-                        <StaticImage
-                          className="w-full h-full"
-                          src="../images/backup.jpg"
-                          alt="product image"
-                        />
-                      </figure>
-                      <div className="card-body max-md:-ml-4">
-                        <h2 className="card-title">
-                          {product.type.replace(/\b\w/g, (char: string) =>
-                            char.toUpperCase()
-                          )}
-                        </h2>
-                        <h4 className="font-semibold text-sm md:text-md">
-                          Package: {product.name}
-                        </h4>
-                        <p className="text-xs">
-                          Battery type: {product.battery_type}
-                        </p>
-                        <p>
-                          Price: ₦
-                          {(
-                            product.battery * product.number_of_battery +
-                            product.solar_panel * product.number_of_panel +
-                            product.inverter +
-                            product.controller +
-                            product.installation_kit +
-                            product.installation_cost
-                          ).toLocaleString()}
-                        </p>
-                        <div className="card-actions flex flex-row justify-end">
-                          <button
-                            className="btn btn-accent btn-sm"
-                            onClick={() => openModal(product)}
-                          >
-                            Details
-                          </button>
-                          <button
-                            className={`btn ${
-                              cart.some((cat) => cat.id === product.id)
-                                ? "btn-primary"
-                                : "btn-secondary"
-                            } btn-sm ml-2`}
-                            onClick={() =>
-                              addToCart({
-                                ...product,
-                                price:
-                                  product.battery * product.number_of_battery +
-                                  product.solar_panel *
-                                    product.number_of_panel +
-                                  product.inverter +
-                                  product.controller +
-                                  product.installation_kit +
-                                  product.installation_cost,
-                              })
-                            }
-                          >
-                            {cart.some((cat) => cat.id === product.id)
-                              ? "Added"
-                              : "Add to Cart"}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </>
-              </>
-            ))}
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-orange-50">
+        <div className="px-4 md:px-8 py-20">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-2 bg-orange-100 text-[#705c53] rounded-full text-sm font-medium mb-4">
+              Our Products
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Solar Energy Solutions
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-2">
+              Discover our comprehensive range of solar products and energy solutions
+            </p>
+            <p className="text-sm font-semibold text-[#705c53]">
+              Contact us for custom quotation
+            </p>
           </div>
-          {option === "panels" && (
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
-              {solar.map((item) => (
+
+          <div className="max-w-md mx-auto mb-8">
+            <div className="relative">
+              <svg
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+              <input
+                type="search"
+                onChange={(e) => setQuery(e.target.value)}
+                value={query}
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#705c53] focus:border-transparent"
+                placeholder="Search products..."
+              />
+            </div>
+          </div>
+
+          <div className="join mb-12 max-md:grid max-md:grid-cols-3 max-md:gap-2 justify-center">
+            <input
+              className="join-item btn checked:bg-[#705c53] checked:text-white checked:border-[#705c53]"
+              type="radio"
+              name="options"
+              aria-label="Solar"
+              value="solar"
+              onChange={(e) => setOption(e.target.value)}
+              defaultChecked
+            />
+            <input
+              className="join-item btn checked:bg-[#705c53] checked:text-white checked:border-[#705c53]"
+              type="radio"
+              name="options"
+              aria-label="Backup"
+              value="backup"
+              onChange={(e) => setOption(e.target.value)}
+            />
+            <input
+              className="join-item btn checked:bg-[#705c53] checked:text-white checked:border-[#705c53]"
+              type="radio"
+              name="options"
+              aria-label="Panels"
+              value="panels"
+              onChange={(e) => setOption(e.target.value)}
+            />
+            <input
+              className="join-item btn checked:bg-[#705c53] checked:text-white checked:border-[#705c53]"
+              type="radio"
+              name="options"
+              aria-label="Inverters"
+              value="inverters"
+              onChange={(e) => setOption(e.target.value)}
+            />
+            <input
+              className="join-item btn checked:bg-[#705c53] checked:text-white checked:border-[#705c53]"
+              type="radio"
+              name="options"
+              aria-label="Batteries"
+              value="batteries"
+              onChange={(e) => setOption(e.target.value)}
+            />
+            <input
+              className="join-item btn checked:bg-[#705c53] checked:text-white checked:border-[#705c53]"
+              type="radio"
+              name="options"
+              aria-label="Controllers"
+              value="controllers"
+              onChange={(e) => setOption(e.target.value)}
+            />
+            <input
+              className="join-item btn checked:bg-[#705c53] checked:text-white checked:border-[#705c53]"
+              type="radio"
+              name="options"
+              aria-label="Lights"
+              value="lights"
+              onChange={(e) => setOption(e.target.value)}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {option === "solar" &&
+              filteredProducts
+                .filter((product) => product.type === "solar system")
+                .map((product) => (
+                  <div
+                    key={product.id}
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                  >
+                    <div className="relative h-48">
+                      <StaticImage
+                        className="w-full h-full object-cover"
+                        src="../images/solar-system.jpg"
+                        alt="Solar System"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <h3 className="text-lg font-bold">Solar System</h3>
+                        <p className="text-sm opacity-90">{product.name}</p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="mb-4">
+                        <p className="text-sm text-gray-600 mb-1">
+                          Battery: {product.battery_type}
+                        </p>
+                        <p className="text-2xl font-bold text-[#705c53]">
+                          ₦
+                          {(
+                            product.battery * product.number_of_battery +
+                            product.solar_panel * product.number_of_panel +
+                            product.inverter +
+                            product.controller +
+                            product.installation_kit +
+                            product.installation_cost
+                          ).toLocaleString()}
+                        </p>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => openModal(product)}
+                          className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
+                        >
+                          Details
+                        </button>
+                        <button
+                          onClick={() =>
+                            addToCart({
+                              ...product,
+                              price:
+                                product.battery * product.number_of_battery +
+                                product.solar_panel * product.number_of_panel +
+                                product.inverter +
+                                product.controller +
+                                product.installation_kit +
+                                product.installation_cost,
+                            })
+                          }
+                          className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                            cart.some((cat) => cat.id === product.id)
+                              ? "bg-green-600 text-white"
+                              : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                          }`}
+                        >
+                          {cart.some((cat) => cat.id === product.id)
+                            ? "Added"
+                            : "Add to Cart"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+            {option === "backup" &&
+              filteredProducts
+                .filter((product) => product.type === "backup system")
+                .map((product) => (
+                  <div
+                    key={product.id}
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                  >
+                    <div className="relative h-48">
+                      <StaticImage
+                        className="w-full h-full object-cover"
+                        src="../images/backup.jpg"
+                        alt="Backup System"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <h3 className="text-lg font-bold">Backup System</h3>
+                        <p className="text-sm opacity-90">{product.name}</p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="mb-4">
+                        <p className="text-sm text-gray-600 mb-1">
+                          Battery: {product.battery_type}
+                        </p>
+                        <p className="text-2xl font-bold text-[#705c53]">
+                          ₦
+                          {(
+                            product.battery * product.number_of_battery +
+                            product.solar_panel * product.number_of_panel +
+                            product.inverter +
+                            product.controller +
+                            product.installation_kit +
+                            product.installation_cost
+                          ).toLocaleString()}
+                        </p>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => openModal(product)}
+                          className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
+                        >
+                          Details
+                        </button>
+                        <button
+                          onClick={() =>
+                            addToCart({
+                              ...product,
+                              price:
+                                product.battery * product.number_of_battery +
+                                product.solar_panel * product.number_of_panel +
+                                product.inverter +
+                                product.controller +
+                                product.installation_kit +
+                                product.installation_cost,
+                            })
+                          }
+                          className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                            cart.some((cat) => cat.id === product.id)
+                              ? "bg-green-600 text-white"
+                              : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                          }`}
+                        >
+                          {cart.some((cat) => cat.id === product.id)
+                            ? "Added"
+                            : "Add to Cart"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+            {option === "panels" &&
+              solar.map((item) => (
                 <div
                   key={item.id}
-                  className="card bg-base-100 w-full shadow-sm h-90"
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
                 >
-                  <figure className="h-[60%] m-0">
+                  <div className="h-48 p-4">
                     <StaticImage
-                      className="w-full h-[60%] p-0"
+                      className="w-full h-full object-contain"
                       src="../images/solar_panel.png"
-                      alt="product image"
+                      alt="Solar Panel"
                     />
-                  </figure>
-                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
-                    <h2 className="card-title">
-                      {item.type.replace(/\b\w/g, (char: string) =>
-                        char.toUpperCase()
-                      )}
-                    </h2>
-                    <h4 className="font-semibold text-sm md:text-md">
-                      Package: {item.name}
-                    </h4>
-                    <p className="text-xs">Panel Rating: {item.capacity}</p>
-                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
-                    <div className="card-actions flex flex-row justify-end">
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {item.type} Panel
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Capacity: {item.capacity}
+                    </p>
+                    <p className="text-2xl font-bold text-[#705c53] mb-4">
+                      ₦{item.price.toLocaleString()}
+                    </p>
+                    <div className="flex gap-2">
                       <button
-                        className="btn btn-accent btn-sm"
                         onClick={() => openModal2(item)}
+                        className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
                       >
                         Details
                       </button>
                       <button
-                        className={`btn ${
+                        onClick={() => addToCart({ ...item, price: item.price })}
+                        className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                           cart.some((cat) => cat.id === item.id)
-                            ? "btn-primary"
-                            : "btn-secondary"
-                        } btn-sm ml-2`}
-                        onClick={() =>
-                          addToCart({
-                            ...item,
-                            price: item.price,
-                          })
-                        }
+                            ? "bg-green-600 text-white"
+                            : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                        }`}
                       >
                         {cart.some((cat) => cat.id === item.id)
                           ? "Added"
@@ -1369,60 +1245,52 @@ const SolarProductsPage = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          )}
-          {option === "inverters" && (
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
-              {inverter.map((item) => (
+
+            {option === "inverters" &&
+              inverter.map((item) => (
                 <div
                   key={item.id}
-                  className="card bg-base-100 w-full shadow-sm h-90"
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
                 >
-                  <figure className="h-[60%] m-0">
+                  <div className="h-48 p-4">
                     {item.type === "Hybrid" ? (
                       <StaticImage
-                        className="w-full h-[60%] p-0"
+                        className="w-full h-full object-contain"
                         src="../images/hybrid_inverter.webp"
-                        alt="product image"
+                        alt="Hybrid Inverter"
                       />
                     ) : (
                       <StaticImage
-                        className="w-full h-[60%] p-0"
+                        className="w-full h-full object-contain"
                         src="../images/inverter.jpeg"
-                        alt="product image"
+                        alt="Pure Sine Wave Inverter"
                       />
                     )}
-                  </figure>
-                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
-                    <h2 className="card-title">
-                      {item.type.replace(/\b\w/g, (char: string) =>
-                        char.toUpperCase()
-                      )}
-                    </h2>
-                    <h4 className="font-semibold text-sm md:text-md">
-                      Package: {item.name}
-                    </h4>
-                    <p className="text-xs">Panel Rating: {item.capacity}</p>
-                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
-                    <div className="card-actions flex flex-row justify-end">
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {item.type} Inverter
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Capacity: {item.capacity}
+                    </p>
+                    <p className="text-2xl font-bold text-[#705c53] mb-4">
+                      ₦{item.price.toLocaleString()}
+                    </p>
+                    <div className="flex gap-2">
                       <button
-                        className="btn btn-accent btn-sm"
                         onClick={() => openModal2(item)}
+                        className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
                       >
                         Details
                       </button>
                       <button
-                        className={`btn ${
+                        onClick={() => addToCart({ ...item, price: item.price })}
+                        className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                           cart.some((cat) => cat.id === item.id)
-                            ? "btn-primary"
-                            : "btn-secondary"
-                        } btn-sm ml-2`}
-                        onClick={() =>
-                          addToCart({
-                            ...item,
-                            price: item.price,
-                          })
-                        }
+                            ? "bg-green-600 text-white"
+                            : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                        }`}
                       >
                         {cart.some((cat) => cat.id === item.id)
                           ? "Added"
@@ -1432,66 +1300,58 @@ const SolarProductsPage = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          )}
-          {option === "batteries" && (
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
-              {battery.map((item) => (
+
+            {option === "batteries" &&
+              battery.map((item) => (
                 <div
                   key={item.id}
-                  className="card bg-base-100 w-full shadow-sm h-90"
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
                 >
-                  <figure className="h-[60%] m-0">
+                  <div className="h-48 p-4">
                     {item.type === "Lithium-ion" ? (
                       <StaticImage
-                        className="w-full h-[60%] p-0"
+                        className="w-full h-full object-contain"
                         src="../images/lithium_battery.jpg"
-                        alt="product image"
+                        alt="Lithium-ion Battery"
                       />
                     ) : item.type === "Lithium" ? (
                       <StaticImage
-                        className="w-full h-[60%] p-0"
+                        className="w-full h-full object-contain"
                         src="../images/lithium_battery_small.jpg"
-                        alt="product image"
+                        alt="Lithium Battery"
                       />
                     ) : (
                       <StaticImage
-                        className="w-full h-[60%] p-0"
+                        className="w-full h-full object-contain"
                         src="../images/wetcell_battery.jpg"
-                        alt="product image"
+                        alt="Wet Cell Battery"
                       />
                     )}
-                  </figure>
-                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
-                    <h2 className="card-title">
-                      {item.type.replace(/\b\w/g, (char: string) =>
-                        char.toUpperCase()
-                      )}
-                    </h2>
-                    <h4 className="font-semibold text-sm md:text-md">
-                      Package: {item.name}
-                    </h4>
-                    <p className="text-xs">Panel Rating: {item.capacity}</p>
-                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
-                    <div className="card-actions flex flex-row justify-end">
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {item.type} Battery
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Capacity: {item.capacity}
+                    </p>
+                    <p className="text-2xl font-bold text-[#705c53] mb-4">
+                      ₦{item.price.toLocaleString()}
+                    </p>
+                    <div className="flex gap-2">
                       <button
-                        className="btn btn-accent btn-sm"
                         onClick={() => openModal2(item)}
+                        className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
                       >
                         Details
                       </button>
                       <button
-                        className={`btn ${
+                        onClick={() => addToCart({ ...item, price: item.price })}
+                        className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                           cart.some((cat) => cat.id === item.id)
-                            ? "btn-primary"
-                            : "btn-secondary"
-                        } btn-sm ml-2`}
-                        onClick={() =>
-                          addToCart({
-                            ...item,
-                            price: item.price,
-                          })
-                        }
+                            ? "bg-green-600 text-white"
+                            : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                        }`}
                       >
                         {cart.some((cat) => cat.id === item.id)
                           ? "Added"
@@ -1501,206 +1361,164 @@ const SolarProductsPage = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          )}
-          {option === "controllers" && (
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
-              {controller.map((item) => (
-                <div
-                  key={item.id}
-                  className="card bg-base-100 w-full shadow-sm"
-                >
-                  <figure className="h-[60%] m-0">
-                    <StaticImage
-                      className="w-full h-[60%] p-0"
-                      src="../images/controller.jpg"
-                      alt="product image"
-                    />
-                  </figure>
-                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
-                    <h2 className="card-title">
-                      {item.type.replace(/\b\w/g, (char: string) =>
-                        char.toUpperCase()
-                      )}
-                    </h2>
-                    <h4 className="font-semibold text-sm md:text-md">
-                      Package: {item.name}
-                    </h4>
-                    <p className="text-xs">Panel Rating: {item.capacity}</p>
-                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
-                    <div className="card-actions flex flex-row justify-end">
-                      <button
-                        className="btn btn-accent btn-sm"
-                        onClick={() => openModal2(item)}
-                      >
-                        Details
-                      </button>
-                      <button
-                        className={`btn ${
-                          cart.some((cat) => cat.id === item.id)
-                            ? "btn-primary"
-                            : "btn-secondary"
-                        } btn-sm ml-2`}
-                        onClick={() =>
-                          addToCart({
-                            ...item,
-                            price: item.price,
-                          })
-                        }
-                      >
-                        {cart.some((cat) => cat.id === item.id)
-                          ? "Added"
-                          : "Add to Cart"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          {option === "lights" && (
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
-              {lights.map((item) => (
-                <div
-                  key={item.id}
-                  className="card bg-base-100 w-full shadow-sm"
-                >
-                  <figure className="h-[60%] m-0">
-                    <StaticImage
-                      className="w-full h-[60%] p-0"
-                      src="../images/street_light.jpeg"
-                      alt="product image"
-                    />
-                  </figure>
-                  <div className="card-body max-md:-ml-4 mt-[-30px] my-0">
-                    <h2 className="card-title">
-                      {item.type.replace(/\b\w/g, (char: string) =>
-                        char.toUpperCase()
-                      )}
-                    </h2>
-                    <h4 className="font-semibold text-sm md:text-md">
-                      Package: {item.name}
-                    </h4>
-                    <p className="text-xs">Panel Rating: {item.capacity}</p>
-                    <p>Price: ₦{item.price.toLocaleString()} per unit</p>
-                    <div className="card-actions flex flex-row justify-end">
-                      <button
-                        className="btn btn-accent btn-sm"
-                        onClick={() => openModal2(item)}
-                      >
-                        Details
-                      </button>
-                      <button
-                        className={`btn ${
-                          cart.some((cat) => cat.id === item.id)
-                            ? "btn-primary"
-                            : "btn-secondary"
-                        } btn-sm ml-2`}
-                        onClick={() =>
-                          addToCart({
-                            ...item,
-                            price: item.price,
-                          })
-                        }
-                      >
-                        {cart.some((cat) => cat.id === item.id)
-                          ? "Added"
-                          : "Add to Cart"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
 
-          {/* You can open the modal using document.getElementById('ID').showModal() method */}
+            {option === "controllers" &&
+              controller.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                >
+                  <div className="h-48 p-4">
+                    <StaticImage
+                      className="w-full h-full object-contain"
+                      src="../images/controller.jpg"
+                      alt="Charge Controller"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {item.type}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Capacity: {item.capacity}
+                    </p>
+                    <p className="text-2xl font-bold text-[#705c53] mb-4">
+                      ₦{item.price.toLocaleString()}
+                    </p>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => openModal2(item)}
+                        className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
+                      >
+                        Details
+                      </button>
+                      <button
+                        onClick={() => addToCart({ ...item, price: item.price })}
+                        className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                          cart.some((cat) => cat.id === item.id)
+                            ? "bg-green-600 text-white"
+                            : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                        }`}
+                      >
+                        {cart.some((cat) => cat.id === item.id)
+                          ? "Added"
+                          : "Add to Cart"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+            {option === "lights" &&
+              lights.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                >
+                  <div className="h-48 p-4">
+                    <StaticImage
+                      className="w-full h-full object-contain"
+                      src="../images/street_light.jpeg"
+                      alt="LED Street Light"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {item.type} Street Light
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Power: {item.capacity}
+                    </p>
+                    <p className="text-2xl font-bold text-[#705c53] mb-4">
+                      ₦{item.price.toLocaleString()}
+                    </p>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => openModal2(item)}
+                        className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
+                      >
+                        Details
+                      </button>
+                      <button
+                        onClick={() => addToCart({ ...item, price: item.price })}
+                        className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                          cart.some((cat) => cat.id === item.id)
+                            ? "bg-green-600 text-white"
+                            : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                        }`}
+                      >
+                        {cart.some((cat) => cat.id === item.id)
+                          ? "Added"
+                          : "Add to Cart"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+
+          {/* Modals */}
           <dialog id="my_modal_3" className="modal">
-            <div className="modal-box">
+            <div className="modal-box max-w-2xl">
               <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                   ✕
                 </button>
               </form>
-              <h3 className="font-bold text-lg">
+              <h3 className="font-bold text-2xl text-[#705c53] mb-4">
                 {selected?.type?.replace(/\b\w/g, (char: string) =>
                   char.toUpperCase()
                 )}
               </h3>
-              <h5 className="mt-2">{selected?.name}</h5>
-              <div className=" gap-4 mt-5 grid grid-cols-1 md:grid-cols-2">
-                <p className="text-sm">
-                  Inverter: <b>₦{selected?.inverter?.toLocaleString()}</b>
-                </p>
-                {selected.type === "solar system" && (
-                  <p className="text-sm">
-                    Solar Panel:{" "}
-                    <b>₦{selected?.solar_panel?.toLocaleString()} per unit</b>
+              <h5 className="text-lg mb-6">{selected?.name}</h5>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-gray-700">Inverter</p>
+                  <p className="text-lg font-bold text-[#705c53]">
+                    ₦{selected?.inverter?.toLocaleString()}
                   </p>
-                )}
+                </div>
                 {selected.type === "solar system" && (
-                  <p>
-                    panel rating: <b>{selected?.panel_rating} watts</b>
-                  </p>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <p className="text-sm font-semibold text-gray-700">
+                      Solar Panel
+                    </p>
+                    <p className="text-lg font-bold text-[#705c53]">
+                      ₦{selected?.solar_panel?.toLocaleString()} per unit
+                    </p>
+                  </div>
                 )}
-                {selected.type === "solar system" && (
-                  <p>
-                    Number of panel: <b>{selected?.number_of_panel}</b>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-gray-700">Battery</p>
+                  <p className="text-lg font-bold text-[#705c53]">
+                    ₦{selected?.battery?.toLocaleString()} per unit
                   </p>
-                )}
-                <p className="text-sm">
-                  Battery:{" "}
-                  <b>₦{selected?.battery?.toLocaleString()} per unit</b>
-                </p>
-                <p>
-                  Battery Rating:{" "}
-                  <b>{selected?.battery_rating?.toLowerCase()}</b>
-                </p>
-                <p>
-                  Batter type: <b>{selected?.battery_type}</b>
-                </p>
-                <p>
-                  Number of battery: <b>{selected?.number_of_battery}</b>
-                </p>
-                {selected.type === "solar system" && (
-                  <p className="text-sm">
-                    Controller: <b>₦{selected?.controller?.toLocaleString()}</b>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-gray-700">
+                    Installation
                   </p>
-                )}
-                {selected.type === "solar system" && (
-                  <p>
-                    Controller Rating:{" "}
-                    <b>{selected?.controller_rating?.toLowerCase()}</b>
+                  <p className="text-lg font-bold text-[#705c53]">
+                    ₦{selected?.installation_cost?.toLocaleString()}
                   </p>
-                )}
-                <p>
-                  Installation Kit:{" "}
-                  <b>₦{selected?.installation_kit?.toLocaleString()}</b>
-                </p>
-                <p>
-                  Installation Cost:{" "}
-                  <b>₦{selected?.installation_cost?.toLocaleString()}</b>
-                </p>
+                </div>
               </div>
-              <div className="flex mt-6 flex-row justify-between items-center">
-                <p className="font-semibold text-2xl ">
-                  PRICE: ₦
-                  {(
-                    selected?.battery * selected?.number_of_battery +
-                    selected.solar_panel * selected?.number_of_panel +
-                    selected?.inverter +
-                    selected?.controller +
-                    selected?.installation_kit +
-                    selected?.installation_cost
-                  )?.toLocaleString()}
-                </p>
+              <div className="flex justify-between items-center pt-4 border-t">
+                <div>
+                  <p className="text-sm text-gray-600">Total Price</p>
+                  <p className="text-3xl font-bold text-[#705c53]">
+                    ₦
+                    {(
+                      selected?.battery * selected?.number_of_battery +
+                      selected.solar_panel * selected?.number_of_panel +
+                      selected?.inverter +
+                      selected?.controller +
+                      selected?.installation_kit +
+                      selected?.installation_cost
+                    )?.toLocaleString()}
+                  </p>
+                </div>
                 <button
-                  className={`btn btn-${
-                    cart.some((cat) => cat.id === selected?.id)
-                      ? "primary"
-                      : "secondary"
-                  } btn-sm ml-2`}
                   onClick={() =>
                     addToCart({
                       ...selected,
@@ -1713,65 +1531,69 @@ const SolarProductsPage = () => {
                         selected.installation_cost,
                     })
                   }
+                  className={`px-6 py-3 rounded-lg font-semibold transition-colors duration-300 ${
+                    cart.some((cat) => cat.id === selected?.id)
+                      ? "bg-green-600 text-white"
+                      : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                  }`}
                 >
                   {cart.some((cat) => cat.id === selected?.id)
-                    ? "Added"
+                    ? "Added to Cart"
                     : "Add to Cart"}
                 </button>
               </div>
             </div>
           </dialog>
+
           <dialog id="my_modal_5" className="modal">
             <div className="modal-box">
               <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                   ✕
                 </button>
               </form>
-              {/* <h3 className="font-bold text-lg">
-                {selected?.type?.replace(/\b\w/g, (char: string) =>
-                  char.toUpperCase()
-                )}
-              </h3> */}
-              <h5 className="mt-2">{selected?.name}</h5>
-              <div className=" gap-4 mt-5 grid grid-cols-1 md:grid-cols-2">
-                <p className="text-sm">
-                  Price: <b>₦{selected?.price?.toLocaleString()}</b>
-                </p>
-
-                <p>
-                  Rating: <b>{selected?.capacity}</b>
-                </p>
-                <p>
-                  Type: <b>{selected?.type}</b>
-                </p>
-                <p>
-                  Warranty: <b>{selected?.waranty}</b>
-                </p>
-
-                {selected?.voltage && (
-                  <p>
-                    Voltage: <b>{selected?.voltage}</b>
+              <h3 className="font-bold text-2xl text-[#705c53] mb-4">
+                {selected?.name}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-gray-700">Price</p>
+                  <p className="text-lg font-bold text-[#705c53]">
+                    ₦{selected?.price?.toLocaleString()}
                   </p>
-                )}
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-gray-700">Capacity</p>
+                  <p className="text-lg font-bold text-gray-900">
+                    {selected?.capacity}
+                  </p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-gray-700">Type</p>
+                  <p className="text-lg font-bold text-gray-900">
+                    {selected?.type}
+                  </p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-gray-700">Warranty</p>
+                  <p className="text-lg font-bold text-gray-900">
+                    {selected?.waranty || selected?.warranty}
+                  </p>
+                </div>
               </div>
-              <div className="flex mt-6 flex-row justify-between items-center">
+              <div className="flex justify-end">
                 <button
-                  className={`btn btn-${
-                    cart.some((cat) => cat.id === selected?.id)
-                      ? "primary"
-                      : "secondary"
-                  } btn-sm ml-2`}
                   onClick={() =>
-                    addToCart({
-                      ...selected,
-                      price: selected?.price,
-                    })
+                    addToCart({ ...selected, price: selected?.price })
                   }
+                  className={`px-6 py-3 rounded-lg font-semibold transition-colors duration-300 ${
+                    cart.some((cat) => cat.id === selected?.id)
+                      ? "bg-green-600 text-white"
+                      : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                  }`}
                 >
                   {cart.some((cat) => cat.id === selected?.id)
-                    ? "Added"
+                    ? "Added to Cart"
                     : "Add to Cart"}
                 </button>
               </div>
@@ -1787,7 +1609,11 @@ export default SolarProductsPage;
 export const Head = () => (
   <>
     <title>
-      AntonAxel Solar Panels | High-Efficiency Renewable Energy Solutions
+      AntonAxel Solar Products | High-Efficiency Renewable Energy Solutions
     </title>
+    <meta
+      name="description"
+      content="Explore AntonAxel's comprehensive range of solar energy products including solar systems, backup systems, panels, inverters, batteries, and LED lights. Quality renewable energy solutions for Nigeria."
+    />
   </>
 );

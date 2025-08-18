@@ -6,30 +6,22 @@ import ServiceContainer from "@/components/serviceContainer";
 import AboutContainer from "@/components/aboutContainer";
 import ContactContainer from "@/components/contactContainer";
 
-const pageStyles = {
-  color: "#232129",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-};
-
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout pageTitle="Home Page">
-      <main style={pageStyles}>
-        <section className="h-auto">
+      <main className="overflow-hidden">
+        <section className="min-h-screen flex items-center">
           <TopContainer />
         </section>
-        <section className="h-auto">
+        <section className="py-20">
           <AboutContainer />
         </section>
-        <section className="h-auto">
+        <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
           <ServiceContainer />
         </section>
-        <section className="h-auto">
+        <section className="py-20">
           <ContactContainer />
         </section>
-        {/* <section>
-          <Footer />
-        </section> */}
       </main>
     </Layout>
   );

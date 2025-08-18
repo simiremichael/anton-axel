@@ -37,7 +37,7 @@ function Footer({ pageTitle }: any) {
               </Link>
               <Link
                 className={`${
-                  pageTitle === "Contact Page" && "font-bold"
+                  pageTitle === "Privacy Page" && "font-bold"
                 } text-pallet4`}
                 to="/privacy"
               >
