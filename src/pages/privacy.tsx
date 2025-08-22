@@ -122,3 +122,21 @@ const PrivacyPage = () => {
 };
 
 export default PrivacyPage;
+
+export const Head = () => (
+  <>
+    <title>Privacy Policy | AntonAxel Nigeria Company Limited</title>
+    <meta name="description" content="Read AntonAxel Nigeria's Privacy Policy to understand how we collect, use, and protect your personal information. Your privacy and data security are our priority." />
+    <meta name="keywords" content="privacy policy, data protection, personal information, AntonAxel privacy, data security, user rights" />
+    <meta name="author" content="AntonAxel Nigeria Company Limited" />
+    <meta property="og:title" content="Privacy Policy | AntonAxel Nigeria Company Limited" />
+    <meta property="og:description" content="Read AntonAxel Nigeria's Privacy Policy to understand how we collect, use, and protect your personal information." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://antonaxel.com/privacy" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Privacy Policy | AntonAxel Nigeria Company Limited" />
+    <meta name="twitter:description" content="Read AntonAxel Nigeria's Privacy Policy to understand how we collect, use, and protect your personal information." />
+    <link rel="canonical" href="https://antonaxel.com/privacy" />
+    <meta name="robots" content="index, follow" />
+  </>
+);

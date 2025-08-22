@@ -61,6 +61,9 @@ export default PaymentSuccess;
 
 export const Head = () => (
   <>
-    <title>Payment Successful - AntonAxel Solar</title>
+    <title>Payment Successful | AntonAxel Solar</title>
+    <meta name="description" content="Payment successful! Your AntonAxel solar product order has been confirmed. We'll contact you shortly to arrange delivery and installation." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://antonaxel.com" />
   </>
 );

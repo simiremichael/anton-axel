@@ -513,6 +513,10 @@ export default AdminDashboard;
 
 export const Head = () => (
   <>
-    <title>Admin Dashboard - AntonAxel Solar</title>
+    <title>Admin Dashboard | AntonAxel Solar Management</title>
+    <meta name="description" content="AntonAxel admin dashboard for managing solar product orders, customer information, and order status updates. Secure administrative access." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="AntonAxel Nigeria Company Limited" />
+    <link rel="canonical" href="https://antonaxel.com" />
   </>
 );

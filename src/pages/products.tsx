@@ -1827,5 +1827,16 @@ export const Head = () => (
       name="description"
       content="Explore AntonAxel's comprehensive range of solar energy products including solar systems, backup systems, panels, inverters, batteries, and LED lights. Quality renewable energy solutions for Nigeria."
     />
+    <meta name="keywords" content="solar products Nigeria, solar panels, inverters, batteries, backup systems, solar energy systems, renewable energy, AntonAxel products, solar installation Nigeria" />
+    <meta name="author" content="AntonAxel Nigeria Company Limited" />
+    <meta property="og:title" content="AntonAxel Solar Products | High-Efficiency Renewable Energy Solutions" />
+    <meta property="og:description" content="Comprehensive range of solar energy products including complete systems, panels, inverters, batteries, and LED lights. Quality renewable energy solutions for Nigeria." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://antonaxel.com/products" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AntonAxel Solar Products | High-Efficiency Renewable Energy Solutions" />
+    <meta name="twitter:description" content="Comprehensive range of solar energy products including complete systems, panels, inverters, batteries, and LED lights." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="https://antonaxel.com/products" />
   </>
 );

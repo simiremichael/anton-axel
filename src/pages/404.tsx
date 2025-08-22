@@ -46,4 +46,11 @@ const NotFoundPage: React.FC<PageProps> = () => {
 
 export default NotFoundPage
 
-export const Head: HeadFC = () => <title>Not found</title>
+export const Head: HeadFC = () => (
+  <>
+    <title>Page Not Found | AntonAxel Nigeria</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Return to AntonAxel Nigeria's homepage to explore our services in real estate, construction, and renewable energy." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://antonaxel.com" />
+  </>
+)

@@ -39,7 +39,16 @@ export const Head: HeadFC = () => (
       name="description"
       content="AntonAxel Nigeria Company Limited delivers expert solutions in real estate, facility management, construction, renewable energy, IT services, and general contracting across Nigeria. Trusted, innovative, and results-driven."
     />
-
-    {/* <link rel="stylesheet" href="" /> */}
+    <meta name="keywords" content="AntonAxel Nigeria, real estate, facility management, construction, renewable energy, solar systems, IT services, general contracting, Nigeria" />
+    <meta name="author" content="AntonAxel Nigeria Company Limited" />
+    <meta property="og:title" content="AntonAxel Nigeria | Real Estate, Facility Management, Construction & Renewable Energy" />
+    <meta property="og:description" content="Expert solutions in real estate, facility management, construction, renewable energy, IT services, and general contracting across Nigeria." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://antonaxel.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AntonAxel Nigeria | Real Estate, Facility Management, Construction & Renewable Energy" />
+    <meta name="twitter:description" content="Expert solutions in real estate, facility management, construction, renewable energy, IT services, and general contracting across Nigeria." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="https://antonaxel.com" />
   </>
 );

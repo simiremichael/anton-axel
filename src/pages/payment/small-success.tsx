@@ -64,6 +64,9 @@ export default SmallPaymentSuccess;
 
 export const Head = () => (
   <>
-    <title>Payment Plan Confirmation - AntonAxel Solar</title>
+    <title>Payment Plan Confirmation | AntonAxel Solar</title>
+    <meta name="description" content="Your Pay Small Small payment plan has been submitted successfully. An AntonAxel agent will contact you within 24 hours to arrange flexible payment options." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://antonaxel.com" />
   </>
 );

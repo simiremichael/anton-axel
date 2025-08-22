@@ -586,6 +586,18 @@ export default CartPage;
 
 export const Head = () => (
   <>
-    <title>Shopping Cart - AntonAxel Solar</title>
+    <title>Shopping Cart | AntonAxel Solar Products</title>
+    <meta name="description" content="Review your selected solar products and complete your order. Secure checkout with flexible payment options including Pay Now and Pay Small Small installments." />
+    <meta name="keywords" content="shopping cart, solar products checkout, order review, payment options, AntonAxel cart" />
+    <meta name="author" content="AntonAxel Nigeria Company Limited" />
+    <meta property="og:title" content="Shopping Cart | AntonAxel Solar Products" />
+    <meta property="og:description" content="Review your selected solar products and complete your order with flexible payment options." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://antonaxel.com/cart" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Shopping Cart | AntonAxel Solar Products" />
+    <meta name="twitter:description" content="Review your selected solar products and complete your order with flexible payment options." />
+    <link rel="canonical" href="https://antonaxel.com/cart" />
+    <meta name="robots" content="noindex, nofollow" />
   </>
 );

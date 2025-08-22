@@ -123,6 +123,9 @@ export default PaymentCallback;
 
 export const Head = () => (
   <>
-    <title>Payment Verification - AntonAxel Solar</title>
+    <title>Payment Verification | AntonAxel Solar</title>
+    <meta name="description" content="Verifying your payment for AntonAxel solar products. Please wait while we confirm your transaction." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://antonaxel.com" />
   </>
 );

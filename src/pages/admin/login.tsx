@@ -136,6 +136,10 @@ export default AdminLoginPage;
 
 export const Head = () => (
   <>
-    <title>Admin Login - AntonAxel Solar</title>
+    <title>Admin Login | AntonAxel Solar Management</title>
+    <meta name="description" content="Secure login portal for AntonAxel administrators to access the order management dashboard and customer information." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content="AntonAxel Nigeria Company Limited" />
+    <link rel="canonical" href="https://antonaxel.com" />
   </>
 );
