@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { navigate } from "gatsby";
 import Layout from "../components/layout";
 import CartQtySelector from "../components/CartQtySelector";
+// import { KlumpCheckout } from "klump-react";
 
 interface CartItem {
   id: number;
@@ -130,7 +131,213 @@ const CartPage = () => {
     return true;
   };
 
+  const submitKlumpOrder = async (klumpResponse: any) => {
+    try {
+      const formattedCartItems = cartItems.map((item, index) => ({
+        id: item.id,
+        name: item.name || `Item ${item.id}`,
+        price: Number(item.price) || 0,
+        quantity: Number(item.quantity) || 1,
+        total_item_price:
+          (Number(item.price) || 0) * (Number(item.quantity) || 1),
+        ...(item.wattage && { wattage: item.wattage }),
+        ...(item.type && { type: item.type }),
+        ...(item.battery_type && { battery_type: item.battery_type }),
+        ...(item.capacity && { capacity: item.capacity }),
+        ...(item.voltage && { voltage: item.voltage }),
+        ...(item.warranty && { warranty: item.warranty }),
+        cart_index: index,
+      }));
+
+      const orderData = {
+        email: formData.email.toLowerCase(),
+        phone: formData.phone.replace(/\D/g, ""),
+        name: formData.name,
+        address: formData.address,
+        location: formData.location,
+        items: formattedCartItems,
+        total_price: Math.round(calculateCartTotal() * 1.06),
+        paymentStatus: "successful",
+        paymentType: "pay small small",
+        klumpReference: klumpResponse.reference,
+        order_summary: {
+          item_count: cartItems.length,
+          total_quantity: cartItems.reduce(
+            (sum, item) => sum + item.quantity,
+            0
+          ),
+        },
+      };
+
+      await fetch(
+        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/orders",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify(orderData),
+        }
+      );
+    } catch (err) {
+      console.error("Error submitting Klump order:", err);
+    }
+  };
+
+  // const [klumpLoaded, setKlumpLoaded] = useState(false);
+
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src = "https://js.useklump.com/klump.js";
+  //   script.async = true;
+  //   script.onload = () => {
+  //     console.log("Klump script loaded");
+  //     const checkKlump = () => {
+  //       if ((window as any).Klump) {
+  //         console.log("Klump is available");
+  //         setKlumpLoaded(true);
+  //       } else {
+  //         setTimeout(checkKlump, 100);
+  //       }
+  //     };
+  //     checkKlump();
+  //   };
+  //   script.onerror = () => {
+  //     console.error("Failed to load Klump script");
+  //   };
+  //   document.head.appendChild(script);
+  // }, []);
+
+  useEffect(() => {
+    const element = document.getElementById("klump__checkout");
+    if (element) {
+      const handleClick = () => {
+        console.log("Klump button clicked");
+        if (!validateForm()) return;
+        if (cartItems.length === 0) {
+          setError("Your cart is empty");
+          return;
+        }
+
+        setLoading(true);
+        setPaymentType("pay small small");
+        setError("");
+
+        const payload = {
+          publicKey:
+            "klp_pk_8735e345455c45ac9601978954790ccf478622210b574adc8b54d1263e5fc0b0",
+          data: {
+            amount: Math.round(calculateCartTotal() * 1.06),
+            shipping_fee: 0,
+            currency: "NGN",
+            first_name: formData.name.split(" ")[0] || "Customer",
+            last_name: formData.name.split(" ").slice(1).join(" ") || "User",
+            email: formData.email,
+            phone: formData.phone,
+            redirect_url: `${window.location.origin}/payment/small-success`,
+            merchant_reference: `order-${Date.now()}`,
+            meta_data: {
+              customer: formData.name,
+              email: formData.email,
+            },
+            items: cartItems.map((item) => ({
+              name: item.name,
+              unit_price: Math.round(item.price * 1.06),
+              quantity: item.quantity,
+            })),
+          },
+          onSuccess: async (data: any) => {
+            // console.log("Klump payment successful:", data);
+
+            // Verify payment with Klump
+            try {
+              const verifyResponse = await fetch(
+                "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  credentials: "include",
+                  body: JSON.stringify({ reference: data.reference }),
+                }
+              );
+              await submitKlumpOrder(data);
+              clearCart();
+              navigate("/payment/small-success");
+              if (verifyResponse.ok) {
+                const verificationResult = await verifyResponse.json();
+                if (verificationResult.status === "success") {
+                  // await submitKlumpOrder(data);
+                  // clearCart();
+                  // navigate("/payment/small-success");
+                } else {
+                  setError(
+                    "Payment verification failed. Please contact support."
+                  );
+                }
+              } else {
+                setError(
+                  "Payment verification failed. Please contact support."
+                );
+              }
+            } catch (error) {
+              console.error("Payment verification error:", error);
+              setError("Payment verification failed. Please contact support.");
+            }
+
+            setLoading(false);
+            setPaymentType(null);
+          },
+          onError: (data: any) => {
+            console.log("Klump payment error:", data);
+            setError("Payment failed. Please try again.");
+            setLoading(false);
+            setPaymentType(null);
+          },
+          onLoad: (data: any) => {
+            console.log("Klump loaded:", data);
+          },
+          onOpen: (data: any) => {
+            console.log("Klump opened:", data);
+          },
+          onClose: (data: any) => {
+            console.log("Klump closed:", data);
+            setLoading(false);
+            setPaymentType(null);
+          },
+        };
+
+        console.log("Creating Klump instance with payload:", payload);
+        // console.log("Klump element:", element);
+        // console.log("Klump config:", klumpConfig);
+        // element.addEventListener("click", function () {
+        // @ts-ignore
+        const klump = new Klump(payload);
+        // klump.setup();
+        // klump.open();
+        // });
+
+        // const klump = new (window as any).Klump(payload);
+        // klump.setup();
+        // klump.open();
+        // console.log("Klump modal should be opening...");
+      };
+
+      element.addEventListener("click", handleClick);
+      return () => element.removeEventListener("click", handleClick);
+    }
+  }, [cartItems, formData]);
+
+  // useEffect(() => {
+  //   if (paymentType === "pay small small") {
+  //     initiateKlumpPayment();
+  //     return;
+  //   }
+  // }, [paymentType]);
+
   const submitOrder = async (paymentMethod: "pay now" | "pay small small") => {
+    if (paymentMethod === "pay small small") {
+      return;
+    }
+
     if (!validateForm()) return;
 
     if (cartItems.length === 0) {
@@ -210,18 +417,6 @@ const CartPage = () => {
           result.orderId || result.id,
           calculateCartTotal()
         );
-      } else {
-        // Pay Small Small flow
-        setSuccess(
-          "Order submitted successfully! An agent will contact you shortly to arrange payment and delivery."
-        );
-        clearCart();
-        navigate("/payment/small-success");
-
-        // Auto-redirect after 5 seconds
-        // setTimeout(() => {
-        //   navigate("/products");
-        // }, 5000);
       }
     } catch (err) {
       console.error("Error submitting order:", err);
@@ -542,7 +737,7 @@ const CartPage = () => {
                     )}
                   </button>
 
-                  <button
+                  {/* <button
                     onClick={() => submitOrder("pay small small")}
                     disabled={loading}
                     className="btn btn-secondary w-full"
@@ -550,27 +745,31 @@ const CartPage = () => {
                     {loading && paymentType === "pay small small" ? (
                       <>
                         <span className="loading loading-spinner loading-sm"></span>
-                        Submitting...
+                        Processing...
                       </>
                     ) : (
                       <>
                         📞 Pay Small Small
                         <span className="text-sm opacity-75">
-                          (₦{calculateCartTotal().toLocaleString()})
+                          (₦
+                          {Math.round(
+                            calculateCartTotal() * 1.06
+                          ).toLocaleString()}
+                          )
                         </span>
                       </>
                     )}
-                  </button>
+                  </button> */}
                 </div>
-
+                <div id="klump__checkout"></div>
                 <div className="text-xs text-gray-500 mt-4">
                   <p>
                     <strong>Pay Now:</strong> Complete payment immediately via
                     Paystack
                   </p>
                   <p>
-                    <strong>Pay Small Small:</strong> Our agent will contact you
-                    to arrange flexible payment options
+                    <strong>Pay Small Small:</strong> Flexible installment
+                    payment via Klump
                   </p>
                 </div>
               </div>
@@ -584,20 +783,52 @@ const CartPage = () => {
 
 export default CartPage;
 
+declare global {
+  interface Window {
+    Klump: any;
+  }
+}
+
 export const Head = () => (
   <>
     <title>Shopping Cart | AntonAxel Solar Products</title>
-    <meta name="description" content="Review your selected solar products and complete your order. Secure checkout with flexible payment options including Pay Now and Pay Small Small installments." />
-    <meta name="keywords" content="shopping cart, solar products checkout, order review, payment options, AntonAxel cart" />
+    <meta
+      name="description"
+      content="Review your selected solar products and complete your order. Secure checkout with flexible payment options including Pay Now and Pay Small Small installments."
+    />
+    <meta
+      name="keywords"
+      content="shopping cart, solar products checkout, order review, payment options, AntonAxel cart"
+    />
     <meta name="author" content="AntonAxel Nigeria Company Limited" />
-    <meta property="og:title" content="Shopping Cart | AntonAxel Solar Products" />
-    <meta property="og:description" content="Review your selected solar products and complete your order with flexible payment options." />
+    <meta
+      property="og:title"
+      content="Shopping Cart | AntonAxel Solar Products"
+    />
+    <meta
+      property="og:description"
+      content="Review your selected solar products and complete your order with flexible payment options."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://antonaxel.com/cart" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Shopping Cart | AntonAxel Solar Products" />
-    <meta name="twitter:description" content="Review your selected solar products and complete your order with flexible payment options." />
+    <meta
+      name="twitter:title"
+      content="Shopping Cart | AntonAxel Solar Products"
+    />
+    <meta
+      name="twitter:description"
+      content="Review your selected solar products and complete your order with flexible payment options."
+    />
     <link rel="canonical" href="https://antonaxel.com/cart" />
     <meta name="robots" content="noindex, nofollow" />
+    <script
+      src="https://js.useklump.com/klump.js"
+      // strategy="lazyOnload"
+      onLoad={() => {
+        console.log("Klump script loaded");
+      }}
+      onError={() => console.error("Failed to load Klump script")}
+    />
   </>
 );
