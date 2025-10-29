@@ -24,7 +24,7 @@ const PaymentCallback = () => {
         // Verify payment with backend
         const response = await fetch(
           //   "http://localhost:5000/api/verify-payment",
-          "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/verify-payment",
+          "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/verify-payment",
           //  "https://antonaxel-server.onrender.com/api/verify-payment",
           {
             method: "POST",
@@ -124,7 +124,10 @@ export default PaymentCallback;
 export const Head = () => (
   <>
     <title>Payment Verification | AntonAxel Solar</title>
-    <meta name="description" content="Verifying your payment for AntonAxel solar products. Please wait while we confirm your transaction." />
+    <meta
+      name="description"
+      content="Verifying your payment for AntonAxel solar products. Please wait while we confirm your transaction."
+    />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="canonical" href="https://antonaxel.com" />
   </>

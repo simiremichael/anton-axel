@@ -56,7 +56,7 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/getOrders"
+        "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/getOrders"
         // "http://localhost:3000/dev/api/getOrders"
         // "https://antonaxel-server.onrender.com/api/getOrders"
       );
@@ -514,7 +514,10 @@ export default AdminDashboard;
 export const Head = () => (
   <>
     <title>Admin Dashboard | AntonAxel Solar Management</title>
-    <meta name="description" content="AntonAxel admin dashboard for managing solar product orders, customer information, and order status updates. Secure administrative access." />
+    <meta
+      name="description"
+      content="AntonAxel admin dashboard for managing solar product orders, customer information, and order status updates. Secure administrative access."
+    />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="author" content="AntonAxel Nigeria Company Limited" />
     <link rel="canonical" href="https://antonaxel.com" />

@@ -170,7 +170,7 @@ const CartPage = () => {
       };
 
       await fetch(
-        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/orders",
+        "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/orders",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -238,6 +238,9 @@ const CartPage = () => {
             meta_data: {
               customer: formData.name,
               email: formData.email,
+              shipping_contact_name: formData.name,
+              customer_shipping_phone: formData.phone,
+              delivery_address: formData.address,
             },
             items: cartItems.map((item) => ({
               name: item.name,
@@ -251,7 +254,7 @@ const CartPage = () => {
             // Verify payment with Klump
             try {
               const verifyResponse = await fetch(
-                "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
+                "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
                 {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
@@ -389,7 +392,7 @@ const CartPage = () => {
       };
 
       const response = await fetch(
-        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/orders",
+        "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/orders",
         // "https://05ce85v1dg.execute-api.us-east-1.amazonaws.com/dev/api/orders",
         // "https://antonaxel-server.onrender.com/api/orders",
         {
@@ -438,7 +441,7 @@ const CartPage = () => {
       // Initialize Paystack payment
       const paystackResponse = await fetch(
         // "http://localhost:5000/api/initialize-payment",
-        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/initialize-payment",
+        " https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/initialize-payment",
         // "https://antonaxel-server.onrender.com/api/initialize-payment",
         {
           method: "POST",
