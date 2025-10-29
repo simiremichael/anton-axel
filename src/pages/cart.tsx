@@ -471,7 +471,7 @@ const CartPage = () => {
 
       const paymentData = await paystackResponse.json();
 
-      console.log("Paystack payment initialized:", paymentData);
+      // console.log("Paystack payment initialized:", paymentData);
 
       if (paymentData.authorization_url) {
         // Clear cart before redirecting

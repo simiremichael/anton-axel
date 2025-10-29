@@ -24,6 +24,8 @@ interface Order {
   location: string;
   total_price: number;
   status: string;
+  paymentStatus?: string;
+  paymentType?: string;
   created_at: string;
   items: OrderItem[];
   order_summary: {
@@ -282,6 +284,7 @@ const AdminDashboard = () => {
                       <th>Items</th>
                       <th>Total</th>
                       <th>Status</th>
+                      <th>Payment</th>
                       <th>Date</th>
                       <th>Actions</th>
                     </tr>
