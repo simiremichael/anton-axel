@@ -41,6 +41,7 @@ const AdminDashboard = () => {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [updatingStatus, setUpdatingStatus] = useState<number | null>(null);
   const [deletingOrder, setDeletingOrder] = useState<number | null>(null);
+  const [orderToDelete, setOrderToDelete] = useState<Order | null>(null);
 
   useEffect(() => {
     // Check authentication
@@ -81,7 +82,7 @@ const AdminDashboard = () => {
       setUpdatingStatus(orderId);
 
       const response = await fetch(
-        `https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/updateOrder/${orderId}`,
+        `https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/updateOrder/${orderId}`,
         // `http://localhost:3000/dev/api/updateOrder/${orderId}`,
         // `https://antonaxel-server.onrender.com/api/updateOrder/${orderId}`,
         {
@@ -115,22 +116,19 @@ const AdminDashboard = () => {
     }
   };
 
-  const deleteOrder = async (orderId: number) => {
-    if (
-      !confirm(
-        "Are you sure you want to delete this order? This action cannot be undone."
-      )
-    ) {
-      return;
-    }
+  const confirmDelete = (order: Order) => {
+    setOrderToDelete(order);
+    (document.getElementById("delete_confirm_modal") as HTMLDialogElement)?.showModal();
+  };
+
+  const deleteOrder = async () => {
+    if (!orderToDelete) return;
 
     try {
-      setDeletingOrder(orderId);
+      setDeletingOrder(orderToDelete.id);
 
       const response = await fetch(
-        // `http://localhost:5000/api/deleteOrder/${orderId}`,
-        ` https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/deleteOrder/${orderId}`,
-        //  `https://antonaxel-server.onrender.com/api/deleteOrder/${orderId}`,
+        `https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/deleteOrder/${orderToDelete.id}`,
         {
           method: "DELETE",
         }
@@ -142,20 +140,22 @@ const AdminDashboard = () => {
 
       // Remove from local state
       setOrders((prevOrders) =>
-        prevOrders.filter((order) => order.id !== orderId)
+        prevOrders.filter((order) => order.id !== orderToDelete.id)
       );
 
       // Close modal if this order was selected
-      if (selectedOrder?.id === orderId) {
+      if (selectedOrder?.id === orderToDelete.id) {
         setSelectedOrder(null);
       }
 
       setError("");
+      (document.getElementById("delete_confirm_modal") as HTMLDialogElement)?.close();
     } catch (err) {
       console.error("Error deleting order:", err);
       setError("Failed to delete order. Please try again.");
     } finally {
       setDeletingOrder(null);
+      setOrderToDelete(null);
     }
   };
 
@@ -345,7 +345,7 @@ const AdminDashboard = () => {
                             </button>
                             <button
                               className="btn btn-sm btn-error"
-                              onClick={() => deleteOrder(order.id)}
+                              onClick={() => confirmDelete(order)}
                               disabled={deletingOrder === order.id}
                             >
                               {deletingOrder === order.id ? (
@@ -502,6 +502,38 @@ const AdminDashboard = () => {
                 </div>
               </div>
             )}
+          </div>
+        </dialog>
+
+        {/* Delete Confirmation Modal */}
+        <dialog id="delete_confirm_modal" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Confirm Delete</h3>
+            <p className="py-4">
+              Are you sure you want to delete order #{orderToDelete?.id}? This action cannot be undone.
+            </p>
+            <div className="modal-action">
+              <button
+                className="btn"
+                onClick={() => {
+                  (document.getElementById("delete_confirm_modal") as HTMLDialogElement)?.close();
+                  setOrderToDelete(null);
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                className="btn btn-error"
+                onClick={deleteOrder}
+                disabled={deletingOrder !== null}
+              >
+                {deletingOrder ? (
+                  <span className="loading loading-spinner loading-sm"></span>
+                ) : (
+                  "Delete"
+                )}
+              </button>
+            </div>
           </div>
         </dialog>
       </div>

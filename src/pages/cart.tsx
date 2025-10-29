@@ -414,6 +414,8 @@ const CartPage = () => {
 
       const result = await response.json();
 
+      console.log("Order created successfully:", result);
+
       if (paymentMethod === "pay now") {
         // Redirect to Paystack payment
         await initiatePaystackPayment(
@@ -441,7 +443,7 @@ const CartPage = () => {
       // Initialize Paystack payment
       const paystackResponse = await fetch(
         // "http://localhost:5000/api/initialize-payment",
-        " https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/initialize-payment",
+        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/initialize-payment",
         // "https://antonaxel-server.onrender.com/api/initialize-payment",
         {
           method: "POST",
@@ -463,11 +465,13 @@ const CartPage = () => {
         }
       );
 
-      if (!paystackResponse.ok) {
-        throw new Error("Failed to initialize payment");
-      }
+      // if (!paystackResponse.ok) {
+      //   throw new Error("Failed to initialize payment");
+      // }
 
       const paymentData = await paystackResponse.json();
+
+      console.log("Paystack payment initialized:", paymentData);
 
       if (paymentData.authorization_url) {
         // Clear cart before redirecting
