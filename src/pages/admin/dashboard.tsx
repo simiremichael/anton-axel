@@ -184,6 +184,18 @@ const AdminDashboard = () => {
     );
   };
 
+  const getPaymentStatusBadgeClass = (paymentStatus?: string) => {
+    const statusClasses = {
+      paid: "badge-success",
+      pending: "badge-warning",
+      failed: "badge-error",
+      refunded: "badge-info",
+    };
+    return (
+      statusClasses[paymentStatus as keyof typeof statusClasses] || "badge-neutral"
+    );
+  };
+
   const authState = getAuthState();
 
   if (loading) {
@@ -334,6 +346,16 @@ const AdminDashboard = () => {
                           )}
                         </td>
                         <td>
+                          <span className={`badge ${getPaymentStatusBadgeClass(order.paymentStatus)}`}>
+                            {order.paymentStatus || "N/A"}
+                          </span>
+                          {order.paymentType && (
+                            <div className="text-xs opacity-50 mt-1">
+                              {order.paymentType}
+                            </div>
+                          )}
+                        </td>
+                        <td>
                           {order.created_at
                             ? new Date(order.created_at).toLocaleDateString()
                             : "N/A"}
@@ -434,6 +456,17 @@ const AdminDashboard = () => {
                             selectedOrder.items?.length ||
                             0}
                         </p>
+                        <p>
+                          <strong>Payment Status:</strong>
+                          <span className={`badge ${getPaymentStatusBadgeClass(selectedOrder.paymentStatus)} ml-2`}>
+                            {selectedOrder.paymentStatus || "N/A"}
+                          </span>
+                        </p>
+                        {selectedOrder.paymentType && (
+                          <p>
+                            <strong>Payment Type:</strong> {selectedOrder.paymentType}
+                          </p>
+                        )}
                         <p>
                           <strong>Date:</strong>{" "}
                           {selectedOrder.created_at
