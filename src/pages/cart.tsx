@@ -768,6 +768,9 @@ const CartPage = () => {
                     )}
                   </button> */}
                 </div>
+                <strong className="-mb-5">
+                  Click Below For Pay Small Small:
+                </strong>
                 <div id="klump__checkout"></div>
                 <div className="text-xs text-gray-500 mt-4">
                   <p>
