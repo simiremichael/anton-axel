@@ -291,7 +291,7 @@ const CartPage = () => {
       element.addEventListener("click", handleClick);
       return () => element.removeEventListener("click", handleClick);
     }
-  }, []);
+  }, [cartItems, formData]);
 
   // useEffect(() => {
   //   if (paymentType === "pay small small") {
