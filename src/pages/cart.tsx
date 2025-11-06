@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { navigate, Script } from "gatsby";
 import Layout from "../components/layout";
 import CartQtySelector from "../components/CartQtySelector";
+import { ignore } from "gatsby/dist/schema/infer/inference-metadata";
 // import { KlumpCheckout } from "klump-react";
 
 interface CartItem {
@@ -284,8 +285,8 @@ const CartPage = () => {
         };
 
         console.log("Creating Klump instance with payload:", payload);
-
-        const klump = new window.Klump(payload);
+        // @ts-ignore
+        const klump = new Klump(payload);
       };
 
       element.addEventListener("click", handleClick);
