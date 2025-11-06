@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { navigate, Script } from "gatsby";
 import Layout from "../components/layout";
 import CartQtySelector from "../components/CartQtySelector";
-import { ignore } from "gatsby/dist/schema/infer/inference-metadata";
 // import { KlumpCheckout } from "klump-react";
 
 interface CartItem {
@@ -292,7 +291,7 @@ const CartPage = () => {
       element.addEventListener("click", handleClick);
       return () => element.removeEventListener("click", handleClick);
     }
-  }, [cartItems, formData]);
+  }, []);
 
   // useEffect(() => {
   //   if (paymentType === "pay small small") {
