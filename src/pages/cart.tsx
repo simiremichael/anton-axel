@@ -308,14 +308,14 @@ const CartPage = () => {
           },
         };
 
-        console.log("Creating Klump instance with payload:", payload);
+        // console.log("Creating Klump instance with payload:", payload);
         // console.log("Klump element:", element);
         // console.log("Klump config:", klumpConfig);
         // element.addEventListener("click", function () {
         // @ts-ignore
         const klump = new Klump(payload);
         // klump.setup();
-        // klump.open();
+        klump.open();
         // });
 
         // const klump = new (window as any).Klump(payload);
@@ -327,14 +327,7 @@ const CartPage = () => {
       element.addEventListener("click", handleClick);
       return () => element.removeEventListener("click", handleClick);
     }
-  }, [cartItems, formData]);
-
-  // useEffect(() => {
-  //   if (paymentType === "pay small small") {
-  //     initiateKlumpPayment();
-  //     return;
-  //   }
-  // }, [paymentType]);
+  }, [cartItems, formData.name, formData.email, formData.phone]);
 
   const submitOrder = async (paymentMethod: "pay now" | "pay small small") => {
     if (paymentMethod === "pay small small") {
@@ -768,9 +761,9 @@ const CartPage = () => {
                     )}
                   </button> */}
                 </div>
-                <strong className="-mb-5">
+                {/* <strong className="-mb-5">
                   Click Below For Pay Small Small:
-                </strong>
+                </strong> */}
                 <div id="klump__checkout"></div>
                 <div className="text-xs text-gray-500 mt-4">
                   <p>
@@ -832,13 +825,6 @@ export const Head = () => (
     />
     <link rel="canonical" href="https://antonaxel.com/cart" />
     <meta name="robots" content="noindex, nofollow" />
-    <script
-      src="https://js.useklump.com/klump.js"
-      // strategy="lazyOnload"
-      onLoad={() => {
-        console.log("Klump script loaded");
-      }}
-      onError={() => console.error("Failed to load Klump script")}
-    />
+    <script src="https://js.useklump.com/klump.js" async />
   </>
 );
