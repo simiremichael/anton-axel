@@ -22,15 +22,9 @@ type LayoutProps = {
 const Layout = ({ children, pageTitle }: LayoutProps) => {
   return (
     <>
-      {/* <Helmet>
-        <script
-          src="https://js.useklump.com/klump.js"
-          onLoad={() => {
-            console.log("Klump script loaded");
-          }}
-          onError={() => console.error("Failed to load Klump script")}
-        />
-      </Helmet> */}
+      <Helmet>
+        <script src="https://js.useklump.com/klump.js" />
+      </Helmet>
       <div className="min-h-screen bg-white">
         {/* Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">

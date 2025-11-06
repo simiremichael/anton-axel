@@ -194,7 +194,7 @@ const CartPage = () => {
   //     const checkKlump = () => {
   //       if ((window as any).Klump) {
   //         console.log("Klump is available");
-  //         setKlumpLoaded(true);
+  //         // setKlumpLoaded(true);
   //       } else {
   //         setTimeout(checkKlump, 100);
   //       }
@@ -825,6 +825,6 @@ export const Head = () => (
     />
     <link rel="canonical" href="https://antonaxel.com/cart" />
     <meta name="robots" content="noindex, nofollow" />
-    <script src="https://js.useklump.com/klump.js" async />
+    {/* <script src="https://js.useklump.com/klump.js" async /> */}
   </>
 );
