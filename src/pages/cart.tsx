@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { navigate } from "gatsby";
+import { navigate, Script } from "gatsby";
 import Layout from "../components/layout";
 import CartQtySelector from "../components/CartQtySelector";
 // import { KlumpCheckout } from "klump-react";
@@ -170,7 +170,7 @@ const CartPage = () => {
       };
 
       await fetch(
-        "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/orders",
+        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/orders",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -194,7 +194,7 @@ const CartPage = () => {
   //     const checkKlump = () => {
   //       if ((window as any).Klump) {
   //         console.log("Klump is available");
-  //         // setKlumpLoaded(true);
+  //         setKlumpLoaded(true);
   //       } else {
   //         setTimeout(checkKlump, 100);
   //       }
@@ -238,9 +238,6 @@ const CartPage = () => {
             meta_data: {
               customer: formData.name,
               email: formData.email,
-              shipping_contact_name: formData.name,
-              customer_shipping_phone: formData.phone,
-              delivery_address: formData.address,
             },
             items: cartItems.map((item) => ({
               name: item.name,
@@ -254,7 +251,7 @@ const CartPage = () => {
             // Verify payment with Klump
             try {
               const verifyResponse = await fetch(
-                "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
+                "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
                 {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
@@ -308,14 +305,14 @@ const CartPage = () => {
           },
         };
 
-        // console.log("Creating Klump instance with payload:", payload);
+        console.log("Creating Klump instance with payload:", payload);
         // console.log("Klump element:", element);
         // console.log("Klump config:", klumpConfig);
         // element.addEventListener("click", function () {
         // @ts-ignore
         const klump = new Klump(payload);
         // klump.setup();
-        klump.open();
+        // klump.open();
         // });
 
         // const klump = new (window as any).Klump(payload);
@@ -327,7 +324,14 @@ const CartPage = () => {
       element.addEventListener("click", handleClick);
       return () => element.removeEventListener("click", handleClick);
     }
-  }, [cartItems, formData.name, formData.email, formData.phone]);
+  }, [cartItems, formData]);
+
+  // useEffect(() => {
+  //   if (paymentType === "pay small small") {
+  //     initiateKlumpPayment();
+  //     return;
+  //   }
+  // }, [paymentType]);
 
   const submitOrder = async (paymentMethod: "pay now" | "pay small small") => {
     if (paymentMethod === "pay small small") {
@@ -385,7 +389,7 @@ const CartPage = () => {
       };
 
       const response = await fetch(
-        "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/orders",
+        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/orders",
         // "https://05ce85v1dg.execute-api.us-east-1.amazonaws.com/dev/api/orders",
         // "https://antonaxel-server.onrender.com/api/orders",
         {
@@ -406,8 +410,6 @@ const CartPage = () => {
       }
 
       const result = await response.json();
-
-      console.log("Order created successfully:", result);
 
       if (paymentMethod === "pay now") {
         // Redirect to Paystack payment
@@ -458,13 +460,11 @@ const CartPage = () => {
         }
       );
 
-      // if (!paystackResponse.ok) {
-      //   throw new Error("Failed to initialize payment");
-      // }
+      if (!paystackResponse.ok) {
+        throw new Error("Failed to initialize payment");
+      }
 
       const paymentData = await paystackResponse.json();
-
-      // console.log("Paystack payment initialized:", paymentData);
 
       if (paymentData.authorization_url) {
         // Clear cart before redirecting
@@ -512,6 +512,7 @@ const CartPage = () => {
 
   return (
     <Layout pageTitle="Shopping Cart">
+      <Script src="https://js.useklump.com/klump.js" defer />
       <div className=" mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
 
@@ -761,9 +762,6 @@ const CartPage = () => {
                     )}
                   </button> */}
                 </div>
-                {/* <strong className="-mb-5">
-                  Click Below For Pay Small Small:
-                </strong> */}
                 <div id="klump__checkout"></div>
                 <div className="text-xs text-gray-500 mt-4">
                   <p>
@@ -825,6 +823,13 @@ export const Head = () => (
     />
     <link rel="canonical" href="https://antonaxel.com/cart" />
     <meta name="robots" content="noindex, nofollow" />
-    {/* <script src="https://js.useklump.com/klump.js" async /> */}
+    {/* <script
+      src="https://js.useklump.com/klump.js"
+      // strategy="lazyOnload"
+      onLoad={() => {
+        console.log("Klump script loaded");
+      }}
+      onError={() => console.error("Failed to load Klump script")}
+    /> */}
   </>
 );
