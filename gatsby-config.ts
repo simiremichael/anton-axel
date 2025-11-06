@@ -21,20 +21,7 @@ const config: GatsbyConfig = {
       "path": "./src/images/"
     },
     __key: "images"
-  }, "gatsby-plugin-react-helmet", 'gatsby-plugin-postcss',],
-developMiddleware: app => {
-    app.use((req, res, next) => {
-      // Disable caching for specific paths
-      if (req.path.startsWith('/cart/')) {
-        res.set({
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0'
-        });
-      }
-      next();
-    });
-  },
+  }, "gatsby-plugin-react-helmet", 'gatsby-plugin-postcss',]
 };
 
 export default config;
