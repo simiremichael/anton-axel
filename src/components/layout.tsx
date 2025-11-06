@@ -11,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Helmet } from "react-helmet";
 import CartIcon from "./CartIcon";
 
 type LayoutProps = {
@@ -22,9 +21,6 @@ type LayoutProps = {
 const Layout = ({ children, pageTitle }: LayoutProps) => {
   return (
     <>
-      <Helmet>
-        <script src="https://js.useklump.com/klump.js" />
-      </Helmet>
       <div className="min-h-screen bg-white">
         {/* Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">

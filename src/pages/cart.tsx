@@ -185,28 +185,6 @@ const CartPage = () => {
 
   // const [klumpLoaded, setKlumpLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-  //   script.src = "https://js.useklump.com/klump.js";
-  //   script.async = true;
-  //   script.onload = () => {
-  //     console.log("Klump script loaded");
-  //     const checkKlump = () => {
-  //       if ((window as any).Klump) {
-  //         console.log("Klump is available");
-  //         setKlumpLoaded(true);
-  //       } else {
-  //         setTimeout(checkKlump, 100);
-  //       }
-  //     };
-  //     checkKlump();
-  //   };
-  //   script.onerror = () => {
-  //     console.error("Failed to load Klump script");
-  //   };
-  //   document.head.appendChild(script);
-  // }, []);
-
   useEffect(() => {
     const element = document.getElementById("klump__checkout");
     if (element) {
@@ -306,19 +284,8 @@ const CartPage = () => {
         };
 
         console.log("Creating Klump instance with payload:", payload);
-        // console.log("Klump element:", element);
-        // console.log("Klump config:", klumpConfig);
-        // element.addEventListener("click", function () {
-        // @ts-ignore
-        const klump = new Klump(payload);
-        // klump.setup();
-        // klump.open();
-        // });
 
-        // const klump = new (window as any).Klump(payload);
-        // klump.setup();
-        // klump.open();
-        // console.log("Klump modal should be opening...");
+        const klump = new window.Klump(payload);
       };
 
       element.addEventListener("click", handleClick);
@@ -512,7 +479,6 @@ const CartPage = () => {
 
   return (
     <Layout pageTitle="Shopping Cart">
-      <Script src="https://js.useklump.com/klump.js" defer />
       <div className=" mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
 
@@ -823,13 +789,6 @@ export const Head = () => (
     />
     <link rel="canonical" href="https://antonaxel.com/cart" />
     <meta name="robots" content="noindex, nofollow" />
-    {/* <script
-      src="https://js.useklump.com/klump.js"
-      // strategy="lazyOnload"
-      onLoad={() => {
-        console.log("Klump script loaded");
-      }}
-      onError={() => console.error("Failed to load Klump script")}
-    /> */}
+    <script src="https://js.useklump.com/klump.js" defer></script>
   </>
 );
