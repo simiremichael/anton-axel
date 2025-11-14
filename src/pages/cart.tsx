@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { navigate, Script } from "gatsby";
 import Layout from "../components/layout";
 import CartQtySelector from "../components/CartQtySelector";
-// import { KlumpCheckout } from "klump-react";
+import { KlumpCheckout } from "klump-react";
 
 interface CartItem {
   id: number;
@@ -185,113 +185,113 @@ const CartPage = () => {
 
   // const [klumpLoaded, setKlumpLoaded] = useState(false);
 
-  useEffect(() => {
-    const element = document.getElementById("klump__checkout");
-    if (element) {
-      const handleClick = () => {
-        console.log("Klump button clicked");
-        if (!validateForm()) return;
-        if (cartItems.length === 0) {
-          setError("Your cart is empty");
-          return;
-        }
+  // useEffect(() => {
+  //   const element = document.getElementById("klump__checkout");
+  //   if (element) {
+  //     const handleClick = () => {
+  //       console.log("Klump button clicked");
+  //       if (!validateForm()) return;
+  //       if (cartItems.length === 0) {
+  //         setError("Your cart is empty");
+  //         return;
+  //       }
 
-        setLoading(true);
-        setPaymentType("pay small small");
-        setError("");
+  //       setLoading(true);
+  //       setPaymentType("pay small small");
+  //       setError("");
 
-        const payload = {
-          publicKey:
-            "klp_pk_8735e345455c45ac9601978954790ccf478622210b574adc8b54d1263e5fc0b0",
-          data: {
-            amount: Math.round(calculateCartTotal() * 1.06),
-            shipping_fee: 0,
-            currency: "NGN",
-            first_name: formData.name.split(" ")[0] || "Customer",
-            last_name: formData.name.split(" ").slice(1).join(" ") || "User",
-            email: formData.email,
-            phone: formData.phone,
-            redirect_url: `${window.location.origin}/payment/small-success`,
-            merchant_reference: `order-${Date.now()}`,
-            meta_data: {
-              customer: formData.name,
-              email: formData.email,
-            },
-            items: cartItems.map((item) => ({
-              name: item.name,
-              unit_price: Math.round(item.price * 1.06),
-              quantity: item.quantity,
-            })),
-          },
-          onSuccess: async (data: any) => {
-            // console.log("Klump payment successful:", data);
+  //       const payload = {
+  //         publicKey:
+  //           "klp_pk_8735e345455c45ac9601978954790ccf478622210b574adc8b54d1263e5fc0b0",
+  //         data: {
+  //           amount: Math.round(calculateCartTotal() * 1.06),
+  //           shipping_fee: 0,
+  //           currency: "NGN",
+  //           first_name: formData.name.split(" ")[0] || "Customer",
+  //           last_name: formData.name.split(" ").slice(1).join(" ") || "User",
+  //           email: formData.email,
+  //           phone: formData.phone,
+  //           redirect_url: `${window.location.origin}/payment/small-success`,
+  //           merchant_reference: `order-${Date.now()}`,
+  //           meta_data: {
+  //             customer: formData.name,
+  //             email: formData.email,
+  //           },
+  //           items: cartItems.map((item) => ({
+  //             name: item.name,
+  //             unit_price: Math.round(item.price * 1.06),
+  //             quantity: item.quantity,
+  //           })),
+  //         },
+  //         onSuccess: async (data: any) => {
+  //           // console.log("Klump payment successful:", data);
 
-            // Verify payment with Klump
-            try {
-              const verifyResponse = await fetch(
-                "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  credentials: "include",
-                  body: JSON.stringify({ reference: data.reference }),
-                }
-              );
-              await submitKlumpOrder(data);
-              clearCart();
-              navigate("/payment/small-success");
-              if (verifyResponse.ok) {
-                const verificationResult = await verifyResponse.json();
-                if (verificationResult.status === "success") {
-                  // await submitKlumpOrder(data);
-                  // clearCart();
-                  // navigate("/payment/small-success");
-                } else {
-                  setError(
-                    "Payment verification failed. Please contact support."
-                  );
-                }
-              } else {
-                setError(
-                  "Payment verification failed. Please contact support."
-                );
-              }
-            } catch (error) {
-              console.error("Payment verification error:", error);
-              setError("Payment verification failed. Please contact support.");
-            }
+  //           // Verify payment with Klump
+  //           try {
+  //             const verifyResponse = await fetch(
+  //               "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
+  //               {
+  //                 method: "POST",
+  //                 headers: { "Content-Type": "application/json" },
+  //                 credentials: "include",
+  //                 body: JSON.stringify({ reference: data.reference }),
+  //               }
+  //             );
+  //             await submitKlumpOrder(data);
+  //             clearCart();
+  //             navigate("/payment/small-success");
+  //             if (verifyResponse.ok) {
+  //               const verificationResult = await verifyResponse.json();
+  //               if (verificationResult.status === "success") {
+  //                 // await submitKlumpOrder(data);
+  //                 // clearCart();
+  //                 // navigate("/payment/small-success");
+  //               } else {
+  //                 setError(
+  //                   "Payment verification failed. Please contact support."
+  //                 );
+  //               }
+  //             } else {
+  //               setError(
+  //                 "Payment verification failed. Please contact support."
+  //               );
+  //             }
+  //           } catch (error) {
+  //             console.error("Payment verification error:", error);
+  //             setError("Payment verification failed. Please contact support.");
+  //           }
 
-            setLoading(false);
-            setPaymentType(null);
-          },
-          onError: (data: any) => {
-            console.log("Klump payment error:", data);
-            setError("Payment failed. Please try again.");
-            setLoading(false);
-            setPaymentType(null);
-          },
-          onLoad: (data: any) => {
-            console.log("Klump loaded:", data);
-          },
-          onOpen: (data: any) => {
-            console.log("Klump opened:", data);
-          },
-          onClose: (data: any) => {
-            console.log("Klump closed:", data);
-            setLoading(false);
-            setPaymentType(null);
-          },
-        };
+  //           setLoading(false);
+  //           setPaymentType(null);
+  //         },
+  //         onError: (data: any) => {
+  //           console.log("Klump payment error:", data);
+  //           setError("Payment failed. Please try again.");
+  //           setLoading(false);
+  //           setPaymentType(null);
+  //         },
+  //         onLoad: (data: any) => {
+  //           console.log("Klump loaded:", data);
+  //         },
+  //         onOpen: (data: any) => {
+  //           console.log("Klump opened:", data);
+  //         },
+  //         onClose: (data: any) => {
+  //           console.log("Klump closed:", data);
+  //           setLoading(false);
+  //           setPaymentType(null);
+  //         },
+  //       };
 
-        console.log("Creating Klump instance with payload:", payload);
-        // @ts-ignore
-        const klump = new Klump(payload);
-      };
+  //       console.log("Creating Klump instance with payload:", payload);
+  //       // @ts-ignore
+  //       const klump = new Klump(payload);
+  //     };
 
-      element.addEventListener("click", handleClick);
-      return () => element.removeEventListener("click", handleClick);
-    }
-  }, [cartItems, formData]);
+  //     element.addEventListener("click", handleClick);
+  //     return () => element.removeEventListener("click", handleClick);
+  //   }
+  // }, [cartItems, formData]);
 
   // useEffect(() => {
   //   if (paymentType === "pay small small") {
@@ -299,6 +299,93 @@ const CartPage = () => {
   //     return;
   //   }
   // }, [paymentType]);
+
+  const payWithKlump = () => {
+    const payload = {
+      publicKey:
+        "klp_pk_8735e345455c45ac9601978954790ccf478622210b574adc8b54d1263e5fc0b0",
+      data: {
+        amount: Math.round(calculateCartTotal() * 1.06),
+        shipping_fee: 0,
+        currency: "NGN",
+        first_name: formData.name.split(" ")[0] || "Customer",
+        last_name: formData.name.split(" ").slice(1).join(" ") || "User",
+        email: formData.email,
+        phone: formData.phone,
+        redirect_url: `${window.location.origin}/payment/small-success`,
+        merchant_reference: `order-${Date.now()}`,
+        meta_data: {
+          customer: formData.name,
+          email: formData.email,
+        },
+        items: [
+          ...cartItems.map((item) => ({
+            name: item.name,
+            unit_price: Math.round(item.price * 1.06),
+            quantity: item.quantity,
+          })),
+        ],
+      },
+      onSuccess: async (data: any) => {
+        console.log("Klump payment successful:", data);
+
+        try {
+          const verifyResponse = await fetch(
+            "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: JSON.stringify({ reference: data.reference }),
+            }
+          );
+          await submitKlumpOrder(data);
+          clearCart();
+          navigate("/payment/small-success");
+          if (verifyResponse.ok) {
+            const verificationResult = await verifyResponse.json();
+            if (verificationResult.status === "success") {
+              // await submitKlumpOrder(data);
+              // clearCart();
+              // navigate("/payment/small-success");
+            } else {
+              setError("Payment verification failed. Please contact support.");
+            }
+          } else {
+            setError("Payment verification failed. Please contact support.");
+          }
+        } catch (error) {
+          console.error("Payment verification error:", error);
+          setError("Payment verification failed. Please contact support.");
+        }
+
+        setLoading(false);
+        setPaymentType(null);
+      },
+      onError: (data: any) => {
+        console.log("Klump payment error:", data);
+        setError("Payment failed. Please try again.");
+        setLoading(false);
+        setPaymentType(null);
+      },
+      onLoad: (data: any) => {
+        console.log("Klump loaded:", data);
+      },
+      onOpen: (data: any) => {
+        console.log("Klump opened:", data);
+      },
+      onClose: (data: any) => {
+        console.log("Klump closed:", data);
+        setLoading(false);
+        setPaymentType(null);
+      },
+    };
+
+    console.log("Creating Klump instance with payload:", payload);
+    // @ts-ignore
+    const klump = new Klump(payload);
+    // klump.open();
+  };
 
   const submitOrder = async (paymentMethod: "pay now" | "pay small small") => {
     if (paymentMethod === "pay small small") {
@@ -602,7 +689,6 @@ const CartPage = () => {
             <div className="card bg-base-100 shadow-xl">
               <div className="card-body">
                 <h2 className="card-title mb-4">Checkout Information</h2>
-
                 <form className="space-y-4">
                   <div className="form-control">
                     <label className="label">
@@ -679,9 +765,7 @@ const CartPage = () => {
                     />
                   </div>
                 </form>
-
                 <div className="divider"></div>
-
                 {/* Payment Buttons */}
                 <div className="space-y-3">
                   <button
@@ -703,32 +787,10 @@ const CartPage = () => {
                       </>
                     )}
                   </button>
-
-                  {/* <button
-                    onClick={() => submitOrder("pay small small")}
-                    disabled={loading}
-                    className="btn btn-secondary w-full"
-                  >
-                    {loading && paymentType === "pay small small" ? (
-                      <>
-                        <span className="loading loading-spinner loading-sm"></span>
-                        Processing...
-                      </>
-                    ) : (
-                      <>
-                        📞 Pay Small Small
-                        <span className="text-sm opacity-75">
-                          (₦
-                          {Math.round(
-                            calculateCartTotal() * 1.06
-                          ).toLocaleString()}
-                          )
-                        </span>
-                      </>
-                    )}
-                  </button> */}
                 </div>
-                <div id="klump__checkout"></div>
+                {/* @ts-ignore */}
+                <KlumpCheckout onClick={payWithKlump} />
+                {/* <div id="klump__checkout"></div> */}
                 <div className="text-xs text-gray-500 mt-4">
                   <p>
                     <strong>Pay Now:</strong> Complete payment immediately via
