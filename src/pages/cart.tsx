@@ -300,32 +300,34 @@ const CartPage = () => {
   //   }
   // }, [paymentType]);
 
+  const data = {
+    amount: Math.round(calculateCartTotal() * 1.06),
+    shipping_fee: 0,
+    currency: "NGN",
+    first_name: formData.name.split(" ")[0] || "Customer",
+    last_name: formData.name.split(" ").slice(1).join(" ") || "User",
+    email: formData.email,
+    phone: formData.phone,
+    redirect_url: `${window.location.origin}/payment/small-success`,
+    merchant_reference: `order-${Date.now()}`,
+    meta_data: {
+      customer: formData.name,
+      email: formData.email,
+    },
+    items: [
+      ...cartItems.map((item) => ({
+        name: item.name,
+        unit_price: Math.round(item.price * 1.06),
+        quantity: item.quantity,
+      })),
+    ],
+  };
+
   const payWithKlump = () => {
     const payload = {
       publicKey:
         "klp_pk_8735e345455c45ac9601978954790ccf478622210b574adc8b54d1263e5fc0b0",
-      data: {
-        amount: Math.round(calculateCartTotal() * 1.06),
-        shipping_fee: 0,
-        currency: "NGN",
-        first_name: formData.name.split(" ")[0] || "Customer",
-        last_name: formData.name.split(" ").slice(1).join(" ") || "User",
-        email: formData.email,
-        phone: formData.phone,
-        redirect_url: `${window.location.origin}/payment/small-success`,
-        merchant_reference: `order-${Date.now()}`,
-        meta_data: {
-          customer: formData.name,
-          email: formData.email,
-        },
-        items: [
-          ...cartItems.map((item) => ({
-            name: item.name,
-            unit_price: Math.round(item.price * 1.06),
-            quantity: item.quantity,
-          })),
-        ],
-      },
+      data: data,
       onSuccess: async (data: any) => {
         console.log("Klump payment successful:", data);
 
@@ -851,6 +853,6 @@ export const Head = () => (
     />
     <link rel="canonical" href="https://antonaxel.com/cart" />
     <meta name="robots" content="noindex, nofollow" />
-    <script src="https://js.useklump.com/klump.js" defer></script>
+
   </>
 );
