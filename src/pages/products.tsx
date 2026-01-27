@@ -13,11 +13,11 @@ const products = [
     wattage: "1.1KVA",
     inverter_rating: "1.1KVA",
     inverter: 130000,
-    solar_panel: 135000,
+    solar_panel: 90000,
     battery_type: "Wet Cell",
     panel_rating: 300,
     number_of_panel: 4,
-    battery: 180000,
+    battery: 280000,
     battery_rating: "230AMPS",
     number_of_battery: 1,
     controller: 135000,
@@ -32,12 +32,12 @@ const products = [
     wattage: "1.6kVA",
     inverter_rating: "1.6KVA",
     inverter: 190000,
-    solar_panel: 165000,
+    solar_panel: 115000,
     battery_type: "Wet Cell",
     panel_rating: 400,
     number_of_panel: 6,
     number_of_battery: 2,
-    battery: 180000,
+    battery: 280000,
     battery_rating: "230AMPS",
     controller: 135000,
     controller_rating: "80AMPS",
@@ -51,12 +51,12 @@ const products = [
     wattage: "2kVA",
     inverter_rating: "2KVA",
     inverter: 260000,
-    solar_panel: 165000,
+    solar_panel: 115000,
     panel_rating: 400,
     battery_type: "Wet Cell",
     number_of_panel: 6,
     number_of_battery: 2,
-    battery: 180000,
+    battery: 280000,
     battery_rating: "230AMPS",
     controller: 135000,
     controller_rating: "80AMPS",
@@ -70,10 +70,10 @@ const products = [
     wattage: "3.2kVA",
     inverter_rating: "3.2KVA",
     inverter: 440000,
-    solar_panel: 185000,
+    solar_panel: 120000,
     panel_rating: 500,
     number_of_panel: 9,
-    battery: 180000,
+    battery: 280000,
     battery_rating: "230AMPS",
     battery_type: "Wet Cell",
     number_of_battery: 2,
@@ -89,10 +89,10 @@ const products = [
     wattage: "3.5kVA",
     inverter_rating: "3.5KVA",
     inverter: 380000,
-    solar_panel: 185000,
+    solar_panel: 120000,
     panel_rating: 500,
     number_of_panel: 9,
-    battery: 1304500,
+    battery: 1150000,
     battery_rating: "5kWTH",
     battery_type: "Lithium-ion",
     controller: 0,
@@ -108,10 +108,10 @@ const products = [
     wattage: "4.2kVA",
     inverter_rating: "4.2KVA",
     inverter: 420000,
-    solar_panel: 185000,
+    solar_panel: 120000,
     panel_rating: 500,
     number_of_panel: 9,
-    battery: 1304500,
+    battery: 1150000,
     battery_rating: "5kWTH",
     battery_type: "Lithium-ion",
     controller: 0,
@@ -127,10 +127,10 @@ const products = [
     wattage: "5kVA",
     inverter_rating: "5KVA",
     inverter: 780000,
-    solar_panel: 185000,
+    solar_panel: 120000,
     panel_rating: 500,
     number_of_panel: 12,
-    battery: 2295000,
+    battery: 1400000,
     battery_rating: "7.5kWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
@@ -146,10 +146,10 @@ const products = [
     wattage: "6.2kVA",
     inverter_rating: "6.2KVA",
     inverter: 920000,
-    solar_panel: 185000,
+    solar_panel: 120000,
     panel_rating: 500,
     number_of_panel: 12,
-    battery: 2495000,
+    battery: 1800000,
     battery_rating: "10kWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
@@ -165,10 +165,10 @@ const products = [
     wattage: "8kVA",
     inverter_rating: "8KVA",
     inverter: 1480000,
-    solar_panel: 185000,
+    solar_panel: 120000,
     panel_rating: 500,
     number_of_panel: 15,
-    battery: 2395000,
+    battery: 1800000,
     battery_rating: "10kWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
@@ -184,10 +184,10 @@ const products = [
     wattage: "10kVA",
     inverter_rating: "10KVA",
     inverter: 1600000,
-    solar_panel: 185000,
+    solar_panel: 120000,
     panel_rating: 500,
     number_of_panel: 21,
-    battery: 3255000,
+    battery: 2000000,
     battery_rating: "15kWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
@@ -207,7 +207,7 @@ const products = [
     panel_rating: 0,
     number_of_panel: 0,
     number_of_battery: 1,
-    battery: 185000,
+    battery: 280000,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
     controller: 0,
@@ -225,7 +225,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 185000,
+    battery: 280000,
     number_of_battery: 1,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
@@ -244,7 +244,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 185000,
+    battery: 280000,
     number_of_battery: 2,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
@@ -263,7 +263,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 185000,
+    battery: 280000,
     number_of_battery: 2,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
@@ -282,7 +282,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 185000,
+    battery: 280000,
     number_of_battery: 2,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
@@ -301,7 +301,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 185000,
+    battery: 280000,
     number_of_battery: 2,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
@@ -320,7 +320,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 185000,
+    battery: 280000,
     number_of_battery: 4,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
@@ -339,7 +339,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 185000,
+    battery: 280000,
     number_of_battery: 4,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
@@ -358,7 +358,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 185000,
+    battery: 280000,
     number_of_battery: 4,
     battery_type: "Wet Cell",
     battery_rating: "230AMPS",
@@ -377,7 +377,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 1304500,
+    battery: 1150000,
     battery_rating: "5kWTH",
     battery_type: "Lithium-ion",
     controller: 0,
@@ -396,7 +396,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 1304500,
+    battery: 1150000,
     battery_rating: "5kWTH",
     battery_type: "Lithium-ion",
     controller: 0,
@@ -415,7 +415,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 2395000,
+    battery: 1800000,
     battery_rating: "10KWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
@@ -434,7 +434,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 2395000,
+    battery: 1800000,
     battery_rating: "10kWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
@@ -453,7 +453,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 2395000,
+    battery: 1800000,
     battery_rating: "10kWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
@@ -472,7 +472,7 @@ const products = [
     solar_panel: 0,
     panel_rating: 0,
     number_of_panel: 0,
-    battery: 2700000,
+    battery: 2000000,
     battery_rating: "15kWTH",
     battery_type: "Lithium-ion",
     number_of_battery: 1,
@@ -489,7 +489,7 @@ const solar = [
     name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "550w",
-    price: 180000,
+    price: 120000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
     quantity: 1,
@@ -499,7 +499,7 @@ const solar = [
     name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "400w",
-    price: 160000,
+    price: 115000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
     quantity: 1,
@@ -509,7 +509,7 @@ const solar = [
     name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "300w",
-    price: 145000,
+    price: 90000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
     quantity: 1,
@@ -519,7 +519,7 @@ const solar = [
     name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "250w",
-    price: 130000,
+    price: 80000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
     quantity: 1,
@@ -529,7 +529,7 @@ const solar = [
     name: "Solar panel",
     image: "../images/solar_panel.png",
     capacity: "200w",
-    price: 120000,
+    price: 60000,
     waranty: "5 yrs",
     type: "Mono-crystalline",
     quantity: 1,
@@ -540,9 +540,9 @@ const battery = [
   {
     id: 31,
     name: "Battery",
-    image: "../images/lithium_battery.jpg",
+    image: "../images/lithium_battery.jpeg",
     capacity: "15kWh",
-    price: 2700000,
+    price: 2000000,
     warranty: "5yrs",
     type: "Lithium-ion",
     voltage: "48v",
@@ -551,9 +551,9 @@ const battery = [
   {
     id: 32,
     name: "Battery",
-    image: "../images/lithium_battery.jpg",
+    image: "../images/lithium_battery.jpeg",
     capacity: "10kWh",
-    price: 2395000,
+    price: 1800000,
     warranty: "5yrs",
     type: "Lithium-ion",
     voltage: "48v",
@@ -561,10 +561,10 @@ const battery = [
   },
   {
     id: 33,
-    name: "Bum battery",
-    image: "../images/lithium_battery.jpg",
-    capacity: "5kWh",
-    price: 1304500,
+    name: "Battery",
+    image: "../images/lithium_battery.jpeg",
+    capacity: "7.5kWh",
+    price: 1400000,
     warranty: "5yrs",
     type: "Lithium-ion",
     voltage: "24v",
@@ -573,8 +573,19 @@ const battery = [
   {
     id: 34,
     name: "Battery",
+    image: "../images/lithium_battery.jpeg",
+    capacity: "5kWh",
+    price: 1150000,
+    warranty: "5yrs",
+    type: "Lithium-ion",
+    voltage: "24v",
+    quantity: 1,
+  },
+  {
+    id: 35,
+    name: "Battery",
     image: "../images/lithium_battery_small.jpg",
-    capacity: "300AMPS",
+    capacity: "2.5kwh",
     price: 550000,
     warranty: "5yrs",
     type: "Lithium",
@@ -582,11 +593,11 @@ const battery = [
     quantity: 1,
   },
   {
-    id: 35,
+    id: 36,
     name: "Battery",
     image: "../images/wetcell_battery.jpg",
     capacity: "220AMPS",
-    price: 185000,
+    price: 280000,
     warranty: "1yrs",
     type: "Wet cell",
     voltage: "12v",
@@ -596,7 +607,7 @@ const battery = [
 
 const inverter = [
   {
-    id: 36,
+    id: 37,
     name: "Inverter",
     image: "../images/inverter.jpeg",
     capacity: "2.5KVA",
@@ -606,7 +617,7 @@ const inverter = [
     voltage: "12v",
   },
   {
-    id: 37,
+    id: 38,
     name: "Inverter",
     image: "../images/inverter.jpeg",
     capacity: "3.5KVA",
@@ -617,7 +628,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 38,
+    id: 39,
     name: "Inverter",
     image: "../images/inverter.jpeg",
     capacity: "5KVA",
@@ -628,7 +639,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 39,
+    id: 40,
     name: "Inverter",
     image: "../images/inverter.jpeg",
     capacity: "10KVA",
@@ -639,7 +650,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 40,
+    id: 41,
     name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "2KVA",
@@ -650,7 +661,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 41,
+    id: 42,
     name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "3.5KVA",
@@ -661,7 +672,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 42,
+    id: 43,
     name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "4.2KVA",
@@ -672,7 +683,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 43,
+    id: 44,
     name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "5KVA",
@@ -683,7 +694,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 44,
+    id: 45,
     name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "6.2KVA",
@@ -694,7 +705,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 45,
+    id: 46,
     name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "7KVA",
@@ -705,7 +716,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 46,
+    id: 47,
     name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "8KVA",
@@ -716,7 +727,7 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 47,
+    id: 48,
     name: "Inverter",
     image: "../images/hybrid_inverter.webp",
     capacity: "10KVA",
@@ -730,27 +741,27 @@ const inverter = [
 
 const controller = [
   {
-    id: 48,
+    id: 49,
     name: "Charge controller",
     image: "../images/controller.jpg",
     capacity: "60A",
-    price: 180000,
+    price: 160000,
     warranty: "1yr",
     type: "MPPT with heat sink",
     quantity: 1,
   },
   {
-    id: 49,
+    id: 50,
     name: "Charge controller",
     image: "../images/controller.jpg",
     capacity: "60A",
-    price: 140000,
+    price: 130000,
     warranty: "1yr",
     type: "MPPT with fan",
     quantity: 1,
   },
   {
-    id: 50,
+    id: 51,
     name: "Charge controller",
     image: "../images/contoller.jpg",
     capacity: "80A",
@@ -760,11 +771,11 @@ const controller = [
     quantity: 1,
   },
   {
-    id: 51,
+    id: 52,
     name: "Charge controller",
     image: "../images/controller.jpg",
     capacity: "120A",
-    price: 220000,
+    price: 200000,
     warranty: "1yr",
     type: "MPPT with fan",
     quantity: 1,
@@ -773,7 +784,7 @@ const controller = [
 
 const lights = [
   {
-    id: 52,
+    id: 53,
     name: "all in street light",
     image: "../images/street_light.jpeg",
     capacity: "60W",
@@ -783,7 +794,7 @@ const lights = [
     quantity: 1,
   },
   {
-    id: 53,
+    id: 54,
     name: "All in one street light",
     image: "../images/street_light.jpeg",
     capacity: "100W",
@@ -793,13 +804,45 @@ const lights = [
     quantity: 1,
   },
   {
-    id: 54,
+    id: 55,
     brandName: "All in one street light",
     image: "../images/street_light.jpeg",
     capacity: "160W",
     price: 325000,
     warranty: "1yr",
     type: "LED",
+    quantity: 1,
+  },
+];
+const Generator = [
+  {
+    id: 56,
+    name: "Solar Generator",
+    image: "../images/wakatek-_olar_generator.jpeg",
+    capacity: "3.5kva",
+    price: 1400000,
+    warranty: "1yr",
+    type: "Portable",
+    quantity: 1,
+  },
+  {
+    id: 57,
+    name: "Solar Generator",
+    image: "../images/solar_generator.jpeg",
+    capacity: "1.5kva",
+    price: 1050000,
+    warranty: "1yr",
+    type: "Portable",
+    quantity: 1,
+  },
+  {
+    id: 58,
+    name: "Solar Generator",
+    image: "../images/solar_generator.jpeg",
+    capacity: "1.2kva",
+    price: 750000,
+    warranty: "1yr",
+    type: "Portable",
     quantity: 1,
   },
 ];
@@ -1053,6 +1096,14 @@ const SolarProductsPage = () => {
               value="lights"
               onChange={(e) => setOption(e.target.value)}
             />
+            <input
+              className="join-item btn checked:bg-[#705c53] checked:text-white checked:border-[#705c53]"
+              type="radio"
+              name="options"
+              aria-label="Generators"
+              value="generators"
+              onChange={(e) => setOption(e.target.value)}
+            />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -1067,7 +1118,7 @@ const SolarProductsPage = () => {
                     <div className="relative h-48">
                       <StaticImage
                         className="w-full h-full object-cover"
-                        src="../images/solar-system.jpg"
+                        src="../images/solar-system.jpeg"
                         alt="Solar System"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -1139,7 +1190,7 @@ const SolarProductsPage = () => {
                     <div className="relative h-48">
                       <StaticImage
                         className="w-full h-full object-cover"
-                        src="../images/backup.jpg"
+                        src="../images/backup.jpeg"
                         alt="Backup System"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -1466,6 +1517,63 @@ const SolarProductsPage = () => {
                   </div>
                 </div>
               ))}
+
+            {option === "generators" &&
+              Generator.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                >
+                  <div className="h-48 p-4">
+                    {item.capacity === "3.5kva" ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/wakatek-solar_generator.jpg"
+                        alt="3.5KVA Solar Generator"
+                      />
+                    ) : (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/solar_generator.jpeg"
+                        alt="Portable Solar Generator"
+                      />
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {item.type} Solar Generator
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Capacity: {item.capacity}
+                    </p>
+                    <p className="text-2xl font-bold text-[#705c53] mb-4">
+                      ₦{item.price.toLocaleString()}
+                    </p>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => openModal2(item)}
+                        className="flex-1 px-4 py-2 border border-[#705c53] text-[#705c53] rounded-lg hover:bg-[#705c53] hover:text-white transition-colors duration-300"
+                      >
+                        Details
+                      </button>
+                      <button
+                        onClick={() =>
+                          addToCart({ ...item, price: item.price })
+                        }
+                        className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
+                          cart.some((cat) => cat.id === item.id)
+                            ? "bg-green-600 text-white"
+                            : "bg-[#705c53] text-white hover:bg-[#8b6f47]"
+                        }`}
+                      >
+                        {cart.some((cat) => cat.id === item.id)
+                          ? "Added"
+                          : "Add to Cart"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </div>
 
           {/* Modals */}
@@ -1494,16 +1602,22 @@ const SolarProductsPage = () => {
                     <p className="text-sm opacity-90">Power Rating</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold">{selected?.battery_type}</p>
+                    <p className="text-2xl font-bold">
+                      {selected?.battery_type}
+                    </p>
                     <p className="text-sm opacity-90">Battery Type</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold">{selected?.number_of_battery}</p>
+                    <p className="text-2xl font-bold">
+                      {selected?.number_of_battery}
+                    </p>
                     <p className="text-sm opacity-90">Batteries</p>
                   </div>
                   {selected?.type === "solar system" && (
                     <div className="text-center">
-                      <p className="text-2xl font-bold">{selected?.number_of_panel}</p>
+                      <p className="text-2xl font-bold">
+                        {selected?.number_of_panel}
+                      </p>
                       <p className="text-sm opacity-90">Solar Panels</p>
                     </div>
                   )}
@@ -1512,7 +1626,9 @@ const SolarProductsPage = () => {
 
               {/* Component Details */}
               <div className="mb-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">Component Specifications</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-4">
+                  Component Specifications
+                </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Inverter */}
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
@@ -1522,49 +1638,78 @@ const SolarProductsPage = () => {
                         ₦{selected?.inverter?.toLocaleString()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600">Rating: {selected?.inverter_rating}</p>
+                    <p className="text-sm text-gray-600">
+                      Rating: {selected?.inverter_rating}
+                    </p>
                     <p className="text-sm text-gray-600">Quantity: 1 unit</p>
                   </div>
 
                   {/* Solar Panels */}
-                  {selected?.type === "solar system" && selected?.number_of_panel > 0 && (
-                    <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
-                      <div className="flex justify-between items-start mb-2">
-                        <h5 className="font-semibold text-gray-800">Solar Panels</h5>
-                        <span className="text-lg font-bold text-[#705c53]">
-                          ₦{(selected?.solar_panel * selected?.number_of_panel)?.toLocaleString()}
-                        </span>
+                  {selected?.type === "solar system" &&
+                    selected?.number_of_panel > 0 && (
+                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
+                        <div className="flex justify-between items-start mb-2">
+                          <h5 className="font-semibold text-gray-800">
+                            Solar Panels
+                          </h5>
+                          <span className="text-lg font-bold text-[#705c53]">
+                            ₦
+                            {(
+                              selected?.solar_panel * selected?.number_of_panel
+                            )?.toLocaleString()}
+                          </span>
+                        </div>
+                        <p className="text-sm text-gray-600">
+                          Rating: {selected?.panel_rating}W each
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Quantity: {selected?.number_of_panel} units
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          Unit Price: ₦{selected?.solar_panel?.toLocaleString()}
+                        </p>
                       </div>
-                      <p className="text-sm text-gray-600">Rating: {selected?.panel_rating}W each</p>
-                      <p className="text-sm text-gray-600">Quantity: {selected?.number_of_panel} units</p>
-                      <p className="text-sm text-gray-600">Unit Price: ₦{selected?.solar_panel?.toLocaleString()}</p>
-                    </div>
-                  )}
+                    )}
 
                   {/* Battery */}
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
                     <div className="flex justify-between items-start mb-2">
                       <h5 className="font-semibold text-gray-800">Battery</h5>
                       <span className="text-lg font-bold text-[#705c53]">
-                        ₦{(selected?.battery * selected?.number_of_battery)?.toLocaleString()}
+                        ₦
+                        {(
+                          selected?.battery * selected?.number_of_battery
+                        )?.toLocaleString()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600">Type: {selected?.battery_type}</p>
-                    <p className="text-sm text-gray-600">Rating: {selected?.battery_rating}</p>
-                    <p className="text-sm text-gray-600">Quantity: {selected?.number_of_battery} units</p>
-                    <p className="text-sm text-gray-600">Unit Price: ₦{selected?.battery?.toLocaleString()}</p>
+                    <p className="text-sm text-gray-600">
+                      Type: {selected?.battery_type}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Rating: {selected?.battery_rating}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Quantity: {selected?.number_of_battery} units
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Unit Price: ₦{selected?.battery?.toLocaleString()}
+                    </p>
                   </div>
 
                   {/* Controller */}
                   {selected?.controller > 0 && (
                     <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
                       <div className="flex justify-between items-start mb-2">
-                        <h5 className="font-semibold text-gray-800">Charge Controller</h5>
+                        <h5 className="font-semibold text-gray-800">
+                          Charge Controller
+                        </h5>
                         <span className="text-lg font-bold text-[#705c53]">
                           ₦{selected?.controller?.toLocaleString()}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600">Rating: {selected?.controller_rating}</p>
+                      <p className="text-sm text-gray-600">
+                        Rating: {selected?.controller_rating}
+                      </p>
                       <p className="text-sm text-gray-600">Quantity: 1 unit</p>
                     </div>
                   )}
@@ -1572,64 +1717,106 @@ const SolarProductsPage = () => {
                   {/* Installation Kit */}
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
                     <div className="flex justify-between items-start mb-2">
-                      <h5 className="font-semibold text-gray-800">Installation Kit</h5>
+                      <h5 className="font-semibold text-gray-800">
+                        Installation Kit
+                      </h5>
                       <span className="text-lg font-bold text-[#705c53]">
                         ₦{selected?.installation_kit?.toLocaleString()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600">Includes: Cables, breakers, fuses, mounting hardware</p>
+                    <p className="text-sm text-gray-600">
+                      Includes: Cables, breakers, fuses, mounting hardware
+                    </p>
                   </div>
 
                   {/* Installation Service */}
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
                     <div className="flex justify-between items-start mb-2">
-                      <h5 className="font-semibold text-gray-800">Installation Service</h5>
+                      <h5 className="font-semibold text-gray-800">
+                        Installation Service
+                      </h5>
                       <span className="text-lg font-bold text-[#705c53]">
                         ₦{selected?.installation_cost?.toLocaleString()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600">Professional installation and setup</p>
+                    <p className="text-sm text-gray-600">
+                      Professional installation and setup
+                    </p>
                   </div>
                 </div>
               </div>
 
               {/* Price Breakdown */}
               <div className="bg-white border-2 border-[#705c53] rounded-xl p-6 mb-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">Price Breakdown</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-4">
+                  Price Breakdown
+                </h4>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Inverter ({selected?.inverter_rating})</span>
-                    <span className="font-semibold">₦{selected?.inverter?.toLocaleString()}</span>
+                    <span className="text-gray-600">
+                      Inverter ({selected?.inverter_rating})
+                    </span>
+                    <span className="font-semibold">
+                      ₦{selected?.inverter?.toLocaleString()}
+                    </span>
                   </div>
-                  {selected?.type === "solar system" && selected?.number_of_panel > 0 && (
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Solar Panels ({selected?.number_of_panel} × {selected?.panel_rating}W)</span>
-                      <span className="font-semibold">₦{(selected?.solar_panel * selected?.number_of_panel)?.toLocaleString()}</span>
-                    </div>
-                  )}
+                  {selected?.type === "solar system" &&
+                    selected?.number_of_panel > 0 && (
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600">
+                          Solar Panels ({selected?.number_of_panel} ×{" "}
+                          {selected?.panel_rating}W)
+                        </span>
+                        <span className="font-semibold">
+                          ₦
+                          {(
+                            selected?.solar_panel * selected?.number_of_panel
+                          )?.toLocaleString()}
+                        </span>
+                      </div>
+                    )}
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Battery ({selected?.number_of_battery} × {selected?.battery_rating})</span>
-                    <span className="font-semibold">₦{(selected?.battery * selected?.number_of_battery)?.toLocaleString()}</span>
+                    <span className="text-gray-600">
+                      Battery ({selected?.number_of_battery} ×{" "}
+                      {selected?.battery_rating})
+                    </span>
+                    <span className="font-semibold">
+                      ₦
+                      {(
+                        selected?.battery * selected?.number_of_battery
+                      )?.toLocaleString()}
+                    </span>
                   </div>
                   {selected?.controller > 0 && (
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Charge Controller ({selected?.controller_rating})</span>
-                      <span className="font-semibold">₦{selected?.controller?.toLocaleString()}</span>
+                      <span className="text-gray-600">
+                        Charge Controller ({selected?.controller_rating})
+                      </span>
+                      <span className="font-semibold">
+                        ₦{selected?.controller?.toLocaleString()}
+                      </span>
                     </div>
                   )}
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">Installation Kit</span>
-                    <span className="font-semibold">₦{selected?.installation_kit?.toLocaleString()}</span>
+                    <span className="font-semibold">
+                      ₦{selected?.installation_kit?.toLocaleString()}
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">Installation Service</span>
-                    <span className="font-semibold">₦{selected?.installation_cost?.toLocaleString()}</span>
+                    <span className="font-semibold">
+                      ₦{selected?.installation_cost?.toLocaleString()}
+                    </span>
                   </div>
                   <div className="border-t-2 border-gray-200 pt-3 mt-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-xl font-bold text-gray-900">Total Price</span>
+                      <span className="text-xl font-bold text-gray-900">
+                        Total Price
+                      </span>
                       <span className="text-2xl font-bold text-[#705c53]">
-                        ₦{(
+                        ₦
+                        {(
                           selected?.battery * selected?.number_of_battery +
                           selected?.solar_panel * selected?.number_of_panel +
                           selected?.inverter +
@@ -1679,14 +1866,25 @@ const SolarProductsPage = () => {
                   ✕
                 </button>
               </form>
-              
+
               {/* Product Header */}
               <div className="mb-6">
                 <h3 className="font-bold text-3xl text-[#705c53] mb-2">
                   {selected?.name || selected?.brandName}
                 </h3>
                 <p className="text-lg text-gray-600 capitalize">
-                  {selected?.type} {selected?.name?.includes('Panel') ? 'Panel' : selected?.name?.includes('Inverter') ? 'Inverter' : selected?.name?.includes('Battery') ? 'Battery' : selected?.name?.includes('controller') ? 'Controller' : selected?.name?.includes('light') ? 'Light' : ''}
+                  {selected?.type}{" "}
+                  {selected?.name?.includes("Panel")
+                    ? "Panel"
+                    : selected?.name?.includes("Inverter")
+                      ? "Inverter"
+                      : selected?.name?.includes("Battery")
+                        ? "Battery"
+                        : selected?.name?.includes("controller")
+                          ? "Controller"
+                          : selected?.name?.includes("light")
+                            ? "Light"
+                            : ""}
                 </p>
               </div>
 
@@ -1699,7 +1897,9 @@ const SolarProductsPage = () => {
                     <p className="text-sm opacity-90">Capacity/Power</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold">₦{selected?.price?.toLocaleString()}</p>
+                    <p className="text-2xl font-bold">
+                      ₦{selected?.price?.toLocaleString()}
+                    </p>
                     <p className="text-sm opacity-90">Price</p>
                   </div>
                 </div>
@@ -1707,85 +1907,203 @@ const SolarProductsPage = () => {
 
               {/* Detailed Specifications */}
               <div className="mb-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">Detailed Specifications</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-4">
+                  Detailed Specifications
+                </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
-                    <h5 className="font-semibold text-gray-800 mb-2">Capacity/Power</h5>
-                    <p className="text-lg font-bold text-[#705c53]">{selected?.capacity}</p>
+                    <h5 className="font-semibold text-gray-800 mb-2">
+                      Capacity/Power
+                    </h5>
+                    <p className="text-lg font-bold text-[#705c53]">
+                      {selected?.capacity}
+                    </p>
                   </div>
-                  
+
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
                     <h5 className="font-semibold text-gray-800 mb-2">Type</h5>
-                    <p className="text-lg font-bold text-gray-900">{selected?.type}</p>
+                    <p className="text-lg font-bold text-gray-900">
+                      {selected?.type}
+                    </p>
                   </div>
-                  
+
                   {selected?.voltage && (
                     <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
-                      <h5 className="font-semibold text-gray-800 mb-2">Voltage</h5>
-                      <p className="text-lg font-bold text-gray-900">{selected?.voltage}</p>
+                      <h5 className="font-semibold text-gray-800 mb-2">
+                        Voltage
+                      </h5>
+                      <p className="text-lg font-bold text-gray-900">
+                        {selected?.voltage}
+                      </p>
                     </div>
                   )}
-                  
+
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
-                    <h5 className="font-semibold text-gray-800 mb-2">Warranty</h5>
-                    <p className="text-lg font-bold text-gray-900">{selected?.waranty || selected?.warranty}</p>
+                    <h5 className="font-semibold text-gray-800 mb-2">
+                      Warranty
+                    </h5>
+                    <p className="text-lg font-bold text-gray-900">
+                      {selected?.waranty || selected?.warranty}
+                    </p>
                   </div>
-                  
+
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
-                    <h5 className="font-semibold text-gray-800 mb-2">Quantity</h5>
-                    <p className="text-lg font-bold text-gray-900">{selected?.quantity || 1} unit(s)</p>
+                    <h5 className="font-semibold text-gray-800 mb-2">
+                      Quantity
+                    </h5>
+                    <p className="text-lg font-bold text-gray-900">
+                      {selected?.quantity || 1} unit(s)
+                    </p>
                   </div>
-                  
+
                   <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-[#705c53]">
                     <h5 className="font-semibold text-gray-800 mb-2">Price</h5>
-                    <p className="text-lg font-bold text-[#705c53]">₦{selected?.price?.toLocaleString()}</p>
+                    <p className="text-lg font-bold text-[#705c53]">
+                      ₦{selected?.price?.toLocaleString()}
+                    </p>
                   </div>
                 </div>
               </div>
 
               {/* Product Features */}
               <div className="mb-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">Key Features</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-4">
+                  Key Features
+                </h4>
                 <div className="bg-blue-50 p-4 rounded-lg">
                   <ul className="space-y-2 text-gray-700">
-                    {selected?.name?.includes('Panel') && (
+                    {selected?.name?.includes("Panel") && (
                       <>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> High-efficiency mono-crystalline technology</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Weather-resistant aluminum frame</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> 25-year performance warranty</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Anti-reflective tempered glass</li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          High-efficiency mono-crystalline technology
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          Weather-resistant aluminum frame
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> 25-year
+                          performance warranty
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          Anti-reflective tempered glass
+                        </li>
                       </>
                     )}
-                    {selected?.name?.includes('Inverter') && (
+                    {selected?.name?.includes("Inverter") && (
                       <>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> {selected?.type === 'Hybrid' ? 'Built-in MPPT charge controller' : 'Pure sine wave output'}</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Overload and short circuit protection</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> LCD display with system monitoring</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> High conversion efficiency (>90%)</li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          {selected?.type === "Hybrid"
+                            ? "Built-in MPPT charge controller"
+                            : "Pure sine wave output"}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          Overload and short circuit protection
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> LCD
+                          display with system monitoring
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> High
+                          conversion efficiency ({">"}90%)
+                        </li>
                       </>
                     )}
-                    {selected?.name?.includes('Battery') && (
+                    {selected?.name?.includes("Battery") && (
                       <>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> {selected?.type?.includes('Lithium') ? 'Long cycle life (>6000 cycles)' : 'Deep cycle design'}</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> {selected?.type?.includes('Lithium') ? 'Built-in BMS protection' : 'Maintenance-free operation'}</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Wide operating temperature range</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> High energy density</li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          {selected?.type?.includes("Lithium")
+                            ? "Long cycle life (>6000 cycles)"
+                            : "Deep cycle design"}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          {selected?.type?.includes("Lithium")
+                            ? "Built-in BMS protection"
+                            : "Maintenance-free operation"}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> Wide
+                          operating temperature range
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> High
+                          energy density
+                        </li>
                       </>
                     )}
-                    {selected?.name?.includes('controller') && (
+                    {selected?.name?.includes("controller") && (
                       <>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Maximum Power Point Tracking (MPPT)</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Multiple load control modes</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> LCD display with real-time data</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Comprehensive electronic protections</li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> Maximum
+                          Power Point Tracking (MPPT)
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          Multiple load control modes
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> LCD
+                          display with real-time data
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          Comprehensive electronic protections
+                        </li>
                       </>
                     )}
-                    {selected?.name?.includes('light') && (
+                    {selected?.name?.includes("light") && (
                       <>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> All-in-one integrated design</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Motion sensor and remote control</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> IP65 waterproof rating</li>
-                        <li className="flex items-center"><span className="text-green-600 mr-2">✓</span> Auto on/off with dusk-to-dawn operation</li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          All-in-one integrated design
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> Motion
+                          sensor and remote control
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> IP65
+                          waterproof rating
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> Auto
+                          on/off with dusk-to-dawn operation
+                        </li>
+                      </>
+                    )}
+                    {selected?.name?.includes("Generator") && (
+                      <>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          Portable all-in-one design
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          Built-in solar panels and battery storage
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span>{" "}
+                          Multiple output ports (AC/DC/USB)
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> LCD
+                          display with power monitoring
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> Silent
+                          operation with no fuel required
+                        </li>
+                        <li className="flex items-center">
+                          <span className="text-green-600 mr-2">✓</span> Ideal
+                          for camping, emergencies, and off-grid use
+                        </li>
                       </>
                     )}
                   </ul>
@@ -1827,15 +2145,30 @@ export const Head = () => (
       name="description"
       content="Explore AntonAxel's comprehensive range of solar energy products including solar systems, backup systems, panels, inverters, batteries, and LED lights. Quality renewable energy solutions for Nigeria."
     />
-    <meta name="keywords" content="solar products Nigeria, solar panels, inverters, batteries, backup systems, solar energy systems, renewable energy, AntonAxel products, solar installation Nigeria" />
+    <meta
+      name="keywords"
+      content="solar products Nigeria, solar panels, inverters, batteries, backup systems, solar energy systems, renewable energy, AntonAxel products, solar installation Nigeria"
+    />
     <meta name="author" content="AntonAxel Nigeria Company Limited" />
-    <meta property="og:title" content="AntonAxel Solar Products | High-Efficiency Renewable Energy Solutions" />
-    <meta property="og:description" content="Comprehensive range of solar energy products including complete systems, panels, inverters, batteries, and LED lights. Quality renewable energy solutions for Nigeria." />
+    <meta
+      property="og:title"
+      content="AntonAxel Solar Products | High-Efficiency Renewable Energy Solutions"
+    />
+    <meta
+      property="og:description"
+      content="Comprehensive range of solar energy products including complete systems, panels, inverters, batteries, and LED lights. Quality renewable energy solutions for Nigeria."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://antonaxel.com/products" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AntonAxel Solar Products | High-Efficiency Renewable Energy Solutions" />
-    <meta name="twitter:description" content="Comprehensive range of solar energy products including complete systems, panels, inverters, batteries, and LED lights." />
+    <meta
+      name="twitter:title"
+      content="AntonAxel Solar Products | High-Efficiency Renewable Energy Solutions"
+    />
+    <meta
+      name="twitter:description"
+      content="Comprehensive range of solar energy products including complete systems, panels, inverters, batteries, and LED lights."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href="https://antonaxel.com/products" />
   </>

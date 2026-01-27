@@ -42,6 +42,13 @@ const CartPage = () => {
     "pay now" | "pay small small" | null
   >(null);
 
+  // useEffect(() => {
+  //   // Force refresh on navigation
+  //   if (typeof window !== "undefined") {
+  //     window.location.reload();
+  //   }
+  // }, []);
+
   useEffect(() => {
     // Load cart from localStorage
     const savedCart = localStorage.getItem("cart");
