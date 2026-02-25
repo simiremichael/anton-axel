@@ -72,7 +72,7 @@ const CartPage = () => {
   const calculateCartTotal = () => {
     return cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
-      0
+      0,
     );
   };
 
@@ -83,7 +83,7 @@ const CartPage = () => {
     }
 
     const updatedCart = cartItems.map((item) =>
-      item.id === itemId ? { ...item, quantity: newQuantity } : item
+      item.id === itemId ? { ...item, quantity: newQuantity } : item,
     );
     setCartItems(updatedCart);
   };
@@ -171,22 +171,27 @@ const CartPage = () => {
           item_count: cartItems.length,
           total_quantity: cartItems.reduce(
             (sum, item) => sum + item.quantity,
-            0
+            0,
           ),
         },
       };
 
-      await fetch(
-        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/orders",
+      const response = await fetch(
+        "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/orders",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
           body: JSON.stringify(orderData),
-        }
+        },
       );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit order");
+      }
     } catch (err) {
       console.error("Error submitting Klump order:", err);
+      setError("Network error. Please check your connection and try again.");
     }
   };
 
@@ -338,13 +343,13 @@ const CartPage = () => {
 
         try {
           const verifyResponse = await fetch(
-            "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
+            "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/verify-klump-payment",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               credentials: "include",
               body: JSON.stringify({ reference: data.reference }),
-            }
+            },
           );
           await submitKlumpOrder(data);
           clearCart();
@@ -444,13 +449,13 @@ const CartPage = () => {
           item_count: cartItems.length,
           total_quantity: cartItems.reduce(
             (sum, item) => sum + item.quantity,
-            0
+            0,
           ),
         },
       };
 
       const response = await fetch(
-        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/orders",
+        "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/orders",
         // "https://05ce85v1dg.execute-api.us-east-1.amazonaws.com/dev/api/orders",
         // "https://antonaxel-server.onrender.com/api/orders",
         {
@@ -460,13 +465,14 @@ const CartPage = () => {
           },
           credentials: "include",
           body: JSON.stringify(orderData),
-        }
+        },
       );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(
-          errorData.message || `HTTP ${response.status}: Failed to create order`
+          errorData.message ||
+            `HTTP ${response.status}: Failed to create order`,
         );
       }
 
@@ -476,16 +482,18 @@ const CartPage = () => {
         // Redirect to Paystack payment
         await initiatePaystackPayment(
           result.orderId || result.id,
-          calculateCartTotal()
+          calculateCartTotal(),
         );
       }
     } catch (err) {
       console.error("Error submitting order:", err);
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Failed to submit order. Please try again."
-      );
+      const errorMessage =
+        err instanceof TypeError && err.message.includes("fetch")
+          ? "Unable to connect to server. Please check your internet connection."
+          : err instanceof Error
+            ? err.message
+            : "Failed to submit order. Please try again.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
       setPaymentType(null);
@@ -499,7 +507,7 @@ const CartPage = () => {
       // Initialize Paystack payment
       const paystackResponse = await fetch(
         // "http://localhost:5000/api/initialize-payment",
-        "https://ctcmoq233d.execute-api.us-east-1.amazonaws.com/production/api/initialize-payment",
+        "https://3tqny22gvd.execute-api.us-east-1.amazonaws.com/production/api/initialize-payment",
         // "https://antonaxel-server.onrender.com/api/initialize-payment",
         {
           method: "POST",
@@ -518,7 +526,7 @@ const CartPage = () => {
               customerPhone: formData.phone,
             },
           }),
-        }
+        },
       );
 
       if (!paystackResponse.ok) {
