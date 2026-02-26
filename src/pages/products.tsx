@@ -814,7 +814,7 @@ const controller = [
   {
     id: 53,
     name: "Charge controller",
-    brand: "Blue carbon",
+    brand: "WAKATEK",
     image: "../images/wakatek_charge_controller.jpeg",
     capacity: "60A",
     price: 130000,
