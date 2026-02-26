@@ -487,6 +487,7 @@ const solar = [
   {
     id: 26,
     name: "Solar panel",
+    brand: "WAKATEK",
     image: "../images/solar_panel.png",
     capacity: "550w",
     price: 120000,
@@ -497,6 +498,7 @@ const solar = [
   {
     id: 27,
     name: "Solar panel",
+    brand: "WAKATEK",
     image: "../images/solar_panel.png",
     capacity: "400w",
     price: 115000,
@@ -507,6 +509,7 @@ const solar = [
   {
     id: 28,
     name: "Solar panel",
+    brand: "Jinko",
     image: "../images/solar_panel.png",
     capacity: "300w",
     price: 90000,
@@ -517,6 +520,7 @@ const solar = [
   {
     id: 29,
     name: "Solar panel",
+    brand: "Jinko",
     image: "../images/solar_panel.png",
     capacity: "250w",
     price: 80000,
@@ -527,6 +531,7 @@ const solar = [
   {
     id: 30,
     name: "Solar panel",
+    brand: "Jinko",
     image: "../images/solar_panel.png",
     capacity: "200w",
     price: 60000,
@@ -540,7 +545,8 @@ const battery = [
   {
     id: 31,
     name: "Battery",
-    image: "../images/lithium_battery.jpeg",
+    brand: "WAKATEK",
+    image: "../images/wakatek_lithium_battery.jpeg",
     capacity: "15kWh",
     price: 2000000,
     warranty: "5yrs",
@@ -551,6 +557,7 @@ const battery = [
   {
     id: 32,
     name: "Battery",
+    brand: "Blue carbon",
     image: "../images/lithium_battery.jpeg",
     capacity: "10kWh",
     price: 1800000,
@@ -562,7 +569,8 @@ const battery = [
   {
     id: 33,
     name: "Battery",
-    image: "../images/lithium_battery.jpeg",
+    brand: "WAKATEK",
+    image: "../images/wakatek_lithium_battery.jpeg",
     capacity: "7.5kWh",
     price: 1400000,
     warranty: "5yrs",
@@ -573,6 +581,7 @@ const battery = [
   {
     id: 34,
     name: "Battery",
+    brand: "Blue carbon",
     image: "../images/lithium_battery.jpeg",
     capacity: "5kWh",
     price: 1150000,
@@ -584,7 +593,8 @@ const battery = [
   {
     id: 35,
     name: "Battery",
-    image: "../images/lithium_battery_small.jpg",
+    brand: "SAKO",
+    image: "../images/sako_lithium_battery.jpeg",
     capacity: "2.5kwh",
     price: 550000,
     warranty: "5yrs",
@@ -595,6 +605,43 @@ const battery = [
   {
     id: 36,
     name: "Battery",
+    brand: "SAKO",
+    image: "../images/sako_lithium_battery.jpeg",
+    capacity: "200AMPS",
+    price: 460000,
+    warranty: "5yrs",
+    type: "Lithium",
+    voltage: "12v",
+    quantity: 1,
+  },
+  {
+    id: 37,
+    name: "Battery",
+    brand: "SAKO",
+    image: "../images/sako_lithium_battery.jpeg",
+    capacity: "100AMPS",
+    price: 300000,
+    warranty: "5yrs",
+    type: "Lithium",
+    voltage: "12v",
+    quantity: 1,
+  },
+  {
+    id: 38,
+    name: "Battery",
+    brand: "SAKO",
+    image: "../images/sako_lithium_battery.jpeg",
+    capacity: "100AMPS",
+    price: 560000,
+    warranty: "5yrs",
+    type: "Lithium",
+    voltage: "24v",
+    quantity: 1,
+  },
+  {
+    id: 39,
+    name: "Battery",
+    brand: "CAMPEON",
     image: "../images/wetcell_battery.jpg",
     capacity: "220AMPS",
     price: 280000,
@@ -607,18 +654,21 @@ const battery = [
 
 const inverter = [
   {
-    id: 37,
+    id: 40,
     name: "Inverter",
+    brand: "SAKO",
     image: "../images/inverter.jpeg",
     capacity: "2.5KVA",
     price: 300000,
     warranty: "1 yr",
     type: "Pure Sine Wave",
     voltage: "12v",
+    quantity: 1,
   },
   {
-    id: 38,
+    id: 41,
     name: "Inverter",
+    brand: "SAKO",
     image: "../images/inverter.jpeg",
     capacity: "3.5KVA",
     price: 480000,
@@ -628,8 +678,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 39,
+    id: 42,
     name: "Inverter",
+    brand: "SAKO",
     image: "../images/inverter.jpeg",
     capacity: "5KVA",
     price: 580000,
@@ -639,8 +690,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 40,
+    id: 43,
     name: "Inverter",
+    brand: "SAKO",
     image: "../images/inverter.jpeg",
     capacity: "10KVA",
     price: 800000,
@@ -650,8 +702,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 41,
+    id: 44,
     name: "Inverter",
+    brand: "Hexon",
     image: "../images/hybrid_inverter.webp",
     capacity: "2KVA",
     price: 260000,
@@ -661,8 +714,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 42,
+    id: 45,
     name: "Inverter",
+    brand: "Hexon",
     image: "../images/hybrid_inverter.webp",
     capacity: "3.5KVA",
     price: 380000,
@@ -672,8 +726,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 43,
+    id: 46,
     name: "Inverter",
+    brand: "Hexon",
     image: "../images/hybrid_inverter.webp",
     capacity: "4.2KVA",
     price: 680000,
@@ -683,8 +738,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 44,
+    id: 47,
     name: "Inverter",
+    brand: "WAKATEK",
     image: "../images/hybrid_inverter.webp",
     capacity: "5KVA",
     price: 780000,
@@ -694,8 +750,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 45,
+    id: 48,
     name: "Inverter",
+    brand: "WAKATEK",
     image: "../images/hybrid_inverter.webp",
     capacity: "6.2KVA",
     price: 820000,
@@ -705,8 +762,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 46,
+    id: 49,
     name: "Inverter",
+    brand: "WAKATEK",
     image: "../images/hybrid_inverter.webp",
     capacity: "7KVA",
     price: 965000,
@@ -716,8 +774,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 47,
+    id: 50,
     name: "Inverter",
+    brand: "WAKATEK",
     image: "../images/hybrid_inverter.webp",
     capacity: "8KVA",
     price: 1480000,
@@ -727,8 +786,9 @@ const inverter = [
     quantity: 1,
   },
   {
-    id: 48,
+    id: 51,
     name: "Inverter",
+    brand: "WAKATEK",
     image: "../images/hybrid_inverter.webp",
     capacity: "10KVA",
     price: 1680000,
@@ -741,9 +801,10 @@ const inverter = [
 
 const controller = [
   {
-    id: 49,
+    id: 52,
     name: "Charge controller",
-    image: "../images/controller.jpg",
+    brand: "WAKATEK",
+    image: "../images/wakatek_charge_controller.jpeg",
     capacity: "60A",
     price: 160000,
     warranty: "1yr",
@@ -751,9 +812,10 @@ const controller = [
     quantity: 1,
   },
   {
-    id: 50,
+    id: 53,
     name: "Charge controller",
-    image: "../images/controller.jpg",
+    brand: "Blue carbon",
+    image: "../images/wakatek_charge_controller.jpeg",
     capacity: "60A",
     price: 130000,
     warranty: "1yr",
@@ -761,8 +823,9 @@ const controller = [
     quantity: 1,
   },
   {
-    id: 51,
+    id: 54,
     name: "Charge controller",
+    brand: "Blue carbon",
     image: "../images/contoller.jpg",
     capacity: "80A",
     price: 180000,
@@ -771,9 +834,21 @@ const controller = [
     quantity: 1,
   },
   {
-    id: 52,
+    id: 55,
     name: "Charge controller",
+    brand: "Blue carbon",
     image: "../images/controller.jpg",
+    capacity: "100A",
+    price: 190000,
+    warranty: "1yr",
+    type: "MPPT with fan",
+    quantity: 1,
+  },
+  {
+    id: 56,
+    name: "Charge controller",
+    brand: "WAKATEK",
+    image: "../images/wakatek_charge_controller.jpeg",
     capacity: "120A",
     price: 200000,
     warranty: "1yr",
@@ -784,8 +859,9 @@ const controller = [
 
 const lights = [
   {
-    id: 53,
+    id: 57,
     name: "all in street light",
+    brand: "WAKATEK",
     image: "../images/street_light.jpeg",
     capacity: "60W",
     price: 165000,
@@ -794,8 +870,9 @@ const lights = [
     quantity: 1,
   },
   {
-    id: 54,
+    id: 58,
     name: "All in one street light",
+    brand: "WAKATEK",
     image: "../images/street_light.jpeg",
     capacity: "100W",
     price: 235000,
@@ -804,8 +881,9 @@ const lights = [
     quantity: 1,
   },
   {
-    id: 55,
-    brandName: "All in one street light",
+    id: 59,
+    name: "All in one street light",
+    brand: "WAKATEK",
     image: "../images/street_light.jpeg",
     capacity: "160W",
     price: 325000,
@@ -816,9 +894,10 @@ const lights = [
 ];
 const Generator = [
   {
-    id: 56,
+    id: 60,
     name: "Solar Generator",
-    image: "../images/wakatek-_olar_generator.jpeg",
+    brand: "WAKATEK",
+    image: "../images/wakatek_solar_generator.jpeg",
     capacity: "3.5kva",
     price: 1400000,
     warranty: "1yr",
@@ -826,8 +905,9 @@ const Generator = [
     quantity: 1,
   },
   {
-    id: 57,
+    id: 61,
     name: "Solar Generator",
+    brand: "SAKO",
     image: "../images/solar_generator.jpeg",
     capacity: "1.5kva",
     price: 1050000,
@@ -836,8 +916,9 @@ const Generator = [
     quantity: 1,
   },
   {
-    id: 58,
+    id: 62,
     name: "Solar Generator",
+    brand: "SAKO",
     image: "../images/solar_generator.jpeg",
     capacity: "1.2kva",
     price: 750000,
@@ -1268,6 +1349,11 @@ const SolarProductsPage = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {item.type} Panel
                     </h3>
+                    {item.brand && (
+                      <p className="text-sm font-semibold text-[#705c53] mb-1">
+                        Brand: {item.brand}
+                      </p>
+                    )}
                     <p className="text-sm text-gray-600 mb-1">
                       Capacity: {item.capacity}
                     </p>
@@ -1307,7 +1393,19 @@ const SolarProductsPage = () => {
                   className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
                 >
                   <div className="h-48 p-4">
-                    {item.type === "Hybrid" ? (
+                    {item.brand === "SAKO" ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/sako_inverter.jpeg"
+                        alt="SAKO Inverter"
+                      />
+                    ) : item.brand === "WAKATEK" ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/wakatek_inverter.jpeg"
+                        alt="WAKATEK Inverter"
+                      />
+                    ) : item.type === "Hybrid" ? (
                       <StaticImage
                         className="w-full h-full object-contain"
                         src="../images/hybrid_inverter.webp"
@@ -1325,6 +1423,11 @@ const SolarProductsPage = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {item.type} Inverter
                     </h3>
+                    {item.brand && (
+                      <p className="text-sm font-semibold text-[#705c53] mb-1">
+                        Brand: {item.brand}
+                      </p>
+                    )}
                     <p className="text-sm text-gray-600 mb-1">
                       Capacity: {item.capacity}
                     </p>
@@ -1364,17 +1467,23 @@ const SolarProductsPage = () => {
                   className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
                 >
                   <div className="h-48 p-4">
-                    {item.type === "Lithium-ion" ? (
+                    {item.brand === "WAKATEK" ? (
                       <StaticImage
                         className="w-full h-full object-contain"
-                        src="../images/lithium_battery.jpg"
-                        alt="Lithium-ion Battery"
+                        src="../images/wakatek_lithium_battery.jpeg"
+                        alt="WAKATEK Lithium Battery"
                       />
-                    ) : item.type === "Lithium" ? (
+                    ) : item.brand === "SAKO" ? (
                       <StaticImage
                         className="w-full h-full object-contain"
-                        src="../images/lithium_battery_small.jpg"
-                        alt="Lithium Battery"
+                        src="../images/sako_lithium_battery.jpeg"
+                        alt="SAKO Lithium Battery"
+                      />
+                    ) : item.brand === "Blue carbon" ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/lithium_battery.jpeg"
+                        alt="Lithium-ion Battery"
                       />
                     ) : (
                       <StaticImage
@@ -1388,6 +1497,11 @@ const SolarProductsPage = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {item.type} Battery
                     </h3>
+                    {item.brand && (
+                      <p className="text-sm font-semibold text-[#705c53] mb-1">
+                        Brand: {item.brand}
+                      </p>
+                    )}
                     <p className="text-sm text-gray-600 mb-1">
                       Capacity: {item.capacity}
                     </p>
@@ -1427,16 +1541,29 @@ const SolarProductsPage = () => {
                   className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
                 >
                   <div className="h-48 p-4">
-                    <StaticImage
-                      className="w-full h-full object-contain"
-                      src="../images/controller.jpg"
-                      alt="Charge Controller"
-                    />
+                    {item.brand === "WAKATEK" ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/wakatek_charge_controller.jpeg"
+                        alt="WAKATEK Charge Controller"
+                      />
+                    ) : (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/controller.jpg"
+                        alt="Charge Controller"
+                      />
+                    )}
                   </div>
                   <div className="p-6">
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {item.type}
                     </h3>
+                    {item.brand && (
+                      <p className="text-sm font-semibold text-[#705c53] mb-1">
+                        Brand: {item.brand}
+                      </p>
+                    )}
                     <p className="text-sm text-gray-600 mb-1">
                       Capacity: {item.capacity}
                     </p>
@@ -1486,6 +1613,11 @@ const SolarProductsPage = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {item.type} Street Light
                     </h3>
+                    {item.brand && (
+                      <p className="text-sm font-semibold text-[#705c53] mb-1">
+                        Brand: {item.brand}
+                      </p>
+                    )}
                     <p className="text-sm text-gray-600 mb-1">
                       Power: {item.capacity}
                     </p>
@@ -1528,7 +1660,7 @@ const SolarProductsPage = () => {
                     {item.capacity === "3.5kva" ? (
                       <StaticImage
                         className="w-full h-full object-contain"
-                        src="../images/wakatek-solar_generator.jpg"
+                        src="../images/wakatek_solar_generator.jpeg"
                         alt="3.5KVA Solar Generator"
                       />
                     ) : (
@@ -1543,6 +1675,11 @@ const SolarProductsPage = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {item.type} Solar Generator
                     </h3>
+                    {item.brand && (
+                      <p className="text-sm font-semibold text-[#705c53] mb-1">
+                        Brand: {item.brand}
+                      </p>
+                    )}
                     <p className="text-sm text-gray-600 mb-1">
                       Capacity: {item.capacity}
                     </p>
