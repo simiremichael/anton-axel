@@ -26,6 +26,8 @@ interface OrderFormData {
   location: string;
 }
 
+const CART_REFRESH_KEY = "cart-page-refresh";
+
 const CartPage = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [formData, setFormData] = useState<OrderFormData>({
@@ -42,15 +44,25 @@ const CartPage = () => {
     "pay now" | "pay small small" | null
   >(null);
 
-  // useEffect(() => {
-  //   // Force refresh on navigation
-  //   if (typeof window !== "undefined") {
-  //     window.location.reload();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (!window.sessionStorage.getItem(CART_REFRESH_KEY)) {
+      window.sessionStorage.setItem(CART_REFRESH_KEY, "done");
+      window.location.reload();
+      return;
+    }
+
+    window.sessionStorage.removeItem(CART_REFRESH_KEY);
+  }, []);
 
   useEffect(() => {
-    // Load cart from localStorage
+    if (typeof window === "undefined") {
+      return;
+    }
+
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
       try {
@@ -63,8 +75,11 @@ const CartPage = () => {
     }
   }, []);
 
-  // Trigger cart update event when cart changes
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     localStorage.setItem("cart", JSON.stringify(cartItems));
     window.dispatchEvent(new Event("cartUpdated"));
   }, [cartItems]);
