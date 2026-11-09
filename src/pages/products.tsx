@@ -930,7 +930,7 @@ const Generator = [
     id: 63,
     name: "Solar Generator",
     brand: "Itel go",
-    image: "../images/go.jpeg",
+    image: "../images/go.webp",
     capacity: "100w",
     price: 100000,
     warranty: "1yr",
@@ -941,7 +941,7 @@ const Generator = [
     id: 64,
     name: "Solar Generator",
     brand: "Itel go pro",
-    image: "../images/gopro",
+    image: "../images/gopro.jpeg",
     capacity: "200w",
     price: 160000,
     warranty: "1yr",
@@ -952,7 +952,7 @@ const Generator = [
     id: 65,
     name: "Solar Generator",
     brand: "Itel power tank",
-    image: "../images/tank-500",
+    image: "../images/tank-500.webp",
     capacity: "500w",
     price: 350000,
     warranty: "1yr",
@@ -963,7 +963,7 @@ const Generator = [
     id: 66,
     name: "Solar Generator",
     brand: "Itel power tank",
-    image: "../images/tank-1000",
+    image: "../images/tank-1000.webp",
     capacity: "1000w",
     price: 720000,
     warranty: "1yr",
@@ -974,7 +974,7 @@ const Generator = [
     id: 67,
     name: "Solar Generator",
     brand: "cola solar",
-    image: "../images/cola-300",
+    image: "../images/cola-300.webp",
     capacity: "500w",
     price: 320000,
     warranty: "1yr",
@@ -985,7 +985,7 @@ const Generator = [
     id: 68,
     name: "Solar Generator",
     brand: "cola solar",
-    image: "../images/cola-500",
+    image: "../images/cola-500.webp",
     capacity: "1000w",
     price: 630000,
     warranty: "1yr",
@@ -1723,7 +1723,43 @@ const SolarProductsPage = () => {
                   className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden"
                 >
                   <div className="h-48 p-4">
-                    {item.capacity === "3.5kva" ? (
+                    {item.id === 63 ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/go.webp"
+                        alt="Itel Go Solar Generator"
+                      />
+                    ) : item.id === 64 ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/gopro.jpeg"
+                        alt="Itel Go Pro Solar Generator"
+                      />
+                    ) : item.id === 65 ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/tank-500.webp"
+                        alt="Itel 500W Power Tank"
+                      />
+                    ) : item.id === 66 ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/tank-1000.webp"
+                        alt="Itel 1000W Power Tank"
+                      />
+                    ) : item.id === 67 ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/cola-300.webp"
+                        alt="Cola Solar 300W Generator"
+                      />
+                    ) : item.id === 68 ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/cola-500.webp"
+                        alt="Cola Solar 500W Generator"
+                      />
+                    ) : item.capacity === "3.5kva" ? (
                       <StaticImage
                         className="w-full h-full object-contain"
                         src="../images/wakatek_solar_generator.jpeg"
