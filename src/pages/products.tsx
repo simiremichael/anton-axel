@@ -950,6 +950,17 @@ const Generator = [
   },
   {
     id: 65,
+    name: "Solar Generator with solar panel",
+    brand: "Itel go pro",
+    image: "../images/gopro.jpeg",
+    capacity: "200w and 100w solar panel",
+    price: 200000,
+    warranty: "1yr",
+    type: "Portable",
+    quantity: 1,
+  },
+  {
+    id: 66,
     name: "Solar Generator",
     brand: "Itel power tank",
     image: "../images/tank-500.webp",
@@ -960,7 +971,7 @@ const Generator = [
     quantity: 1,
   },
   {
-    id: 66,
+    id: 67,
     name: "Solar Generator",
     brand: "Itel power tank",
     image: "../images/tank-1000.webp",
@@ -971,7 +982,7 @@ const Generator = [
     quantity: 1,
   },
   {
-    id: 67,
+    id: 68,
     name: "Solar Generator",
     brand: "cola solar",
     image: "../images/cola-300.webp",
@@ -982,7 +993,7 @@ const Generator = [
     quantity: 1,
   },
   {
-    id: 68,
+    id: 69,
     name: "Solar Generator",
     brand: "cola solar",
     image: "../images/cola-500.webp",
