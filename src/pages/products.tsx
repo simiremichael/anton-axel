@@ -1740,31 +1740,31 @@ const SolarProductsPage = () => {
                         src="../images/go.webp"
                         alt="Itel Go Solar Generator"
                       />
-                    ) : item.id === 64 ? (
+                    ) : item.id === 64 && 65 ? (
                       <StaticImage
                         className="w-full h-full object-contain"
                         src="../images/gopro.jpeg"
                         alt="Itel Go Pro Solar Generator"
                       />
-                    ) : item.id === 65 ? (
+                    ) : item.id === 66 ? (
                       <StaticImage
                         className="w-full h-full object-contain"
                         src="../images/tank-500.webp"
                         alt="Itel 500W Power Tank"
                       />
-                    ) : item.id === 66 ? (
+                    ) : item.id === 67 ? (
                       <StaticImage
                         className="w-full h-full object-contain"
                         src="../images/tank-1000.webp"
                         alt="Itel 1000W Power Tank"
                       />
-                    ) : item.id === 67 ? (
+                    ) : item.id === 68 ? (
                       <StaticImage
                         className="w-full h-full object-contain"
                         src="../images/cola-300.webp"
                         alt="Cola Solar 300W Generator"
                       />
-                    ) : item.id === 68 ? (
+                    ) : item.id === 69 ? (
                       <StaticImage
                         className="w-full h-full object-contain"
                         src="../images/cola-500.webp"
