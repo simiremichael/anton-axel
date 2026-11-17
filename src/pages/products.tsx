@@ -1740,7 +1740,13 @@ const SolarProductsPage = () => {
                         src="../images/go.webp"
                         alt="Itel Go Solar Generator"
                       />
-                    ) : item.id === 64 && 65 ? (
+                    ) : item.id === 64 ? (
+                      <StaticImage
+                        className="w-full h-full object-contain"
+                        src="../images/gopro.jpeg"
+                        alt="Itel Go Pro Solar Generator"
+                      />
+                    ) :  item.id === 65 ? (
                       <StaticImage
                         className="w-full h-full object-contain"
                         src="../images/gopro.jpeg"
